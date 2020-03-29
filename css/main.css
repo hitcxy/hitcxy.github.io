@@ -1974,7 +1974,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #cb8e3d;
+  background: #222fb6;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3208,7 +3208,7 @@ div.vheader.item2 {
 }
 .v .vwrap .vheader.item2 .vinput {
   height: 30px !important;
-  border: 0px !important;
+  border: 2px !important;
   width: 25% !important;
   margin: 0px !important;
 }
