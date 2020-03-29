@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hitcxy.com/links/index.html</loc>
+    
+    <lastmod>2020-03-29T21:23:03.540Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hitcxy.com/categories/index.html</loc>
+    
+    <lastmod>2020-03-29T21:14:23.358Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hitcxy.com/tags/index.html</loc>
+    
+    <lastmod>2020-03-29T21:13:37.079Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://hitcxy.com/about/index.html</loc>
     
     <lastmod>2020-03-29T21:12:29.341Z</lastmod>
@@ -12,27 +33,6 @@
     <loc>https://hitcxy.com/guestbook/index.html</loc>
     
     <lastmod>2020-03-29T21:07:58.957Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hitcxy.com/links/index.html</loc>
-    
-    <lastmod>2020-03-29T18:22:48.409Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hitcxy.com/tags/index.html</loc>
-    
-    <lastmod>2020-03-29T17:58:07.322Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hitcxy.com/categories/index.html</loc>
-    
-    <lastmod>2020-03-29T17:58:07.310Z</lastmod>
     
   </url>
   
