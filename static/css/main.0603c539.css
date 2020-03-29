@@ -1,0 +1,108 @@
+#disqus_proxy_thread {
+  padding-top: 10px
+}
+
+#disqus_proxy_thread .disqus-statement {
+  font-size: 16px;
+  padding-left: 92px;
+  color: rgba(0, 0, 0, .6)
+}
+
+#disqus_proxy_thread .disqus-statement a {
+  text-decoration: none;
+  color: #42b983
+}
+
+#disqus_proxy_thread .disqus-proxy {
+  width: 100%
+}
+
+#disqus_proxy_thread .disqus-proxy li, #disqus_proxy_thread .disqus-proxy ul {
+  list-style: none
+}
+
+#disqus_proxy_thread .disqus-proxy ul {
+  line-height: normal;
+  margin-left: 56px;
+  padding: 0
+}
+
+#disqus_proxy_thread .post .avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  /* start*/
+  webkit-transition: 1.1s all;
+  moz-transition: 1.1s all;
+  ms-transition: 1.1s all;
+  transition: 1.1s all;
+  border:solid 0px #55DAE1;
+  /* end */
+}
+
+#disqus_proxy_thread .post .avatar img:hover {
+  webkit-transform: rotate(360deg) scale(1.5);
+  moz-transform: rotate(360deg) scale(1.5);
+  ms-transform: rotate(360deg) scale(1.5);
+  transform: rotate(360deg) scale(1.5);
+  border:solid 0.5px #55DAE1;
+}
+
+#disqus_proxy_thread .comment-box .comment-info .avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  /* start*/
+  webkit-transition: 1.1s all;
+  moz-transition: 1.1s all;
+  ms-transition: 1.1s all;
+  transition: 1.1s all;
+  border:solid 0px #55DAE1;
+  /* end */
+}
+
+#disqus_proxy_thread .comment-box .comment-info .avatar img:hover {
+  webkit-transform: rotate(360deg) scale(1.5);
+  moz-transform: rotate(360deg) scale(1.5);
+  ms-transform: rotate(360deg) scale(1.5);
+  transform: rotate(360deg) scale(1.5);
+  border:solid 0.5px #55DAE1;
+}
+
+#disqus_proxy_thread .post .post-body .comment-body {
+  font-size: 16px;
+}
+
+#disqus_proxy_thread .post .post-body .comment-header span.comment-author, #disqus_proxy_thread .post .post-body .comment-header span.comment-reply-to,
+ #disqus_proxy_thread .post .post-body .comment-header span.comment-time{
+  color: #666;
+  font-size: 15px;
+}
+
+#disqus_proxy_thread .post .post-body .comment-header span.comment-primary{
+  color: #4fffd8;
+  font-size: 15px;
+}
+
+
+@media screen and (max-width: 500px) {
+  #disqus_proxy_thread .disqus-proxy ul, #disqus_proxy_thread .disqus-proxy ul.post-reply {
+    margin-left: 10px
+  }
+
+  #disqus_proxy_thread .disqus-proxy .disqus-statement {
+    padding-left: 80px
+  }
+
+  #disqus_proxy_thread .disqus-proxy .comment-box .comment-info .avatar img {
+    width: 50px;
+    height: 50px
+  }
+
+  #disqus_proxy_thread .disqus-proxy .comment-box .comment-info textarea {
+    left: 60px;
+    width: calc(100% - 30px)
+  }
+}
+
+/*# sourceMappingURL=main.0603c539.css.map*/

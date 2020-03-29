@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>pikachu&#39;s Blog</title>
+  
+  <subtitle>Easy coding,easy life.</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://hitcxy.com/"/>
+  <updated>2020-03-29T17:58:07.309Z</updated>
+  <id>https://hitcxy.com/</id>
+  
+  <author>
+    <name>pikachu</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>geth --rpcaddr</title>
+    <link href="https://hitcxy.com/2020/private/"/>
+    <id>https://hitcxy.com/2020/private/</id>
+    <published>2020-03-24T18:12:47.000Z</published>
+    <updated>2020-03-29T17:58:07.309Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/private/logo.jpeg&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最近在内网环境下出区块链的题目，因为是内网，所以考虑自己搭建私链，因为考虑内网环境 &lt;code&gt;flag&lt;/code&gt; 的发送问题，所以使用 &lt;code&gt;web3.py&lt;/code&gt; + &lt;code&gt;django&lt;/code&gt; + &lt;code&gt;nginx&lt;/code&gt; 的形式&lt;/li&gt;
+&lt;li&gt;记录一下使用 &lt;code&gt;geth&lt;/code&gt; 搭建私链的坑&lt;/li&gt;
+&lt;li&gt;随便写一写，想到哪写到哪&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="tools" scheme="https://hitcxy.com/categories/tools/"/>
+    
+    
+      <category term="geth" scheme="https://hitcxy.com/tags/geth/"/>
+    
+      <category term="blockchains" scheme="https://hitcxy.com/tags/blockchains/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机械键盘-键帽</title>
+    <link href="https://hitcxy.com/2020/keyboard/"/>
+    <id>https://hitcxy.com/2020/keyboard/</id>
+    <published>2020-03-22T05:29:27.000Z</published>
+    <updated>2020-03-29T17:58:07.309Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/Keyboard/%E4%B8%AA%E4%BA%BA%E9%94%AE%E7%9B%98.jpg&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;记录每个阶段想要记录的东西&lt;/li&gt;
+&lt;li&gt;入了机械键盘的坑……&lt;/li&gt;
+&lt;li&gt;好看的键帽&lt;/li&gt;
+&lt;li&gt;随意写一写……&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Keyboard" scheme="https://hitcxy.com/categories/Keyboard/"/>
+    
+    
+      <category term="Keyboadrd" scheme="https://hitcxy.com/tags/Keyboadrd/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sha256(py2 vs py3)</title>
+    <link href="https://hitcxy.com/2020/sha256/"/>
+    <id>https://hitcxy.com/2020/sha256/</id>
+    <published>2020-03-18T18:23:02.000Z</published>
+    <updated>2020-03-29T17:58:07.309Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;br&gt;&lt;code&gt;sha256&lt;/code&gt; 工作量证明，&lt;span id=&quot;inline-blue&quot;&gt;python2&lt;/span&gt; 和 &lt;span id=&quot;inline-green&quot;&gt;python3&lt;/span&gt; 的不同&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Scripts" scheme="https://hitcxy.com/categories/Scripts/"/>
+    
+    
+      <category term="Scripts" scheme="https://hitcxy.com/tags/Scripts/"/>
+    
+      <category term="Python2" scheme="https://hitcxy.com/tags/Python2/"/>
+    
+      <category term="Python3" scheme="https://hitcxy.com/tags/Python3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OwnerMoney</title>
+    <link href="https://hitcxy.com/2020/OwnerMoney/"/>
+    <id>https://hitcxy.com/2020/OwnerMoney/</id>
+    <published>2020-03-10T05:48:17.000Z</published>
+    <updated>2020-03-29T17:58:07.306Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;高校战“疫”网络安全分享赛区块链 &lt;code&gt;OwnerMoney&lt;/code&gt; 题目&lt;/li&gt;
+&lt;li&gt;以太坊 &lt;code&gt;Ropsten&lt;/code&gt; 测试链&lt;/li&gt;
+&lt;li&gt;合约地址：&lt;a href=&quot;https://ropsten.etherscan.io/address/0x40a590b70790930ceed4d148bf365eea9e8b35f4&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://ropsten.etherscan.io/address/0x40a590b70790930ceed4d148bf365eea9e8b35f4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;题目：&lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2020/OwnerMoney&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2020/OwnerMoney&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
+    
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
+      <category term="xctf 高校站“疫”" scheme="https://hitcxy.com/tags/xctf-%E9%AB%98%E6%A0%A1%E7%AB%99%E2%80%9C%E7%96%AB%E2%80%9D/"/>
+    
+      <category term="OwnerMoney" scheme="https://hitcxy.com/tags/OwnerMoney/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Neat Download Manager Mac</title>
+    <link href="https://hitcxy.com/2020/NeatDownloadManagerMac/"/>
+    <id>https://hitcxy.com/2020/NeatDownloadManagerMac/</id>
+    <published>2020-03-08T11:19:06.000Z</published>
+    <updated>2020-03-29T17:58:07.306Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/NeatDownloadManagerMac/1.png&quot; alt&gt;&lt;br&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;需要从百度云下载一些东西，但迫于太穷，百度云 &lt;code&gt;SVIP&lt;/code&gt; 不符合我的身份，就搜集了一些百度云提速下载的方法&lt;/li&gt;
+&lt;li&gt;之前 &lt;code&gt;windows&lt;/code&gt; 是用 &lt;a href=&quot;https://www.tampermonkey.net/&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Tampermonkey&lt;/a&gt; + &lt;code&gt;IDM&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mac&lt;/code&gt; 没有 &lt;code&gt;IDM&lt;/code&gt; ，尝试过 &lt;code&gt;folx pro&lt;/code&gt; ,无奈没法下载百度云文件&lt;/li&gt;
+&lt;li&gt;最后找到了 &lt;code&gt;Neat Download Manager&lt;/code&gt; ，效果如上图所示（下载速度和网络带宽也有关系），至少不是百度云的几十&lt;code&gt;K&lt;/code&gt;或者一百多&lt;code&gt;K&lt;/code&gt;了&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="tools" scheme="https://hitcxy.com/categories/tools/"/>
+    
+    
+      <category term="tools" scheme="https://hitcxy.com/tags/tools/"/>
+    
+      <category term="baiduyun" scheme="https://hitcxy.com/tags/baiduyun/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ethereum生成特定后缀账号的脚本</title>
+    <link href="https://hitcxy.com/2020/generate-address/"/>
+    <id>https://hitcxy.com/2020/generate-address/</id>
+    <published>2020-03-08T05:10:52.000Z</published>
+    <updated>2020-03-29T17:58:07.308Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;br&gt;&lt;code&gt;ethereum&lt;/code&gt; 生成特定后缀账户的脚本，包括 &lt;span id=&quot;inline-blue&quot;&gt;外部账户&lt;/span&gt; 和 &lt;span id=&quot;inline-green&quot;&gt;合约账户&lt;/span&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Scripts" scheme="https://hitcxy.com/categories/Scripts/"/>
+    
+    
+      <category term="Scripts" scheme="https://hitcxy.com/tags/Scripts/"/>
+    
+      <category term="ethereum" scheme="https://hitcxy.com/tags/ethereum/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>gitalk</title>
+    <link href="https://hitcxy.com/2020/gitalk/"/>
+    <id>https://hitcxy.com/2020/gitalk/</id>
+    <published>2020-03-07T03:21:52.000Z</published>
+    <updated>2020-03-29T17:58:07.308Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/gitalk/1.png&quot; alt&gt;&lt;br&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;br&gt;博客增加评论功能啦！！！！&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;参考&lt;a href=&quot;https://www.jianshu.com/p/b5f509f25872&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://www.jianshu.com/p/b5f509f25872&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="tools" scheme="https://hitcxy.com/categories/tools/"/>
+    
+    
+      <category term="Hexo" scheme="https://hitcxy.com/tags/Hexo/"/>
+    
+      <category term="gitalk" scheme="https://hitcxy.com/tags/gitalk/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>D^3CTF 2019 bet2loss_v2</title>
+    <link href="https://hitcxy.com/2019/bet2loss-v2/"/>
+    <id>https://hitcxy.com/2019/bet2loss-v2/</id>
+    <published>2019-11-25T12:49:32.000Z</published>
+    <updated>2020-03-29T17:58:07.306Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/bet2loss_v2/Bet2loss_v2.png&quot; alt&gt;&lt;br&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;br&gt;利用刚过去的周末参加了 &lt;span id=&quot;inline-blue&quot;&gt;D^3CTF&lt;/span&gt; ，做了一道区块链的题目，在此记录一下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;以太坊 &lt;code&gt;Kovan&lt;/code&gt; 测试链&lt;/li&gt;
+&lt;li&gt;合约地址动态生成，每个队伍合约地址分开（但是分发合约地址的账户是同一个账户，所以说还是可以查到其他人在链上的交易2333）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hash-reveal-commit&lt;/code&gt; 随机数&lt;/li&gt;
+&lt;li&gt;出题人采用的是前后台交互的方法，所以题目没有复现，记录下解题的思想&lt;/li&gt;
+&lt;li&gt;题目要求在上面图里，&lt;a href=&quot;https://www.anquanke.com/post/id/193939&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;官方exp入口&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;题目 &lt;code&gt;exp&lt;/code&gt; ：&lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2019/bet2loss_v2&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2019/bet2loss_v2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
+    
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
+      <category term="D^3CTF" scheme="https://hitcxy.com/tags/D-3CTF/"/>
+    
+      <category term="bet2loss_v2" scheme="https://hitcxy.com/tags/bet2loss-v2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>xctf final 2019 Happy_DOuble_Eleven</title>
+    <link href="https://hitcxy.com/2019/Happy-DOuble-Eleven/"/>
+    <id>https://hitcxy.com/2019/Happy-DOuble-Eleven/</id>
+    <published>2019-10-28T02:11:57.000Z</published>
+    <updated>2020-03-29T17:58:07.305Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;前两天设计了一个区块链的题目，其中出现了很多问题，还好在比赛第一天夜里修复了问题，在这里简单记录一下，给各位师傅带来了麻烦，表示歉意（emmm），下面先说明一下每个版本都修复了什么问题&lt;ul&gt;
+&lt;li&gt;第一个版本我就是头脑发热，把题目设计成 &lt;code&gt;1000 eth&lt;/code&gt; 就能拿到 &lt;code&gt;flag&lt;/code&gt; ，我真是弟弟行为，还好及时下线&lt;/li&gt;
+&lt;li&gt;第二个版本是任意地址写条件没有控制的很苛刻，导致天枢利用了这一点，在非预期做出题目之后，把 &lt;code&gt;codex&lt;/code&gt; 的 &lt;code&gt;length&lt;/code&gt; 给修改成了一个相对小的数值，造成其他队伍没法做题，这一点被有心之人利用了，他们写了个脚本一直攻击刚部署上的合约，修改数组长度（23333，硬生生被玩成了AD）&lt;/li&gt;
+&lt;li&gt;第三个版本是修复了版本二的问题，应该是可以正常做题的&lt;/li&gt;
+&lt;li&gt;后来仔细思考了一下，版本三还是有一些问题的，不过选手做题的时候没有遇到，但是担心会出问题，所以就有了最终版本四（其实版本四也有一些问题，在 &lt;code&gt;buy()&lt;/code&gt; 中有一条 &lt;code&gt;require(storage[0x02]==1)&lt;/code&gt; 限制，虽然在 &lt;code&gt;payforflag&lt;/code&gt; 后会回到初始化状态，但是这里头铁使用了 &lt;code&gt;storage&lt;/code&gt; 变量，导致一个问题是如果正在解题的队伍使这个条件成立了，恰巧另外一支队伍也正在解题，那么他们就可以&lt;strong&gt;乘顺风车&lt;/strong&gt;，如果这里使用 &lt;code&gt;memory&lt;/code&gt; 变量就好了&lt;/li&gt;
+&lt;li&gt;变更了版本其实主要还是想要让题目按照预期进行求解，给各个队伍造成了麻烦，表示抱歉（2333333…..），下面介绍一下题目&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;以太坊 &lt;code&gt;Ropsten&lt;/code&gt; 测试链&lt;/li&gt;
+&lt;li&gt;合约地址：&lt;a href=&quot;https://ropsten.etherscan.io/address/0x168892cb672a747f193eb4aca7b964bfb0aa6476&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://ropsten.etherscan.io/address/0x168892cb672a747f193eb4aca7b964bfb0aa6476&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;题目：&lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2019/Happy_DOuble_Eleven&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2019/Happy_DOuble_Eleven&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
+    
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
+      <category term="xctf final" scheme="https://hitcxy.com/tags/xctf-final/"/>
+    
+      <category term="Happy_DOuble_Eleven" scheme="https://hitcxy.com/tags/Happy-DOuble-Eleven/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hackergame2019 JCBank</title>
+    <link href="https://hitcxy.com/2019/JCBank/"/>
+    <id>https://hitcxy.com/2019/JCBank/</id>
+    <published>2019-10-17T00:41:47.000Z</published>
+    <updated>2020-03-29T17:58:07.306Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;以太坊 &lt;code&gt;Kovan&lt;/code&gt; 测试链&lt;/li&gt;
+&lt;li&gt;合约地址：&lt;a href=&quot;https://kovan.etherscan.io/address/0xE575c9abD35Fa94F1949f7d559056bB66FddEB51&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://kovan.etherscan.io/address/0xE575c9abD35Fa94F1949f7d559056bB66FddEB51&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;题目：&lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2019/Hackergame2019_JCBank&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2019/Hackergame2019_JCBank&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
+    
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
+      <category term="Hackergame" scheme="https://hitcxy.com/tags/Hackergame/"/>
+    
+      <category term="JCBank" scheme="https://hitcxy.com/tags/JCBank/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RoarCTF2019 CoinFlip</title>
+    <link href="https://hitcxy.com/2019/CoinFlip/"/>
+    <id>https://hitcxy.com/2019/CoinFlip/</id>
+    <published>2019-10-16T11:53:57.000Z</published>
+    <updated>2020-03-29T17:58:07.305Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;RoarCTF2019&lt;/code&gt; 的 &lt;code&gt;CoinFlip&lt;/code&gt; 题目&lt;/li&gt;
+&lt;li&gt;题目：&lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2019/RoarCTF2019_CoinFlip&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2019/RoarCTF2019_CoinFlip&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
+    
+    
+      <category term="RoarCTF2019" scheme="https://hitcxy.com/tags/RoarCTF2019/"/>
+    
+      <category term="CoinFlip" scheme="https://hitcxy.com/tags/CoinFlip/"/>
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数字经济2019 jojo</title>
+    <link href="https://hitcxy.com/2019/jojo/"/>
+    <id>https://hitcxy.com/2019/jojo/</id>
+    <published>2019-10-15T01:03:48.000Z</published>
+    <updated>2020-03-29T17:58:07.309Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数字经济云安全众测大赛 &lt;code&gt;2019&lt;/code&gt; ，一道区块链题目&lt;/li&gt;
+&lt;li&gt;题目：&lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2019/szjj_jojo&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2019/szjj_jojo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
+    
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
+      <category term="数字经济云安全" scheme="https://hitcxy.com/tags/%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%BA%91%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/tags/Solidity/"/>
+    
+      <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ethernaut -- Smart Contract</title>
+    <link href="https://hitcxy.com/2019/ethernaut/"/>
+    <id>https://hitcxy.com/2019/ethernaut/</id>
+    <published>2019-09-20T14:00:29.000Z</published>
+    <updated>2020-03-29T17:58:07.308Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/ethernaut/1.png&quot; alt&gt;&lt;br&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;22 shop&lt;/code&gt; 这题貌似已经下线，嘤嘤嘤嘤&lt;/li&gt;
+&lt;li&gt;记录一下刚学习 &lt;span id=&quot;inline-green&quot;&gt;Smart Contract&lt;/span&gt; 做题的平台的 &lt;code&gt;WP&lt;/code&gt; （2333入门级，开心就好～～～），如果没有任何基础，可以参考 &lt;a href=&quot;https://cryptozombies.io/zh/&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;CryptoZombies&lt;/a&gt; 等教程，下面是题目平台地址：&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://ethernaut.openzeppelin.com/&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://ethernaut.openzeppelin.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
+    
+    
+      <category term="Solidity" scheme="https://hitcxy.com/tags/Solidity/"/>
+    
+      <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
+    
+      <category term="Ethernaut" scheme="https://hitcxy.com/tags/Ethernaut/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>N1CTF2019 h4ck</title>
+    <link href="https://hitcxy.com/2019/h4ck/"/>
+    <id>https://hitcxy.com/2019/h4ck/</id>
+    <published>2019-09-19T06:51:14.000Z</published>
+    <updated>2020-03-29T17:58:07.308Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/h4ck/1.jpg&quot; alt&gt;&lt;br&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;br&gt;前段时间参加了一下N1CTF2019（作为小白参加），很幸运做出一道Smart Contract的题目，在此记录一下，合约地址如下：&lt;br&gt;&lt;a href=&quot;https://kovan.etherscan.io/address/0xe2d6d8808087d2e30eadf0acb67708148dbee0c0&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://kovan.etherscan.io/address/0xe2d6d8808087d2e30eadf0acb67708148dbee0c0&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
+    
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/tags/Solidity/"/>
+    
+      <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
+    
+      <category term="N1CTF2019" scheme="https://hitcxy.com/tags/N1CTF2019/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>_dl_runtime_resolve</title>
+    <link href="https://hitcxy.com/2019/dl-runtime-resolve/"/>
+    <id>https://hitcxy.com/2019/dl-runtime-resolve/</id>
+    <published>2019-09-19T02:48:00.000Z</published>
+    <updated>2020-03-29T17:58:07.307Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;br&gt;在&lt;code&gt;Linux&lt;/code&gt;中如果程序想要调用其它动态链接库的函数，必须要在程序加载的时候动态链接；在一个程序运行过程中，可能很多函数在程序执行完时都不会用到，比如一些错误处理函数或者一些用户很少用到的功能模块，所以ELF采用一种叫做延迟绑定&lt;code&gt;(Lazy Binding)&lt;/code&gt;的做法，基本思想就是当函数第一次被调用的时候才进行绑定（符号查找、重定位等）；而在&lt;code&gt;Linux&lt;/code&gt;中是利用&lt;code&gt;_dl_runtime_resolve(link_map_obj, reloc_index)&lt;/code&gt;函数来对动态链接的函数进行重定位的。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="PWN" scheme="https://hitcxy.com/categories/PWN/"/>
+    
+    
+      <category term="PWN" scheme="https://hitcxy.com/tags/PWN/"/>
+    
+      <category term="ELF" scheme="https://hitcxy.com/tags/ELF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Start My Blog Trip</title>
+    <link href="https://hitcxy.com/2019/Hello-World/"/>
+    <id>https://hitcxy.com/2019/Hello-World/</id>
+    <published>2019-09-17T07:32:08.000Z</published>
+    <updated>2020-03-29T17:58:07.306Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/Hello-World/1.png&quot; alt&gt;&lt;br&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;br&gt;介绍&lt;code&gt;Grammar&lt;/code&gt;及其&lt;code&gt;Style&lt;/code&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Hexo" scheme="https://hitcxy.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hitcxy.com/tags/Hexo/"/>
+    
+      <category term="Hello" scheme="https://hitcxy.com/tags/Hello/"/>
+    
+      <category term="Grammar" scheme="https://hitcxy.com/tags/Grammar/"/>
+    
+  </entry>
+  
+</feed>
