@@ -1088,7 +1088,7 @@ pre .javascript .function {
   margin: 60px 20px 0;
 }
 div#posts.posts-expand .tag-cloud a {
-  background-color: #f5f7f1;
+  background-color: #c09e68;
   border-radius: 6px;
   padding-left: 10px;
   padding-right: 10px;
@@ -2014,7 +2014,7 @@ div#posts.posts-expand .tag-cloud a {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #4638e2;
+  background: #c2ffe2;
 }
 .links-of-blogroll {
   font-size: 13px;
