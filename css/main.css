@@ -2014,7 +2014,7 @@ div#posts.posts-expand .tag-cloud a {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #14b58f;
+  background: #244bc9;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3236,49 +3236,6 @@ p#div-border-top-purple {
   border-top-width: 5px;
   border-radius: 3px;
   border-top-color: #9954bb;
-}
-ol {
-  margin-top: 0.4rem;
-  padding: 0 0 0 0.8rem;
-  list-style: none;
-  counter-reset: ol-li;
-}
-ul {
-  margin-top: 0.4rem;
-  padding: 0 0 0 0.8rem;
-  list-style: none;
-  counter-reset: ul-li;
-  color: #000;
-}
-.posts-expand .post-body ul li {
-  margin-bottom: 10px;
-  list-style: none;
-  color: #000;
-}
-.posts-expand .post-body ul li p {
-  margin-bottom: 10px;
-  border-radius: 6px;
-}
-.posts-expand .post-body ol li {
-  text-align: left;
-  color: #000;
-}
-.posts-expand .post-body ol li:before {
-  display: block;
-  float: left;
-  width: 19px;
-  height: 19px;
-  line-height: 18px;
-  margin: 0.4rem 12px 0 0;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 700;
-  font-style: normal;
-  background-color: #49b1f5;
-  border-radius: 50%;
-  text-align: center;
-  content: counter(ol-li);
-  counter-increment: ol-li;
 }
 div#comments.comments.v {
   margin-top: 0px !important;
