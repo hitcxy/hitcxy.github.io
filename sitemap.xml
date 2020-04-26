@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hitcxy.com/2019/ethernaut/</loc>
+    
+    <lastmod>2020-04-26T10:42:52.311Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://hitcxy.com/2020/sha256/</loc>
     
     <lastmod>2020-04-21T09:36:32.763Z</lastmod>
@@ -82,13 +89,6 @@
     <loc>https://hitcxy.com/2020/generate-address/</loc>
     
     <lastmod>2020-04-21T09:32:10.514Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hitcxy.com/2019/ethernaut/</loc>
-    
-    <lastmod>2020-04-21T09:31:49.563Z</lastmod>
     
   </url>
   
