@@ -764,7 +764,7 @@
 <li>满足三个 <code>modifier</code> 条件即可</li>
 <li><code>gateOne</code> 很简单，通过第三方合约调用 <code>enter</code> 即可</li>
 <li><code>gateTwo</code> 需要满足 <code>msg.gas % 8191 == 0</code><ul>
-<li><code>msg.gas</code> 是 <code>remaining gas</code> ，在 <code>remix</code> 的 <code>Javascript VM</code> 环境下进行 ‘Debug’， 在 <code>Step detail</code> 可以看到这个变量，假设在进入 <code>enter</code> 之前的 <code>remaining gas = 81910</code></li>
+<li><code>msg.gas</code> 是 <code>remaining gas</code> ，在 <code>remix</code> 的 <code>Javascript VM</code> 环境下进行 <code>Debug</code>， 在 <code>Step detail</code> 可以看到这个变量，假设在进入 <code>enter</code> 之前的 <code>remaining gas = 81910</code></li>
 </ul>
 </li>
 </ul>
