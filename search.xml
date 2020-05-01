@@ -1,6 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>NPUCTF2020 碰上彩虹，吃定彩虹！</title>
+    <url>/2020/NPUCTF2020-rainbow/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/NPUCTF2020-rainbow/1.png" alt></p>
+<p><strong>前言</strong></p>
+<ul>
+<li>复现 <code>NPUCTF2020</code> 碰上彩虹，吃定彩虹！</li>
+<li>附件 <a href="https://github.com/hitcxy/challenges-misc/tree/master/2020/%5BNPUCTF2020%5D%20%E7%A2%B0%E4%B8%8A%E5%BD%A9%E8%99%B9%EF%BC%8C%E5%90%83%E5%AE%9A%E5%BD%A9%E8%99%B9%EF%BC%81" rel="external nofollow noopener noreferrer" target="_blank">attachment.rar</a></li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>下载附件并解压,有三个文件：<code>lookatme.txt</code>、<code>maybehint.txt</code> 和 <code>secret</code></li>
+<li>打开 <code>lookatme.txt</code> 发现文件是一串数字，全选以后发现最下方有几个空格和TAB换行组成的空。联想到是摩斯密码，空格 = “.”，TAB = “-“</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/NPUCTF2020-rainbow/2.png" alt></p>
+<ul>
+<li>翻译出来的摩斯密码是：.- ..- - — -.- . -.– ,解密得到密文 <code>autokey</code> ,根据解出来的密文可以判断上面的字符串经过了 <code>autokey</code> 加密</li>
+<li>再看一下 <code>maybehint.txt</code> ,提示在txt中隐藏了一些东⻄,用 <code>vim</code> 查看</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/NPUCTF2020-rainbow/3.png" alt></p>
+<ul>
+<li>很明显为零宽度字符隐写，且由<200b>、<200c>、<200d>这三种字符组成, <a href="http://330k.github.io/misc_tools/unicode_steganography.html" rel="external nofollow noopener noreferrer" target="_blank">http://330k.github.io/misc_tools/unicode_steganography.html</a>解密,得到 <code>do u know NTFS?</code> 如下图</200d></200c></200b></li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/NPUCTF2020-rainbow/4.png" alt></p>
+<ul>
+<li>用 <code>ntfsstreamseditor</code> 提取如下</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/NPUCTF2020-rainbow/5.png" alt><br><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/NPUCTF2020-rainbow/6.png" alt></p>
+<ul>
+<li>稍加观察可以发现其中只有几种字符，而且都为重复的，据此可以尝试词频分析</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line">f=open(<span class="string">'out.txt'</span>,<span class="string">'r'</span>)</span><br><span class="line">f_read=f.read()</span><br><span class="line"><span class="keyword">print</span> Counter(f_read)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>得到结果为这几种字符从多到少的排列顺序，组合在一起得到 <code>ZW5jcnlwdG8=</code> , <code>base64</code> 解密得到 <code>encrypto</code> ,百度 <code>encrypto</code> 可知其是一个加密软件，下载后尝试用其加密一个文件，可以得知经过其加密的文件后缀名为 <code>crypto</code>，将 <code>secret</code> 文件后缀名改为 <code>secret.crypto</code> 即可打开文件</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/NPUCTF2020-rainbow/7.png" alt></p>
+<ul>
+<li>可以看到文件被加密，想到 <code>autokey</code>，但是由于没有给出加密密钥，所以需要对其进行 爆破，参考 <a href="http://www.practicalcryptography.com/cryptanalysis/stochastic-searching/cryptanalysis-autokey-cipher/" rel="external nofollow noopener noreferrer" target="_blank">此网址</a>,当然,在 <a href="https://github.com/hitcxy/break_autokey" rel="external nofollow noopener noreferrer" target="_blank">break_autokey</a> 也准备好了,运行结果如下图</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/NPUCTF2020-rainbow/8.png" alt></p>
+<ul>
+<li>结合 <code>hint</code> 小写, 密码为 <code>iamthepasswd</code> </li>
+<li>可是用此密码解这个加密文件时却一直解不开，再结合题目描述中加粗的括号删掉，推 测是否在文件中还隐藏了什么信息，用 <code>strings</code> 命令查看一下文件可以发现这样一条信息</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(Oh!Youcaughtme!But...)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将其删去后再次尝试解密，即可成功解密,解密后得到一张 <code>彩虹.png</code> 图片, <code>binwalk</code> 查看有个压缩包, 用 <code>foremost</code> 分离得到一个加密压缩包,所以现在需要寻找密码</li>
+<li>仔细观察图片可以发现，由五种不同颜色的横条分隔开的六块⻩色有略微深浅的差异， 用 <code>gimp</code> 或 <code>ps</code> 打开提取一下颜色</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/NPUCTF2020-rainbow/9.png" alt></p>
+<ul>
+<li>分别提取一下六种⻩色，可以发现他们颜色的 <code>HTML标记</code> 只有最后两位不同，从上到下 依次为70、40、73、73、57、64，将这几个数组合在一起，用 <code>Converter</code> 的 <code>Hex to Text</code> ，或者 <code>python</code> 的 <code>decode(&#39;hex&#39;)</code> ，就可以得到解压密码</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/NPUCTF2020-rainbow/10.png" alt></p>
+<ul>
+<li>解压后得到 <code>docx</code> 文件，想到 <code>word</code> 隐写，显示隐藏文字</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/NPUCTF2020-rainbow/11.png" alt></p>
+<ul>
+<li>仔细观察上面的一⻓串字母，可以在众多的小写字母中发现几个大写字母,按照顺序组合起来得到 <code>ALPHUCK</code>, 查阅可知是一种 <code>Programming Language</code> ,只由 <code>a</code>,<code>c</code>,<code>e</code>,<code>i</code>,<code>j</code>,<code>o</code>,<code>p</code>,<code>s</code> 这 <code>8</code> 个小写字母组成，所以删去上面的几个大写字母，<a href="https://www.dcode.fr/alphuck-language" rel="external nofollow noopener noreferrer" target="_blank">在线网站</a>解码一下即可得到 <code>flag</code></li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/NPUCTF2020-rainbow/1.png" alt></p>
+]]></content>
+      <categories>
+        <category>Misc</category>
+      </categories>
+      <tags>
+        <tag>misc</tag>
+        <tag>npuctf2020</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>nodejs 监听私有链pending交易并自动miner</title>
     <url>/2020/auto-pending-miner/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><strong>前言</strong><br><code>nodejs</code> 监听私有链 <code>pending</code> 交易并自动 <code>miner</code></p>
@@ -515,9 +586,9 @@
       </categories>
       <tags>
         <tag>Blockchain</tag>
+        <tag>数字经济云安全</tag>
         <tag>Solidity</tag>
         <tag>Smart Contract</tag>
-        <tag>数字经济云安全</tag>
       </tags>
   </entry>
   <entry>
@@ -1091,9 +1162,9 @@
       </categories>
       <tags>
         <tag>Blockchain</tag>
-        <tag>N1CTF2019</tag>
         <tag>Solidity</tag>
         <tag>Smart Contract</tag>
+        <tag>N1CTF2019</tag>
       </tags>
   </entry>
   <entry>
