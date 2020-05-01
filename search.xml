@@ -16,12 +16,12 @@
 </ul>
 <p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/NPUCTF2020-rainbow/2.png" alt></p>
 <ul>
-<li>翻译出来的摩斯密码是：.- ..- - — -.- . -.– ,解密得到密文 <code>autokey</code> ,根据解出来的密文可以判断上面的字符串经过了 <code>autokey</code> 加密</li>
+<li>翻译出来的摩斯密码是：<code>.- ..- - --- -.- . -.--</code> ,解密得到密文 <code>autokey</code> ,根据解出来的密文可以判断上面的字符串经过了 <code>autokey</code> 加密</li>
 <li>再看一下 <code>maybehint.txt</code> ,提示在txt中隐藏了一些东⻄,用 <code>vim</code> 查看</li>
 </ul>
 <p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/NPUCTF2020-rainbow/3.png" alt></p>
 <ul>
-<li>很明显为零宽度字符隐写，且由<200b>、<200c>、<200d>这三种字符组成, <a href="http://330k.github.io/misc_tools/unicode_steganography.html" rel="external nofollow noopener noreferrer" target="_blank">http://330k.github.io/misc_tools/unicode_steganography.html</a>解密,得到 <code>do u know NTFS?</code> 如下图</200d></200c></200b></li>
+<li>很明显为零宽度字符隐写，且由<200b>、<200c>、<200d>这三种字符组成, 去<a href="http://330k.github.io/misc_tools/unicode_steganography.html" rel="external nofollow noopener noreferrer" target="_blank">此网站</a>解密,得到 <code>do u know NTFS?</code> 如下图</200d></200c></200b></li>
 </ul>
 <p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/NPUCTF2020-rainbow/4.png" alt></p>
 <ul>
@@ -586,9 +586,9 @@
       </categories>
       <tags>
         <tag>Blockchain</tag>
-        <tag>数字经济云安全</tag>
         <tag>Solidity</tag>
         <tag>Smart Contract</tag>
+        <tag>数字经济云安全</tag>
       </tags>
   </entry>
   <entry>
@@ -1162,9 +1162,9 @@
       </categories>
       <tags>
         <tag>Blockchain</tag>
+        <tag>N1CTF2019</tag>
         <tag>Solidity</tag>
         <tag>Smart Contract</tag>
-        <tag>N1CTF2019</tag>
       </tags>
   </entry>
   <entry>
