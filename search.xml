@@ -10,9 +10,9 @@
 <li>附件 <a href="https://github.com/hitcxy/challenges-misc/tree/master/2020/%5BNPUCTF2020%5D%20%E7%A2%B0%E4%B8%8A%E5%BD%A9%E8%99%B9%EF%BC%8C%E5%90%83%E5%AE%9A%E5%BD%A9%E8%99%B9%EF%BC%81" rel="external nofollow noopener noreferrer" target="_blank">attachment.rar</a></li>
 </ul>
 <a id="more"></a>
-<ul>
+<h1 id="Solutions"><a href="#Solutions" class="headerlink" title="Solutions"></a>Solutions</h1><ul>
 <li>下载附件并解压,有三个文件：<code>lookatme.txt</code>、<code>maybehint.txt</code> 和 <code>secret</code></li>
-<li>打开 <code>lookatme.txt</code> 发现文件是一串数字，全选以后发现最下方有几个空格和TAB换行组成的空。联想到是摩斯密码，空格 = ‘.’，TAB = ‘-‘</li>
+<li>打开 <code>lookatme.txt</code> 发现文件是一串数字，全选以后发现最下方有几个空格和TAB换行组成的空。联想到是摩斯密码，空格 = <code>.</code>，TAB = <code>-</code></li>
 </ul>
 <p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/NPUCTF2020-rainbow/2.png" alt></p>
 <ul>
@@ -586,9 +586,9 @@
       </categories>
       <tags>
         <tag>Blockchain</tag>
+        <tag>数字经济云安全</tag>
         <tag>Solidity</tag>
         <tag>Smart Contract</tag>
-        <tag>数字经济云安全</tag>
       </tags>
   </entry>
   <entry>
@@ -1162,9 +1162,9 @@
       </categories>
       <tags>
         <tag>Blockchain</tag>
-        <tag>N1CTF2019</tag>
         <tag>Solidity</tag>
         <tag>Smart Contract</tag>
+        <tag>N1CTF2019</tag>
       </tags>
   </entry>
   <entry>
