@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2020-05-01T13:38:25.123Z</updated>
+  <updated>2020-05-06T15:30:40.253Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>DelCTF2020_mc_easybgm</title>
+    <link href="https://hitcxy.com/2020/DelCTF2020-mc-easybgm/"/>
+    <id>https://hitcxy.com/2020/DelCTF2020-mc-easybgm/</id>
+    <published>2020-05-06T15:30:40.000Z</published>
+    <updated>2020-05-06T15:30:40.253Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>NPUCTF2020 碰上彩虹，吃定彩虹！</title>
     <link href="https://hitcxy.com/2020/NPUCTF2020-rainbow/"/>
     <id>https://hitcxy.com/2020/NPUCTF2020-rainbow/</id>
     <published>2020-05-01T12:21:17.000Z</published>
-    <updated>2020-05-01T13:38:25.123Z</updated>
+    <updated>2020-05-06T15:37:08.911Z</updated>
     
     <summary type="html">
     
@@ -29,7 +49,7 @@
 &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;复现 &lt;code&gt;NPUCTF2020&lt;/code&gt; 碰上彩虹，吃定彩虹！&lt;/li&gt;
-&lt;li&gt;附件 &lt;a href=&quot;https://github.com/hitcxy/challenges-misc/tree/master/2020/%5BNPUCTF2020%5D%20%E7%A2%B0%E4%B8%8A%E5%BD%A9%E8%99%B9%EF%BC%8C%E5%90%83%E5%AE%9A%E5%BD%A9%E8%99%B9%EF%BC%81&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;attachment.rar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;附件 &lt;a href=&quot;https://pan.baidu.com/s/1Ok_xleNJ_VDqVYUnYpWIJQ&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://pan.baidu.com/s/1Ok_xleNJ_VDqVYUnYpWIJQ&lt;/a&gt; 密码: &lt;code&gt;ijdv&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
