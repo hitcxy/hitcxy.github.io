@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>蜜罐合约</title>
+    <url>/2020/Honeypot-Contract/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><strong>前言</strong></p>
+<ul>
+<li>看了蜜罐合约的一些知识,感觉非常有意思</li>
+<li>蜜罐合约的利用点大都很巧妙,目的都是为了诱惑你向合约里送钱</li>
+</ul>
+<a id="more"></a>
+<p>这篇文章就不对哪个蜜罐合约实例做具体的分析了,如果带佬想看的话,可以参考<a href="https://www.anquanke.com/post/id/153109" rel="external nofollow noopener noreferrer" target="_blank">分析一个有趣的蜜罐合约</a> 和 <a href="https://paper.seebug.org/631/#21-gift_1_eth" rel="external nofollow noopener noreferrer" target="_blank">以太坊蜜罐智能合约分析</a>,这里只记录一下自己的心得</p>
+<ul>
+<li><code>etherscan</code> 上有一个可见交易的机制,在 <code>etherscan</code> 上对于合约与合约直接的消息传送,当 <code>msg.value = 0</code> 时它是不显示的,因为它们被视为合约间的相互调用而不是一笔交易.所以当我们拿到一个合约地址时,用 <code>etherscan</code> 查看该合约地址的交易并不一定是全部的交易信息.但看不到的这部分信息可以通过 <a href="https://www.etherchain.org/" rel="external nofollow noopener noreferrer" target="_blank">etherchain</a> 来查看,比如下面的例子</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/Honeypot_Contract/1.png" alt><br><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/Honeypot_Contract/2.png" alt></p>
+<ul>
+<li><a href="https://www.etherchain.org/" rel="external nofollow noopener noreferrer" target="_blank">etherchain</a> 不像 <code>etherscan</code> 自带 <code>decode</code> ,所以需要对 <code>Input</code> 手动解码,可以使用 <a href="https://github.com/ConsenSys/abi-decoder" rel="external nofollow noopener noreferrer" target="_blank">abi-decoder</a> 工具</li>
+<li><p>蜜罐合约一般只适合在主链上,不适合 <code>CTF</code> </p>
+<ul>
+<li>因为蜜罐合约一般只是为了“骗钱”,而刚开始的时候会向里面转些钱,诱使别人向里面充钱,然后把里面的钱提出来,在测试链上,这些钱是无意义的</li>
+<li>而且如果一旦有人识破的话,就会有交易记录,如果是在 <code>CTF</code> 比赛里面,其他人就会分析交易记录,就会很容易明白蜜罐合约了,而且一旦有一个人做出来,里面的钱就没了,失去了蜜罐骗钱的意义</li>
+</ul>
+</li>
+<li><p>以太坊神奇机制很多,对以太坊有一定了解也不要盲目自信,不小心就会栽跟头,牢记天上不会白白掉馅饼,三思而后行</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Solidity</category>
+      </categories>
+      <tags>
+        <tag>蜜罐合约</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>DelCTF2020 mc_easybgm</title>
     <url>/2020/DelCTF2020-mc-easybgm/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><strong>前言</strong></p>
@@ -587,9 +620,9 @@
         <category>Solidity</category>
       </categories>
       <tags>
-        <tag>Blockchain</tag>
         <tag>Hackergame</tag>
         <tag>JCBank</tag>
+        <tag>Blockchain</tag>
       </tags>
   </entry>
   <entry>
@@ -615,9 +648,9 @@
         <category>Solidity</category>
       </categories>
       <tags>
+        <tag>Blockchain</tag>
         <tag>RoarCTF2019</tag>
         <tag>CoinFlip</tag>
-        <tag>Blockchain</tag>
       </tags>
   </entry>
   <entry>
