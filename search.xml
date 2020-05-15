@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Create2</title>
+    <url>/2020/Create2/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><strong>前言</strong></p>
+<ul>
+<li>智能合约生成合约地址的第二种方式 <code>Create2</code></li>
+<li>以一道例题解释<a id="more"></a></li>
+<li><p>计算地址有两种方式</p>
+<ul>
+<li><code>Create</code> : <code>keccak256(rlp.encode(deployingAddress, nonce))[12:]</code></li>
+<li><code>Create2</code> : <code>keccak256(0xff ++ deployingAddr ++ salt ++ keccak256(bytecode))[12:]</code></li>
+</ul>
+</li>
+<li><p>关于 <code>Create2</code> ,这里就不介绍了,可以参考 <a href="https://learnblockchain.cn/docs/eips/eip-1014.html#%E8%A7%84%E8%8C%83" rel="external nofollow noopener noreferrer" target="_blank">EIP 1014: CREATE2 指令</a></p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">pragma solidity ^<span class="number">0.4</span><span class="number">.21</span>;</span><br><span class="line"></span><br><span class="line">interface IName &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params"></span>) <span class="title">external</span> <span class="title">view</span> <span class="title">returns</span> (<span class="params">bytes32</span>);</span></span><br><span class="line"><span class="function">&#125;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">contract</span> <span class="title">FuzzyIdentityChallenge</span> </span>&#123;</span><br><span class="line">    bool public isComplete;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">authenticate</span>(<span class="params"></span>) <span class="title">public</span> </span>&#123;</span><br><span class="line">        <span class="built_in">require</span>(isSmarx(msg.sender));</span><br><span class="line">        <span class="built_in">require</span>(isBadCode(msg.sender));</span><br><span class="line"></span><br><span class="line">        isComplete = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">isSmarx</span>(<span class="params">address addr</span>) <span class="title">internal</span> <span class="title">view</span> <span class="title">returns</span> (<span class="params">bool</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> IName(addr).name() == bytes32(<span class="string">"smarx"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">isBadCode</span>(<span class="params">address _addr</span>) <span class="title">internal</span> <span class="title">pure</span> <span class="title">returns</span> (<span class="params">bool</span>) </span>&#123;</span><br><span class="line">        bytes20 addr = bytes20(_addr);</span><br><span class="line">        bytes20 id = hex<span class="string">"000000000000000000000000000000000badc0de"</span>;</span><br><span class="line">        bytes20 mask = hex<span class="string">"000000000000000000000000000000000fffffff"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (uint256 i = <span class="number">0</span>; i &lt; <span class="number">34</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (addr &amp; mask == id) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            mask &lt;&lt;= <span class="number">4</span>;</span><br><span class="line">            id &lt;&lt;= <span class="number">4</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>很简单,要求 <code>name</code> 是 <code>smarx</code> ,并且 <code>msg.sender</code> 低位是 <code>badc0de</code> ,可通过下面合约解决,只需要合约地址地位是 <code>badc0de</code> 即可</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">pragma solidity ^<span class="number">0.5</span><span class="number">.12</span>;</span><br><span class="line">contract BadCodeSmarx is IName &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">callAuthenticate</span>(<span class="params">address _challenge</span>) <span class="title">public</span> </span>&#123;</span><br><span class="line">       FuzzyIdentityChallenge(_challenge).authenticate(); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params"></span>) <span class="title">external</span> <span class="title">view</span> <span class="title">returns</span> (<span class="params">bytes32</span>) </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> bytes32(<span class="string">"smarx"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>用 <code>Create2</code> 方法解决,如下,我们只需要计算出相对应的 <code>salt</code> 即可</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">contract Deployer &#123;</span><br><span class="line">    <span class="comment">// contractBytecode是待部署合约的bytecode</span></span><br><span class="line">    bytes contractBytecode = hex<span class="string">"608060405234801561001057600080fd5b5061015d806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c806306fdde031461003b5780637872ab4914610059575b600080fd5b61004361009d565b6040518082815260200191505060405180910390f35b61009b6004803603602081101561006f57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506100c5565b005b60007f736d617278000000000000000000000000000000000000000000000000000000905090565b8073ffffffffffffffffffffffffffffffffffffffff1663380c7a676040518163ffffffff1660e01b8152600401600060405180830381600087803b15801561010d57600080fd5b505af1158015610121573d6000803e3d6000fd5b505050505056fea265627a7a72315820fb2fc7a07f0eebf799c680bb1526641d2d905c19393adf340a04e48c9b527de964736f6c634300050c0032"</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">deploy</span>(<span class="params">bytes32 salt</span>) <span class="title">public</span> </span>&#123;</span><br><span class="line">        bytes memory bytecode = contractBytecode;</span><br><span class="line">        address addr;</span><br><span class="line">      </span><br><span class="line">        assembly &#123;</span><br><span class="line">          addr := create2(<span class="number">0</span>, add(bytecode, <span class="number">0x20</span>), mload(bytecode), salt)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>写了一个脚本爆破 <code>salt</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> web3 <span class="keyword">import</span> Web3</span><br><span class="line"></span><br><span class="line">s1 = <span class="string">'0xffca4dfd86a86c48c5d9c228bedbeb7f218a29c94b'</span></span><br><span class="line"></span><br><span class="line">s3 = <span class="string">'4670da3f633e838c2746ca61c370ba3dbd257b86b28b78449f4185480e2aba51'</span></span><br><span class="line"></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>):</span><br><span class="line">    salt = hex(i)[<span class="number">2</span>:].rjust(<span class="number">64</span>, <span class="string">'0'</span>)</span><br><span class="line">    s = s1+salt+s3</span><br><span class="line">    hashed = Web3.sha3(hexstr=s)</span><br><span class="line">    hashed_str = <span class="string">''</span>.join([<span class="string">'%02x'</span> % b <span class="keyword">for</span> b <span class="keyword">in</span> hashed])</span><br><span class="line">    <span class="keyword">if</span> hashed_str.endswith(<span class="string">'badc0de'</span>):</span><br><span class="line">        print(salt,hashed_str)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line">    print(salt)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>结果如下</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/Create2/1.png" alt></p>
+<ul>
+<li><p>最后调用 <code>Deployer.deploy(0x00...005b2bfe)</code> 即可把 <code>BadCodeSmarx</code> 合约部署到地址 <code>0xa905a3922a4ebfbc7d257cecdb1df04a3badc0de</code> 上</p>
+</li>
+<li><p>也有大佬通过 <code>Create</code> 方式解决的,有兴趣的可以参考 <a href="https://www.anquanke.com/post/id/154104#h3-11" rel="external nofollow noopener noreferrer" target="_blank">https://www.anquanke.com/post/id/154104#h3-11</a> , 带佬自行验证<br>,我没有验证</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Solidity</category>
+      </categories>
+      <tags>
+        <tag>Create2</tag>
+        <tag>Solidity</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>蜜罐合约</title>
     <url>/2020/Honeypot-Contract/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><strong>前言</strong></p>
@@ -16,6 +64,7 @@
 <p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/Honeypot_Contract/1.png" alt><br><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/Honeypot_Contract/2.png" alt></p>
 <ul>
 <li><a href="https://www.etherchain.org/" rel="external nofollow noopener noreferrer" target="_blank">etherchain</a> 不像 <code>etherscan</code> 自带 <code>decode</code> ,所以需要对 <code>Input</code> 手动解码,可以使用 <a href="https://github.com/ConsenSys/abi-decoder" rel="external nofollow noopener noreferrer" target="_blank">abi-decoder</a> 工具</li>
+<li>对于蜜罐合约,所有的交易记录要详细审计,因为在你拿到合约之前,你不知道是否有其他人(包括合约创建者)对合约进行过操作</li>
 <li><p>蜜罐合约一般只适合在主链上,不适合 <code>CTF</code> </p>
 <ul>
 <li>因为蜜罐合约一般只是为了“骗钱”,而刚开始的时候会向里面转些钱,诱使别人向里面充钱,然后把里面的钱提出来,在测试链上,这些钱是无意义的</li>
@@ -620,9 +669,9 @@
         <category>Solidity</category>
       </categories>
       <tags>
+        <tag>Blockchain</tag>
         <tag>Hackergame</tag>
         <tag>JCBank</tag>
-        <tag>Blockchain</tag>
       </tags>
   </entry>
   <entry>
@@ -648,9 +697,9 @@
         <category>Solidity</category>
       </categories>
       <tags>
-        <tag>Blockchain</tag>
         <tag>RoarCTF2019</tag>
         <tag>CoinFlip</tag>
+        <tag>Blockchain</tag>
       </tags>
   </entry>
   <entry>
@@ -685,9 +734,9 @@
         <category>Solidity</category>
       </categories>
       <tags>
+        <tag>Solidity</tag>
         <tag>Blockchain</tag>
         <tag>数字经济云安全</tag>
-        <tag>Solidity</tag>
         <tag>Smart Contract</tag>
       </tags>
   </entry>
@@ -1261,8 +1310,8 @@
         <category>Solidity</category>
       </categories>
       <tags>
-        <tag>Blockchain</tag>
         <tag>Solidity</tag>
+        <tag>Blockchain</tag>
         <tag>Smart Contract</tag>
         <tag>N1CTF2019</tag>
       </tags>
