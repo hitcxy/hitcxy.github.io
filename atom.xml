@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2020-09-26T08:24:58.697Z</updated>
+  <updated>2020-09-26T09:26:05.401Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>调试evm字节码-radare2</title>
+    <link href="https://hitcxy.com/2020/radare2/"/>
+    <id>https://hitcxy.com/2020/radare2/</id>
+    <published>2020-09-26T09:18:05.000Z</published>
+    <updated>2020-09-26T09:26:05.401Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/radare2/1.png&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不经意发现的一款可以调节 &lt;code&gt;EVM bytecode&lt;/code&gt; 的工具 &lt;code&gt;r2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;可调试交易实时查看 &lt;code&gt;stack&lt;/code&gt; 和 &lt;code&gt;memory&lt;/code&gt; 信息&lt;/li&gt;
+&lt;li&gt;不断探索好用好玩的功能，不断更新&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="tools" scheme="https://hitcxy.com/categories/tools/"/>
+    
+    
+      <category term="tools" scheme="https://hitcxy.com/tags/tools/"/>
+    
+      <category term="evm" scheme="https://hitcxy.com/tags/evm/"/>
+    
+  </entry>
   
   <entry>
     <title>qwb2020 第四届强网杯区块链EGM</title>
@@ -986,9 +1014,9 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
-    
       <category term="Solidity" scheme="https://hitcxy.com/tags/Solidity/"/>
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
       <category term="数字经济云安全" scheme="https://hitcxy.com/tags/%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%BA%91%E5%AE%89%E5%85%A8/"/>
     
@@ -1041,9 +1069,9 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
-    
       <category term="Solidity" scheme="https://hitcxy.com/tags/Solidity/"/>
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
       <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
     

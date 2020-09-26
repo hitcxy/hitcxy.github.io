@@ -59,7 +59,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="pikachu">
+  <meta name="keywords" content="tools,evm,">
 
 
 
@@ -77,16 +77,20 @@
 
 
 
-<meta name="description" content="帅 | 码渣 | 宅 | 金木粉">
-<meta property="og:type" content="website">
-<meta property="og:title" content="pikachu&#39;s Blog">
-<meta property="og:url" content="https://hitcxy.com/archives/2019/index.html">
+<meta name="description" content="前言  不经意发现的一款可以调节 EVM bytecode 的工具 r2 可调试交易实时查看 stack 和 memory 信息 不断探索好用好玩的功能，不断更新">
+<meta name="keywords" content="tools,evm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="调试evm字节码-radare2">
+<meta property="og:url" content="https://hitcxy.com/2020/radare2/index.html">
 <meta property="og:site_name" content="pikachu&#39;s Blog">
-<meta property="og:description" content="帅 | 码渣 | 宅 | 金木粉">
+<meta property="og:description" content="前言  不经意发现的一款可以调节 EVM bytecode 的工具 r2 可调试交易实时查看 stack 和 memory 信息 不断探索好用好玩的功能，不断更新">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/radare2/1.png">
+<meta property="og:updated_time" content="2020-09-26T09:26:05.401Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="pikachu&#39;s Blog">
-<meta name="twitter:description" content="帅 | 码渣 | 宅 | 金木粉">
+<meta name="twitter:title" content="调试evm字节码-radare2">
+<meta name="twitter:description" content="前言  不经意发现的一款可以调节 EVM bytecode 的工具 r2 可调试交易实时查看 stack 和 memory 信息 不断探索好用好玩的功能，不断更新">
+<meta name="twitter:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/radare2/1.png">
 
 
 
@@ -114,7 +118,7 @@
 
 
 
-  <link rel="canonical" href="https://hitcxy.com/archives/2019/">
+  <link rel="canonical" href="https://hitcxy.com/2020/radare2/">
 
 
 
@@ -130,7 +134,7 @@
 </script>
 
 
-  <title> 归档 | pikachu's Blog </title>
+  <title> 调试evm字节码-radare2 | pikachu's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -161,7 +165,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right  page-archive  ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
 	<a href="https://github.com/hitcxy/blog" rel="external nofollow noopener noreferrer" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
@@ -309,308 +313,270 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-       
-      
-      OK! 目前共计 40 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2019">2019</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/bet2loss-v2/" itemprop="url">
-              
-                <span itemprop="name">D^3CTF 2019 bet2loss_v2</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-11-25T20:49:32+08:00" content="2019-11-25">
-          11-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/Happy-DOuble-Eleven/" itemprop="url">
-              
-                <span itemprop="name">xctf final 2019 Happy_DOuble_Eleven</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-28T10:11:57+08:00" content="2019-10-28">
-          10-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/JCBank/" itemprop="url">
-              
-                <span itemprop="name">Hackergame2019 JCBank</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-17T08:41:47+08:00" content="2019-10-17">
-          10-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/CoinFlip/" itemprop="url">
-              
-                <span itemprop="name">RoarCTF2019 CoinFlip</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-16T19:53:57+08:00" content="2019-10-16">
-          10-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/jojo/" itemprop="url">
-              
-                <span itemprop="name">数字经济2019 jojo</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-15T09:03:48+08:00" content="2019-10-15">
-          10-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/ethernaut/" itemprop="url">
-              
-                <span itemprop="name">Ethernaut -- Smart Contract</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-20T22:00:29+08:00" content="2019-09-20">
-          09-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/h4ck/" itemprop="url">
-              
-                <span itemprop="name">N1CTF2019 h4ck</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-19T14:51:14+08:00" content="2019-09-19">
-          09-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/Hello-World/" itemprop="url">
-              
-                <span itemprop="name">Start My Blog Trip</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-17T15:32:08+08:00" content="2019-09-17">
-          09-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://hitcxy.com/2020/radare2/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="pikachu">
+    <meta itemprop="description" content>
+    <meta itemprop="image" content="/images/avatar/1.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="pikachu's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="pikachu's Blog" src>
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                调试evm字节码-radare2
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-26T17:18:05+08:00">
+                2020-09-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-09-26T17:26:05+08:00">
+                2020-09-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tools/" itemprop="url" rel="index">
+                    <span itemprop="name">tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+
+          
+
+          
+
+          
+
+          
+          
+             <span id="/2020/radare2/" class="leancloud_visitors" data-flag-title="调试evm字节码-radare2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          <br><span class="post-time">
+           <span class="post-meta-item-icon">
+             <i class="fa fa-edit"></i>
+           </span>
+           <span class="post-meta-item-text">WordCount:</span>
+           <span class="post-count">84字</span>
+			<span class="post-meta-divider">|</span>
+			<span class="post-meta-item-text">min2read:</span>
+           <span class="post-count">1分钟</span>
+
+         </span>
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/radare2/1.png" alt></p>
+<p><strong>前言</strong></p>
+<ul>
+<li>不经意发现的一款可以调节 <code>EVM bytecode</code> 的工具 <code>r2</code></li>
+<li>可调试交易实时查看 <code>stack</code> 和 <code>memory</code> 信息</li>
+<li>不断探索好用好玩的功能，不断更新</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><code>stack</code> 栈顶在 <code>0x00008fff</code> 位置</li>
+<li><code>memory</code> 位置从 <code>0x10000</code> 开始，所以需要手工调整到 <code>0x10000</code> ，可使用如下命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">px 512 @ 0x10000</span><br></pre></td></tr></table></figure>
+      <script>
+        window.disqusProxy={
+          shortname: 'undefined',
+          username: 'pikachu',
+          server: 'undefined',
+          port: 5509,
+          adminAvatar: '/avatars/admin-avatar.jpg',
+          identifier: '2020/radare2/',
+        };
+        window.disqus_config = function () {
+          this.page.url = window.location.href;
+          this.page.identifier = window.disqusProxy.identifier;
+        };
+      </script>
+      
+    </div>
+
+<div style="text-align:center;color: #ccc;font-size:14px;">---------------- The End ----------------</div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>谢谢大爷～</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/donate/wechat.png" alt="pikachu WeChat Pay">
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/donate/alipay.jpg" alt="pikachu Alipay">
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+<div>
+	  
+	    <p id="div-border-left-red">
+		Author：<b>pikachu</b><br>
+		Link：<a href="/2020/radare2/" title="调试evm字节码-radare2">https://hitcxy.com/2020/radare2/</a><br>
+		Contact：<a>hitcxy@hotmail.com</a><br>
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow noopener noreferrer"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br>
+	    <b>转载请注明出处，谢谢！</b>
+	    </p>
+	  
+	</div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tools/" rel="tag"><i class="fa fa-tag"></i> tools</a>
+          
+            <a href="/tags/evm/" rel="tag"><i class="fa fa-tag"></i> evm</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/egm/" rel="next" title="qwb2020 第四届强网杯区块链EGM">
+                <i class="fa fa-chevron-left"></i> qwb2020 第四届强网杯区块链EGM
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -618,6 +584,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -877,11 +847,9 @@ show_date_time();
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
 
 
   
