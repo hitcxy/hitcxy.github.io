@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[调试evm字节码-radare2]]></title>
     <url>%2F2020%2Fradare2%2F</url>
-    <content type="text"><![CDATA[前言 不经意发现的一款可以调节 EVM bytecode 的工具 r2 可调试交易实时查看 stack 和 memory 信息 不断探索好用好玩的功能，不断更新 stack 栈顶在 0x00008fff 位置 memory 位置从 0x10000 开始，所以需要手工调整到 0x10000 ，可使用如下命令 1px 512 @ 0x10000]]></content>
+    <content type="text"><![CDATA[前言 不经意发现的 radare2 也可以调试 EVM bytecode 可调试交易实时查看 stack 和 memory 信息 不断探索好用好玩的功能，不断更新 具体的指令及其操作就靠自己咯 stack 栈顶在 0x00008fff 位置 memory 位置从 0x10000 开始，所以需要手工调整到 0x10000 ，可使用如下命令 1px 512 @ 0x10000]]></content>
       <categories>
         <category>tools</category>
       </categories>
@@ -449,8 +449,8 @@
         <category>Solidity</category>
       </categories>
       <tags>
-        <tag>Solidity</tag>
         <tag>Blockchain</tag>
+        <tag>Solidity</tag>
         <tag>数字经济云安全</tag>
         <tag>Smart Contract</tag>
       </tags>
@@ -476,8 +476,8 @@
         <category>Solidity</category>
       </categories>
       <tags>
-        <tag>Solidity</tag>
         <tag>Blockchain</tag>
+        <tag>Solidity</tag>
         <tag>Smart Contract</tag>
         <tag>N1CTF2019</tag>
       </tags>
