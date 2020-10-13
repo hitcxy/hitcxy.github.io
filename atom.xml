@@ -50,7 +50,7 @@
     <link href="https://hitcxy.com/2020/egm/"/>
     <id>https://hitcxy.com/2020/egm/</id>
     <published>2020-09-22T08:28:07.000Z</published>
-    <updated>2020-09-26T08:24:58.697Z</updated>
+    <updated>2020-10-13T13:13:41.144Z</updated>
     
     <summary type="html">
     
@@ -66,7 +66,7 @@
       <category term="qwb2020" scheme="https://hitcxy.com/categories/qwb2020/"/>
     
     
-      <category term="blockchains" scheme="https://hitcxy.com/tags/blockchains/"/>
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
       <category term="qwb2020" scheme="https://hitcxy.com/tags/qwb2020/"/>
     
@@ -77,7 +77,7 @@
     <link href="https://hitcxy.com/2020/strictmathematician/"/>
     <id>https://hitcxy.com/2020/strictmathematician/</id>
     <published>2020-08-30T13:38:25.000Z</published>
-    <updated>2020-09-25T15:00:32.568Z</updated>
+    <updated>2020-10-13T13:13:54.255Z</updated>
     
     <summary type="html">
     
@@ -92,7 +92,7 @@
       <category term="钓鱼城杯" scheme="https://hitcxy.com/categories/%E9%92%93%E9%B1%BC%E5%9F%8E%E6%9D%AF/"/>
     
     
-      <category term="blockchains" scheme="https://hitcxy.com/tags/blockchains/"/>
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
       <category term="钓鱼城杯" scheme="https://hitcxy.com/tags/%E9%92%93%E9%B1%BC%E5%9F%8E%E6%9D%AF/"/>
     
@@ -103,7 +103,7 @@
     <link href="https://hitcxy.com/2020/qwb2020/"/>
     <id>https://hitcxy.com/2020/qwb2020/</id>
     <published>2020-08-24T02:28:03.000Z</published>
-    <updated>2020-09-25T15:00:32.567Z</updated>
+    <updated>2020-10-13T13:14:03.087Z</updated>
     
     <summary type="html">
     
@@ -120,7 +120,7 @@
       <category term="qwb2020" scheme="https://hitcxy.com/categories/qwb2020/"/>
     
     
-      <category term="blockchains" scheme="https://hitcxy.com/tags/blockchains/"/>
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
       <category term="qwb2020" scheme="https://hitcxy.com/tags/qwb2020/"/>
     
@@ -333,7 +333,7 @@
     <link href="https://hitcxy.com/2020/Montagy/"/>
     <id>https://hitcxy.com/2020/Montagy/</id>
     <published>2020-06-11T03:00:09.000Z</published>
-    <updated>2020-09-25T15:00:32.563Z</updated>
+    <updated>2020-10-13T13:14:14.885Z</updated>
     
     <summary type="html">
     
@@ -351,9 +351,9 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
-      <category term="rw2019" scheme="https://hitcxy.com/tags/rw2019/"/>
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
-      <category term="blockchains" scheme="https://hitcxy.com/tags/blockchains/"/>
+      <category term="rw2019" scheme="https://hitcxy.com/tags/rw2019/"/>
     
   </entry>
   
@@ -362,7 +362,7 @@
     <link href="https://hitcxy.com/2020/rctf2020-roiscoin/"/>
     <id>https://hitcxy.com/2020/rctf2020-roiscoin/</id>
     <published>2020-06-02T01:14:56.000Z</published>
-    <updated>2020-09-25T15:00:32.567Z</updated>
+    <updated>2020-10-13T13:12:45.790Z</updated>
     
     <summary type="html">
     
@@ -390,7 +390,7 @@
     <link href="https://hitcxy.com/2020/easy-blockchains/"/>
     <id>https://hitcxy.com/2020/easy-blockchains/</id>
     <published>2020-06-01T11:53:31.000Z</published>
-    <updated>2020-09-25T15:00:32.565Z</updated>
+    <updated>2020-10-13T13:14:37.810Z</updated>
     
     <summary type="html">
     
@@ -406,7 +406,7 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
-      <category term="blockchains" scheme="https://hitcxy.com/tags/blockchains/"/>
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
   </entry>
   
@@ -691,7 +691,7 @@
     <link href="https://hitcxy.com/2020/private/"/>
     <id>https://hitcxy.com/2020/private/</id>
     <published>2020-03-24T18:12:47.000Z</published>
-    <updated>2020-09-25T15:00:32.567Z</updated>
+    <updated>2020-10-13T13:14:56.117Z</updated>
     
     <summary type="html">
     
@@ -708,7 +708,7 @@
       <category term="tools" scheme="https://hitcxy.com/categories/tools/"/>
     
     
-      <category term="blockchains" scheme="https://hitcxy.com/tags/blockchains/"/>
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
       <category term="geth" scheme="https://hitcxy.com/tags/geth/"/>
     
@@ -1015,9 +1015,9 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
-      <category term="Solidity" scheme="https://hitcxy.com/tags/Solidity/"/>
-    
       <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/tags/Solidity/"/>
     
       <category term="数字经济云安全" scheme="https://hitcxy.com/tags/%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%BA%91%E5%AE%89%E5%85%A8/"/>
     
@@ -1070,9 +1070,9 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
-      <category term="Solidity" scheme="https://hitcxy.com/tags/Solidity/"/>
-    
       <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/tags/Solidity/"/>
     
       <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
     
