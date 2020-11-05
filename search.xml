@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ctf区块链出题模板 docker部署]]></title>
+    <url>%2F2020%2Fblockchain-template%2F</url>
+    <content type="text"><![CDATA[ctf 区块链出题模板 docker 一键部署 个人喜欢的出题方式 点我去查看]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>Blockchain</tag>
+        <tag>tools</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[调试evm字节码-radare2]]></title>
     <url>%2F2020%2Fradare2%2F</url>
     <content type="text"><![CDATA[前言 不经意发现的 radare2 也可以调试 EVM bytecode 可调试交易实时查看 stack 和 memory 信息 不断探索好用好玩的功能，不断更新 具体的指令及其操作就靠自己咯 使用如下命令连接到交易调试 1r2 -a evm -D evm &quot;evm://localhost:8545@0x837f83456921c1f38605d87ed7850c0aa668ecce55efbedf9da21d712dd040fe&quot; stack 栈顶在 0x00008fff 位置 memory 位置从 0x10000 开始，所以需要手工调整到 0x10000 ，可使用如下命令 1px 512 @ 0x10000]]></content>

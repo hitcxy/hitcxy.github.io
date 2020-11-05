@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hitcxy.com/2020/blockchain-template/</loc>
+    
+    <lastmod>2020-11-05T13:01:29.845Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://hitcxy.com/2020/private/</loc>
     
     <lastmod>2020-10-13T13:14:56.117Z</lastmod>
@@ -86,13 +93,6 @@
   </url>
   
   <url>
-    <loc>https://hitcxy.com/categories/index.html</loc>
-    
-    <lastmod>2020-09-25T15:00:32.568Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://hitcxy.com/about/index.html</loc>
     
     <lastmod>2020-09-25T15:00:32.568Z</lastmod>
@@ -100,9 +100,9 @@
   </url>
   
   <url>
-    <loc>https://hitcxy.com/2020/ret2csu/</loc>
+    <loc>https://hitcxy.com/categories/index.html</loc>
     
-    <lastmod>2020-09-25T15:00:32.567Z</lastmod>
+    <lastmod>2020-09-25T15:00:32.568Z</lastmod>
     
   </url>
   
@@ -121,9 +121,9 @@
   </url>
   
   <url>
-    <loc>https://hitcxy.com/2020/honeypot-list/</loc>
+    <loc>https://hitcxy.com/2020/ret2csu/</loc>
     
-    <lastmod>2020-09-25T15:00:32.566Z</lastmod>
+    <lastmod>2020-09-25T15:00:32.567Z</lastmod>
     
   </url>
   
@@ -135,7 +135,14 @@
   </url>
   
   <url>
-    <loc>https://hitcxy.com/2020/keyboard/</loc>
+    <loc>https://hitcxy.com/2020/misc-tools/</loc>
+    
+    <lastmod>2020-09-25T15:00:32.566Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hitcxy.com/2020/honeypot-list/</loc>
     
     <lastmod>2020-09-25T15:00:32.566Z</lastmod>
     
@@ -149,14 +156,14 @@
   </url>
   
   <url>
-    <loc>https://hitcxy.com/2019/h4ck/</loc>
+    <loc>https://hitcxy.com/2020/keyboard/</loc>
     
     <lastmod>2020-09-25T15:00:32.566Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://hitcxy.com/2020/misc-tools/</loc>
+    <loc>https://hitcxy.com/2019/h4ck/</loc>
     
     <lastmod>2020-09-25T15:00:32.566Z</lastmod>
     
@@ -198,6 +205,13 @@
   </url>
   
   <url>
+    <loc>https://hitcxy.com/2020/balsn2019-bank/</loc>
+    
+    <lastmod>2020-09-25T15:00:32.564Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://hitcxy.com/2020/auto-pending-miner/</loc>
     
     <lastmod>2020-09-25T15:00:32.564Z</lastmod>
@@ -233,35 +247,7 @@
   </url>
   
   <url>
-    <loc>https://hitcxy.com/2020/balsn2019-bank/</loc>
-    
-    <lastmod>2020-09-25T15:00:32.564Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://hitcxy.com/2020/NPUCTF2020-rainbow/</loc>
-    
-    <lastmod>2020-09-25T15:00:32.563Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hitcxy.com/2019/Hello-World/</loc>
-    
-    <lastmod>2020-09-25T15:00:32.563Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hitcxy.com/2020/NeatDownloadManagerMac/</loc>
-    
-    <lastmod>2020-09-25T15:00:32.563Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hitcxy.com/2020/Honeypot-Contract/</loc>
     
     <lastmod>2020-09-25T15:00:32.563Z</lastmod>
     
@@ -275,9 +261,23 @@
   </url>
   
   <url>
-    <loc>https://hitcxy.com/2019/Happy-DOuble-Eleven/</loc>
+    <loc>https://hitcxy.com/2020/Honeypot-Contract/</loc>
     
-    <lastmod>2020-09-25T15:00:32.562Z</lastmod>
+    <lastmod>2020-09-25T15:00:32.563Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hitcxy.com/2020/NeatDownloadManagerMac/</loc>
+    
+    <lastmod>2020-09-25T15:00:32.563Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hitcxy.com/2019/Hello-World/</loc>
+    
+    <lastmod>2020-09-25T15:00:32.563Z</lastmod>
     
   </url>
   
@@ -289,14 +289,21 @@
   </url>
   
   <url>
-    <loc>https://hitcxy.com/2020/DelCTF2020-mc-easybgm/</loc>
+    <loc>https://hitcxy.com/2020/Harley-Quinn/</loc>
     
     <lastmod>2020-09-25T15:00:32.562Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://hitcxy.com/2020/Harley-Quinn/</loc>
+    <loc>https://hitcxy.com/2019/Happy-DOuble-Eleven/</loc>
+    
+    <lastmod>2020-09-25T15:00:32.562Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hitcxy.com/2020/DelCTF2020-mc-easybgm/</loc>
     
     <lastmod>2020-09-25T15:00:32.562Z</lastmod>
     

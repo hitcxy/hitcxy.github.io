@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2020-09-27T06:27:00.796Z</updated>
+  <updated>2020-11-05T13:01:29.845Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ctf区块链出题模板 docker部署</title>
+    <link href="https://hitcxy.com/2020/blockchain-template/"/>
+    <id>https://hitcxy.com/2020/blockchain-template/</id>
+    <published>2020-11-05T12:50:14.000Z</published>
+    <updated>2020-11-05T13:01:29.845Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/blockchain_template/1.jpg&quot; alt&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ctf&lt;/code&gt; 区块链出题模板&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker&lt;/code&gt; 一键部署&lt;/li&gt;
+&lt;li&gt;个人喜欢的出题方式&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="tools" scheme="https://hitcxy.com/categories/tools/"/>
+    
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
+      <category term="tools" scheme="https://hitcxy.com/tags/tools/"/>
+    
+  </entry>
   
   <entry>
     <title>调试evm字节码-radare2</title>
