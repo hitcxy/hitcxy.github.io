@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[ctf区块链出题模板 docker部署]]></title>
     <url>%2F2020%2Fblockchain-template%2F</url>
-    <content type="text"><![CDATA[ctf 区块链出题模板 docker 一键部署 个人喜欢的出题方式 点我去查看]]></content>
+    <content type="text"><![CDATA[ctf 区块链出题模板 docker 一键部署 个人喜欢的出题方式 部署合约的外部账户随机生成，每个选手都不一样，在一定程度上可防止“抄作业” 点我去查看]]></content>
       <categories>
         <category>tools</category>
       </categories>
@@ -461,8 +461,8 @@
         <category>Solidity</category>
       </categories>
       <tags>
-        <tag>Blockchain</tag>
         <tag>Solidity</tag>
+        <tag>Blockchain</tag>
         <tag>数字经济云安全</tag>
         <tag>Smart Contract</tag>
       </tags>
@@ -488,8 +488,8 @@
         <category>Solidity</category>
       </categories>
       <tags>
-        <tag>Blockchain</tag>
         <tag>Solidity</tag>
+        <tag>Blockchain</tag>
         <tag>Smart Contract</tag>
         <tag>N1CTF2019</tag>
       </tags>

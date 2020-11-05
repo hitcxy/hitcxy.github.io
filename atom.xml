@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2020-11-05T13:01:29.845Z</updated>
+  <updated>2020-11-05T13:05:01.287Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://hitcxy.com/2020/blockchain-template/"/>
     <id>https://hitcxy.com/2020/blockchain-template/</id>
     <published>2020-11-05T12:50:14.000Z</published>
-    <updated>2020-11-05T13:01:29.845Z</updated>
+    <updated>2020-11-05T13:05:01.287Z</updated>
     
     <summary type="html">
     
@@ -30,6 +30,7 @@
 &lt;li&gt;&lt;code&gt;ctf&lt;/code&gt; 区块链出题模板&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;docker&lt;/code&gt; 一键部署&lt;/li&gt;
 &lt;li&gt;个人喜欢的出题方式&lt;/li&gt;
+&lt;li&gt;部署合约的外部账户随机生成，每个选手都不一样，在一定程度上可防止“抄作业”&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
@@ -1042,9 +1043,9 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
-    
       <category term="Solidity" scheme="https://hitcxy.com/tags/Solidity/"/>
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
       <category term="数字经济云安全" scheme="https://hitcxy.com/tags/%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%BA%91%E5%AE%89%E5%85%A8/"/>
     
@@ -1097,9 +1098,9 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
-    
       <category term="Solidity" scheme="https://hitcxy.com/tags/Solidity/"/>
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
       <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
     
