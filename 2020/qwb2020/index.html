@@ -85,13 +85,14 @@
 <meta property="og:site_name" content="pikachu&#39;s Blog">
 <meta property="og:description" content="前言  第四届 qwb，blockchains 的 WP，勿喷 题目考查的点子也不是很新，勿喷2333 随时欢迎大家来交流，别喷就好，谢谢 没有官方 WP ，我只是自己写着玩">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/qwb2020/pic2.jpg">
 <meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/qwb2020/1.png">
 <meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/qwb2020/pic1.jpg">
-<meta property="og:updated_time" content="2020-10-13T13:14:03.087Z">
+<meta property="og:updated_time" content="2020-11-06T14:47:27.718Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="qwb2020 第四届强网杯区块链线上赛">
 <meta name="twitter:description" content="前言  第四届 qwb，blockchains 的 WP，勿喷 题目考查的点子也不是很新，勿喷2333 随时欢迎大家来交流，别喷就好，谢谢 没有官方 WP ，我只是自己写着玩">
-<meta name="twitter:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/qwb2020/1.png">
+<meta name="twitter:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/qwb2020/pic2.jpg">
 
 
 
@@ -379,8 +380,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-10-13T21:14:03+08:00">
-                2020-10-13
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-06T22:47:27+08:00">
+                2020-11-06
               </time>
             
           </span>
@@ -473,6 +474,9 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base58</span><br><span class="line"><span class="keyword">print</span> base58.b58encode_int(int(<span class="string">"1220659c2a2c3ed5e50f848135eea4d3ead3fa2607e2102ae73fafe8f82378ce1d1e"</span>, <span class="number">16</span>))</span><br></pre></td></tr></table></figure>
 <ul>
 <li>计算结果为 <code>QmVBHzwuchpfHLxEqNrBb3492E73DHE99yFCxx1UYcJ6R3</code> ，所以我们直接访问 <a href="https://ipfs.io/ipfs/QmVBHzwuchpfHLxEqNrBb3492E73DHE99yFCxx1UYcJ6R3" rel="external nofollow noopener noreferrer" target="_blank">https://ipfs.io/ipfs/QmVBHzwuchpfHLxEqNrBb3492E73DHE99yFCxx1UYcJ6R3</a> 即可</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/qwb2020/pic2.jpg" alt></p>
+<ul>
 <li>对于 <code>pic1.jpg</code> ，考查的是 <code>IPFS</code> 文件的碎片化存储，<code>IPFS</code> 默认规则是文件所占空间大于 <code>256kb</code> 就会被切分成小块，每一块小于或等于 <code>256kb</code> 。不过我们上传时可以指定碎片化的大小，使用 <code>-s size-?</code> 参数即可，题目是把 <code>pic1.jpg</code> 碎片化成了 <code>6</code> 个 <code>block</code> ，分别给出了它们的文件 <code>hash</code> 值，所以我们只需要将其拼成一张图片即可，排列组合即可(可以先找到文件头所在的 <code>block</code> 和文件尾所在的 <code>block</code> ，对剩余 <code>4</code> 个 <code>block</code> 排列组合)</li>
 <li>排列组合的脚本如下，<code>3.jpg</code> 便是 <code>pic1.jpg</code></li>
 </ul>
