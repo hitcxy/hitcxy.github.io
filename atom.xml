@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2020-11-05T13:05:01.287Z</updated>
+  <updated>2020-11-11T09:00:37.652Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>securityinnovation</title>
+    <link href="https://hitcxy.com/2020/securityinnovation/"/>
+    <id>https://hitcxy.com/2020/securityinnovation/</id>
+    <published>2020-11-11T07:00:51.000Z</published>
+    <updated>2020-11-11T09:00:37.652Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/Security_Innovation/1.jpg&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;双十一哈皮🐶&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blockchain-ctf.securityinnovation.com/#/&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://blockchain-ctf.securityinnovation.com/#/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;做了一遍，感觉这个网站上面的题目可能更贴近实际一些，新手小白刷完 &lt;a href=&quot;https://ethernaut.openzeppelin.com/&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://ethernaut.openzeppelin.com/&lt;/a&gt; 之后，可以选择性来做这个网站的题目&lt;/li&gt;
+&lt;li&gt;难度还是有的，还有很多小 &lt;code&gt;trick&lt;/code&gt; ，目前上面是 &lt;code&gt;13&lt;/code&gt; 道题目&lt;/li&gt;
+&lt;li&gt;看了《数码宝贝：最后的进化》，爷青结，然后发现好久没做题了，熟悉一下做题，大佬勿喷，不是 &lt;code&gt;WP&lt;/code&gt; ，随便写一下&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
+    
+    
+      <category term="Solidity" scheme="https://hitcxy.com/tags/Solidity/"/>
+    
+      <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
+    
+      <category term="SecurityInnovatio" scheme="https://hitcxy.com/tags/SecurityInnovatio/"/>
+    
+  </entry>
   
   <entry>
     <title>ctf区块链出题模板 docker部署</title>
