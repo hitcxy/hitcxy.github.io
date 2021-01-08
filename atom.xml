@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2020-11-12T06:38:59.130Z</updated>
+  <updated>2021-01-08T12:46:52.573Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -15,6 +15,111 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>华为鸿蒙场区块链 ContractGame</title>
+    <link href="https://hitcxy.com/2020/contractgame/"/>
+    <id>https://hitcxy.com/2020/contractgame/</id>
+    <published>2020-12-28T07:54:32.000Z</published>
+    <updated>2021-01-08T12:46:52.573Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;华为鸿蒙场区块链题目&lt;/li&gt;
+&lt;li&gt;水题，我 &lt;code&gt;Ver&lt;/code&gt; 喷的题都是水题&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
+    
+    
+      <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
+    
+      <category term="华为鸿蒙场 ctf" scheme="https://hitcxy.com/tags/%E5%8D%8E%E4%B8%BA%E9%B8%BF%E8%92%99%E5%9C%BA-ctf/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>华为鲲鹏计算场区块链 boxgame</title>
+    <link href="https://hitcxy.com/2020/boxgame/"/>
+    <id>https://hitcxy.com/2020/boxgame/</id>
+    <published>2020-12-26T12:26:36.000Z</published>
+    <updated>2021-01-08T12:46:41.030Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;华为鲲鹏计算场区块链题目&lt;/li&gt;
+&lt;li&gt;一个沙箱游戏，比较简单&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
+    
+    
+      <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
+    
+      <category term="华为鲲鹏计算 ctf" scheme="https://hitcxy.com/tags/%E5%8D%8E%E4%B8%BA%E9%B2%B2%E9%B9%8F%E8%AE%A1%E7%AE%97-ctf/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>华为云安全场区块链 ethenc</title>
+    <link href="https://hitcxy.com/2020/ethenc/"/>
+    <id>https://hitcxy.com/2020/ethenc/</id>
+    <published>2020-12-26T12:20:07.000Z</published>
+    <updated>2021-01-08T12:47:11.293Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;华为云安全场区块链题目&lt;/li&gt;
+&lt;li&gt;其实很简单，和区块链关系不大&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
+    
+    
+      <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
+    
+      <category term="华为云安全 ctf" scheme="https://hitcxy.com/tags/%E5%8D%8E%E4%B8%BA%E4%BA%91%E5%AE%89%E5%85%A8-ctf/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>bjdctf_4th</title>
+    <link href="https://hitcxy.com/2020/bjdctf-4th/"/>
+    <id>https://hitcxy.com/2020/bjdctf-4th/</id>
+    <published>2020-12-26T05:24:43.000Z</published>
+    <updated>2021-01-08T12:46:11.646Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/BJDCTF_4/1.png&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先圣诞哈皮丫，圣诞参加了 &lt;code&gt;BJDCTF 4th&lt;/code&gt; ，可惜由于是周五，时间不太充足，大概总的做题时间就两个小时，就只把自己擅长的区块链的题目做了一下&lt;/li&gt;
+&lt;li&gt;感谢出题人小红花师傅没有暴打我&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
+    
+    
+      <category term="BJDCTF 4th" scheme="https://hitcxy.com/tags/BJDCTF-4th/"/>
+    
+      <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
+    
+  </entry>
   
   <entry>
     <title>Security Innovation</title>
@@ -1079,9 +1184,9 @@
     
       <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
-      <category term="数字经济云安全" scheme="https://hitcxy.com/tags/%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%BA%91%E5%AE%89%E5%85%A8/"/>
-    
       <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
+    
+      <category term="数字经济云安全" scheme="https://hitcxy.com/tags/%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%BA%91%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
