@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2021-01-08T12:46:52.573Z</updated>
+  <updated>2020-12-28T08:45:31.000Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://hitcxy.com/2020/contractgame/"/>
     <id>https://hitcxy.com/2020/contractgame/</id>
     <published>2020-12-28T07:54:32.000Z</published>
-    <updated>2021-01-08T12:46:52.573Z</updated>
+    <updated>2020-12-28T08:45:31.000Z</updated>
     
     <summary type="html">
     
@@ -47,7 +47,7 @@
     <link href="https://hitcxy.com/2020/boxgame/"/>
     <id>https://hitcxy.com/2020/boxgame/</id>
     <published>2020-12-26T12:26:36.000Z</published>
-    <updated>2021-01-08T12:46:41.030Z</updated>
+    <updated>2020-12-26T12:30:10.000Z</updated>
     
     <summary type="html">
     
@@ -73,7 +73,7 @@
     <link href="https://hitcxy.com/2020/ethenc/"/>
     <id>https://hitcxy.com/2020/ethenc/</id>
     <published>2020-12-26T12:20:07.000Z</published>
-    <updated>2021-01-08T12:47:11.293Z</updated>
+    <updated>2020-12-26T12:26:19.000Z</updated>
     
     <summary type="html">
     
@@ -99,7 +99,7 @@
     <link href="https://hitcxy.com/2020/bjdctf-4th/"/>
     <id>https://hitcxy.com/2020/bjdctf-4th/</id>
     <published>2020-12-26T05:24:43.000Z</published>
-    <updated>2021-01-08T12:46:11.646Z</updated>
+    <updated>2020-12-26T05:39:55.000Z</updated>
     
     <summary type="html">
     
@@ -126,7 +126,7 @@
     <link href="https://hitcxy.com/2020/securityinnovation/"/>
     <id>https://hitcxy.com/2020/securityinnovation/</id>
     <published>2020-11-11T07:00:51.000Z</published>
-    <updated>2020-11-12T06:38:59.130Z</updated>
+    <updated>2020-12-04T00:36:50.000Z</updated>
     
     <summary type="html">
     
@@ -138,6 +138,7 @@
 &lt;li&gt;做了一遍，感觉这个网站上面的题目可能更贴近实际一些，新手小白刷完 &lt;a href=&quot;https://ethernaut.openzeppelin.com/&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://ethernaut.openzeppelin.com/&lt;/a&gt; 之后，可以选择性来做这个网站的题目&lt;/li&gt;
 &lt;li&gt;难度还是有的，还有很多小 &lt;code&gt;trick&lt;/code&gt; ，目前上面是 &lt;code&gt;13&lt;/code&gt; 道题目&lt;/li&gt;
 &lt;li&gt;看了《数码宝贝：最后的进化》，爷青结，然后发现好久没做题了，熟悉一下做题，大佬勿喷，不是 &lt;code&gt;WP&lt;/code&gt; ，随便写一下&lt;/li&gt;
+&lt;li&gt;很多是参考了网上的 &lt;code&gt;wp&lt;/code&gt; 的内容 懒癌患者 :)&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
@@ -158,7 +159,7 @@
     <link href="https://hitcxy.com/2020/blockchain-template/"/>
     <id>https://hitcxy.com/2020/blockchain-template/</id>
     <published>2020-11-05T12:50:14.000Z</published>
-    <updated>2020-11-05T13:05:01.287Z</updated>
+    <updated>2020-11-05T13:05:01.000Z</updated>
     
     <summary type="html">
     
@@ -186,7 +187,7 @@
     <link href="https://hitcxy.com/2020/radare2/"/>
     <id>https://hitcxy.com/2020/radare2/</id>
     <published>2020-09-26T09:18:05.000Z</published>
-    <updated>2020-09-27T06:27:00.796Z</updated>
+    <updated>2020-09-27T06:27:00.000Z</updated>
     
     <summary type="html">
     
@@ -215,7 +216,7 @@
     <link href="https://hitcxy.com/2020/egm/"/>
     <id>https://hitcxy.com/2020/egm/</id>
     <published>2020-09-22T08:28:07.000Z</published>
-    <updated>2020-11-29T11:20:07.014Z</updated>
+    <updated>2020-12-31T14:24:17.000Z</updated>
     
     <summary type="html">
     
@@ -242,7 +243,7 @@
     <link href="https://hitcxy.com/2020/strictmathematician/"/>
     <id>https://hitcxy.com/2020/strictmathematician/</id>
     <published>2020-08-30T13:38:25.000Z</published>
-    <updated>2020-10-13T13:13:54.255Z</updated>
+    <updated>2020-10-13T13:13:54.000Z</updated>
     
     <summary type="html">
     
@@ -268,7 +269,7 @@
     <link href="https://hitcxy.com/2020/qwb2020/"/>
     <id>https://hitcxy.com/2020/qwb2020/</id>
     <published>2020-08-24T02:28:03.000Z</published>
-    <updated>2020-11-25T05:06:21.273Z</updated>
+    <updated>2020-11-25T05:06:21.000Z</updated>
     
     <summary type="html">
     
@@ -296,7 +297,7 @@
     <link href="https://hitcxy.com/2020/stepbystep-dl-runtime-resolve/"/>
     <id>https://hitcxy.com/2020/stepbystep-dl-runtime-resolve/</id>
     <published>2020-08-18T01:51:51.000Z</published>
-    <updated>2020-09-25T15:00:32.568Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -322,7 +323,7 @@
     <link href="https://hitcxy.com/2020/dl-runtime-resolve/"/>
     <id>https://hitcxy.com/2020/dl-runtime-resolve/</id>
     <published>2020-08-16T11:50:54.000Z</published>
-    <updated>2020-09-25T15:00:32.564Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -347,7 +348,7 @@
     <link href="https://hitcxy.com/2020/ret2csu/"/>
     <id>https://hitcxy.com/2020/ret2csu/</id>
     <published>2020-08-16T07:14:47.000Z</published>
-    <updated>2020-09-25T15:00:32.567Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -372,7 +373,7 @@
     <link href="https://hitcxy.com/2020/32-64/"/>
     <id>https://hitcxy.com/2020/32-64/</id>
     <published>2020-07-26T06:45:19.000Z</published>
-    <updated>2020-09-25T15:00:32.562Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -397,7 +398,7 @@
     <link href="https://hitcxy.com/2020/ret2libc3/"/>
     <id>https://hitcxy.com/2020/ret2libc3/</id>
     <published>2020-07-25T16:52:04.000Z</published>
-    <updated>2020-09-25T15:00:32.567Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -421,7 +422,7 @@
     <link href="https://hitcxy.com/2020/plt-got/"/>
     <id>https://hitcxy.com/2020/plt-got/</id>
     <published>2020-07-25T05:39:16.000Z</published>
-    <updated>2020-09-25T15:00:32.566Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -446,7 +447,7 @@
     <link href="https://hitcxy.com/2020/creativityplus/"/>
     <id>https://hitcxy.com/2020/creativityplus/</id>
     <published>2020-06-29T02:13:09.000Z</published>
-    <updated>2020-09-25T15:00:32.564Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -472,7 +473,7 @@
     <link href="https://hitcxy.com/2020/honeypot-list/"/>
     <id>https://hitcxy.com/2020/honeypot-list/</id>
     <published>2020-06-11T15:18:24.000Z</published>
-    <updated>2020-09-25T15:00:32.566Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -498,7 +499,7 @@
     <link href="https://hitcxy.com/2020/Montagy/"/>
     <id>https://hitcxy.com/2020/Montagy/</id>
     <published>2020-06-11T03:00:09.000Z</published>
-    <updated>2020-10-13T13:14:14.885Z</updated>
+    <updated>2020-10-13T13:14:14.000Z</updated>
     
     <summary type="html">
     
@@ -527,7 +528,7 @@
     <link href="https://hitcxy.com/2020/rctf2020-roiscoin/"/>
     <id>https://hitcxy.com/2020/rctf2020-roiscoin/</id>
     <published>2020-06-02T01:14:56.000Z</published>
-    <updated>2020-10-13T13:12:45.790Z</updated>
+    <updated>2020-10-13T13:12:45.000Z</updated>
     
     <summary type="html">
     
@@ -555,7 +556,7 @@
     <link href="https://hitcxy.com/2020/easy-blockchains/"/>
     <id>https://hitcxy.com/2020/easy-blockchains/</id>
     <published>2020-06-01T11:53:31.000Z</published>
-    <updated>2020-10-13T13:14:37.810Z</updated>
+    <updated>2020-10-13T13:14:37.000Z</updated>
     
     <summary type="html">
     
@@ -580,7 +581,7 @@
     <link href="https://hitcxy.com/2020/balsn2019-bank/"/>
     <id>https://hitcxy.com/2020/balsn2019-bank/</id>
     <published>2020-05-29T10:51:14.000Z</published>
-    <updated>2020-09-25T15:00:32.564Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -610,7 +611,7 @@
     <link href="https://hitcxy.com/2020/Typecho-V2ray/"/>
     <id>https://hitcxy.com/2020/Typecho-V2ray/</id>
     <published>2020-05-28T15:35:25.000Z</published>
-    <updated>2020-09-25T15:00:32.564Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -639,7 +640,7 @@
     <link href="https://hitcxy.com/2020/balsn2019-create2/"/>
     <id>https://hitcxy.com/2020/balsn2019-create2/</id>
     <published>2020-05-28T14:36:15.000Z</published>
-    <updated>2020-09-25T15:00:32.564Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -668,7 +669,7 @@
     <link href="https://hitcxy.com/2020/misc-tools/"/>
     <id>https://hitcxy.com/2020/misc-tools/</id>
     <published>2020-05-27T09:03:50.000Z</published>
-    <updated>2020-09-25T15:00:32.566Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -698,7 +699,7 @@
     <link href="https://hitcxy.com/2020/Harley-Quinn/"/>
     <id>https://hitcxy.com/2020/Harley-Quinn/</id>
     <published>2020-05-25T02:41:19.000Z</published>
-    <updated>2020-09-25T15:00:32.562Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -729,7 +730,7 @@
     <link href="https://hitcxy.com/2020/Create2/"/>
     <id>https://hitcxy.com/2020/Create2/</id>
     <published>2020-05-15T06:51:44.000Z</published>
-    <updated>2020-09-25T15:00:32.562Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -755,7 +756,7 @@
     <link href="https://hitcxy.com/2020/Honeypot-Contract/"/>
     <id>https://hitcxy.com/2020/Honeypot-Contract/</id>
     <published>2020-05-14T12:50:34.000Z</published>
-    <updated>2020-09-25T15:00:32.563Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -779,7 +780,7 @@
     <link href="https://hitcxy.com/2020/DelCTF2020-mc-easybgm/"/>
     <id>https://hitcxy.com/2020/DelCTF2020-mc-easybgm/</id>
     <published>2020-05-06T15:30:40.000Z</published>
-    <updated>2020-09-25T15:00:32.562Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -807,7 +808,7 @@
     <link href="https://hitcxy.com/2020/NPUCTF2020-rainbow/"/>
     <id>https://hitcxy.com/2020/NPUCTF2020-rainbow/</id>
     <published>2020-05-01T12:21:17.000Z</published>
-    <updated>2020-09-25T15:00:32.563Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -834,7 +835,7 @@
     <link href="https://hitcxy.com/2020/auto-pending-miner/"/>
     <id>https://hitcxy.com/2020/auto-pending-miner/</id>
     <published>2020-04-21T09:19:35.000Z</published>
-    <updated>2020-09-25T15:00:32.564Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -856,7 +857,7 @@
     <link href="https://hitcxy.com/2020/private/"/>
     <id>https://hitcxy.com/2020/private/</id>
     <published>2020-03-24T18:12:47.000Z</published>
-    <updated>2020-10-13T13:14:56.117Z</updated>
+    <updated>2020-10-13T13:14:56.000Z</updated>
     
     <summary type="html">
     
@@ -884,7 +885,7 @@
     <link href="https://hitcxy.com/2020/keyboard/"/>
     <id>https://hitcxy.com/2020/keyboard/</id>
     <published>2020-03-22T05:29:27.000Z</published>
-    <updated>2020-09-25T15:00:32.566Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -911,7 +912,7 @@
     <link href="https://hitcxy.com/2020/sha256/"/>
     <id>https://hitcxy.com/2020/sha256/</id>
     <published>2020-03-18T18:23:02.000Z</published>
-    <updated>2020-09-25T15:00:32.567Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -935,7 +936,7 @@
     <link href="https://hitcxy.com/2020/OwnerMoney/"/>
     <id>https://hitcxy.com/2020/OwnerMoney/</id>
     <published>2020-03-10T05:48:17.000Z</published>
-    <updated>2020-09-25T15:00:32.564Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -965,7 +966,7 @@
     <link href="https://hitcxy.com/2020/NeatDownloadManagerMac/"/>
     <id>https://hitcxy.com/2020/NeatDownloadManagerMac/</id>
     <published>2020-03-08T11:19:06.000Z</published>
-    <updated>2020-09-25T15:00:32.563Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -993,7 +994,7 @@
     <link href="https://hitcxy.com/2020/generate-address/"/>
     <id>https://hitcxy.com/2020/generate-address/</id>
     <published>2020-03-08T05:10:52.000Z</published>
-    <updated>2020-09-25T15:00:32.565Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -1015,7 +1016,7 @@
     <link href="https://hitcxy.com/2020/gitalk/"/>
     <id>https://hitcxy.com/2020/gitalk/</id>
     <published>2020-03-07T03:21:52.000Z</published>
-    <updated>2020-09-25T15:00:32.566Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -1040,7 +1041,7 @@
     <link href="https://hitcxy.com/2019/bet2loss-v2/"/>
     <id>https://hitcxy.com/2019/bet2loss-v2/</id>
     <published>2019-11-25T12:49:32.000Z</published>
-    <updated>2020-09-25T15:00:32.564Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -1072,7 +1073,7 @@
     <link href="https://hitcxy.com/2019/Happy-DOuble-Eleven/"/>
     <id>https://hitcxy.com/2019/Happy-DOuble-Eleven/</id>
     <published>2019-10-28T02:11:57.000Z</published>
-    <updated>2020-09-25T15:00:32.562Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -1109,7 +1110,7 @@
     <link href="https://hitcxy.com/2019/JCBank/"/>
     <id>https://hitcxy.com/2019/JCBank/</id>
     <published>2019-10-17T00:41:47.000Z</published>
-    <updated>2020-09-25T15:00:32.563Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -1137,7 +1138,7 @@
     <link href="https://hitcxy.com/2019/CoinFlip/"/>
     <id>https://hitcxy.com/2019/CoinFlip/</id>
     <published>2019-10-16T11:53:57.000Z</published>
-    <updated>2020-09-25T15:00:32.562Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -1165,7 +1166,7 @@
     <link href="https://hitcxy.com/2019/jojo/"/>
     <id>https://hitcxy.com/2019/jojo/</id>
     <published>2019-10-15T01:03:48.000Z</published>
-    <updated>2020-09-25T15:00:32.566Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -1195,13 +1196,14 @@
     <link href="https://hitcxy.com/2019/ethernaut/"/>
     <id>https://hitcxy.com/2019/ethernaut/</id>
     <published>2019-09-20T14:00:29.000Z</published>
-    <updated>2020-09-25T15:00:32.565Z</updated>
+    <updated>2021-01-02T15:25:23.000Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;&lt;img src=&quot;https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/ethernaut/1.png&quot; alt&gt;&lt;br&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;22 shop&lt;/code&gt; 这题貌似已经下线，嘤嘤嘤嘤&lt;/li&gt;
+&lt;li&gt;以下 &lt;code&gt;wp&lt;/code&gt; 都是基于 &lt;code&gt;0.4.*&lt;/code&gt; 版本的&lt;/li&gt;
 &lt;li&gt;记录一下刚学习 &lt;span id=&quot;inline-green&quot;&gt;Smart Contract&lt;/span&gt; 做题的平台的 &lt;code&gt;WP&lt;/code&gt; （2333入门级，开心就好～～～），如果没有任何基础，可以参考 &lt;a href=&quot;https://cryptozombies.io/zh/&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;CryptoZombies&lt;/a&gt; 等教程，下面是题目平台地址：&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://ethernaut.openzeppelin.com/&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://ethernaut.openzeppelin.com/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -1224,7 +1226,7 @@
     <link href="https://hitcxy.com/2019/h4ck/"/>
     <id>https://hitcxy.com/2019/h4ck/</id>
     <published>2019-09-19T06:51:14.000Z</published>
-    <updated>2020-09-25T15:00:32.566Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
@@ -1250,7 +1252,7 @@
     <link href="https://hitcxy.com/2019/Hello-World/"/>
     <id>https://hitcxy.com/2019/Hello-World/</id>
     <published>2019-09-17T07:32:08.000Z</published>
-    <updated>2020-09-25T15:00:32.563Z</updated>
+    <updated>2020-09-25T15:00:32.000Z</updated>
     
     <summary type="html">
     
