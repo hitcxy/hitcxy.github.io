@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2021-01-13T12:22:41.633Z</updated>
+  <updated>2021-01-13T13:02:15.051Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://hitcxy.com/2021/rw2021/"/>
     <id>https://hitcxy.com/2021/rw2021/</id>
     <published>2021-01-12T15:50:08.000Z</published>
-    <updated>2021-01-13T12:22:41.633Z</updated>
+    <updated>2021-01-13T13:02:15.051Z</updated>
     
     <summary type="html">
     
@@ -1210,9 +1210,9 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
-    
       <category term="Solidity" scheme="https://hitcxy.com/tags/Solidity/"/>
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
       <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
     
@@ -1266,9 +1266,9 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
-    
       <category term="Solidity" scheme="https://hitcxy.com/tags/Solidity/"/>
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
       <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
     
