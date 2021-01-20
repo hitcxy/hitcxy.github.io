@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2021-01-19T17:17:23.321Z</updated>
+  <updated>2021-01-20T15:37:18.784Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -21,11 +21,12 @@
     <link href="https://hitcxy.com/2021/6-ctf2021/"/>
     <id>https://hitcxy.com/2021/6-ctf2021/</id>
     <published>2021-01-19T16:24:28.000Z</published>
-    <updated>2021-01-19T17:17:23.321Z</updated>
+    <updated>2021-01-20T15:37:18.784Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;img src=&quot;https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/%2Actf2021/1.png&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;六星战队组织的比赛，其中有一道区块链题目，就花了会时间看看&lt;/li&gt;
 &lt;/ul&gt;
@@ -169,9 +170,9 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
-      <category term="BJDCTF 4th" scheme="https://hitcxy.com/tags/BJDCTF-4th/"/>
-    
       <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
+    
+      <category term="BJDCTF 4th" scheme="https://hitcxy.com/tags/BJDCTF-4th/"/>
     
   </entry>
   
