@@ -77,7 +77,7 @@
     <lastmod>2020-09-27</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2020/Honeypot-Contract/</loc>
+    <loc>https://hitcxy.com/2019/h4ck/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
@@ -85,7 +85,7 @@
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2019/JCBank/</loc>
+    <loc>https://hitcxy.com/2019/CoinFlip/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
@@ -93,51 +93,7 @@
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2020/32-64/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
     <loc>https://hitcxy.com/2020/plt-got/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://hitcxy.com/2020/NeatDownloadManagerMac/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://hitcxy.com/2020/NPUCTF2020-rainbow/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://hitcxy.com/2020/ret2libc3/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://hitcxy.com/2020/ret2csu/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://hitcxy.com/2020/sha256/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://hitcxy.com/2020/OwnerMoney/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://hitcxy.com/2019/bet2loss-v2/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://hitcxy.com/2020/dl-runtime-resolve/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://hitcxy.com/2019/h4ck/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://hitcxy.com/2020/misc-tools/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
@@ -149,15 +105,27 @@
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2020/balsn2019-create2/</loc>
+    <loc>https://hitcxy.com/2020/OwnerMoney/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2020/stepbystep-dl-runtime-resolve/</loc>
+    <loc>https://hitcxy.com/2020/ret2csu/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2020/Create2/</loc>
+    <loc>https://hitcxy.com/2020/ret2libc3/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hitcxy.com/2020/sha256/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hitcxy.com/2020/NPUCTF2020-rainbow/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hitcxy.com/2019/bet2loss-v2/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
@@ -165,11 +133,27 @@
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2019/CoinFlip/</loc>
+    <loc>https://hitcxy.com/2020/dl-runtime-resolve/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2020/creativityplus/</loc>
+    <loc>https://hitcxy.com/2020/misc-tools/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hitcxy.com/2020/NeatDownloadManagerMac/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hitcxy.com/2020/Honeypot-Contract/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hitcxy.com/2019/JCBank/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hitcxy.com/2020/stepbystep-dl-runtime-resolve/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
@@ -181,11 +165,27 @@
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
+    <loc>https://hitcxy.com/2020/Create2/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
     <loc>https://hitcxy.com/2020/DelCTF2020-mc-easybgm/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
+    <loc>https://hitcxy.com/2020/creativityplus/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hitcxy.com/2020/balsn2019-create2/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
     <loc>https://hitcxy.com/2020/generate-address/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hitcxy.com/2020/32-64/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
