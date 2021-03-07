@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2021-03-07T07:42:58.928Z</updated>
+  <updated>2021-03-07T07:51:50.793Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Balsn CTF 2020 - Election</title>
+    <link href="https://hitcxy.com/2021/balsn2020-election/"/>
+    <id>https://hitcxy.com/2021/balsn2020-election/</id>
+    <published>2021-03-07T07:45:33.000Z</published>
+    <updated>2021-03-07T07:51:50.793Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/1.jpeg&quot; alt&gt;&lt;br&gt;&lt;img src=&quot;https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/2.jpg&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;复现 &lt;code&gt;balsn2020 ctf&lt;/code&gt; 中的 &lt;code&gt;Election&lt;/code&gt; 区块链题目，当时没做出来😭&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wtcl&lt;/code&gt; ，都 &lt;code&gt;2021&lt;/code&gt; 了，还在看 &lt;code&gt;2020&lt;/code&gt; 的题目&lt;/li&gt;
+&lt;li&gt;这篇会写的很详细，大佬勿喷🙈&lt;/li&gt;
+&lt;li&gt;具体分析及官方 &lt;code&gt;WP&lt;/code&gt; 如下：&lt;a href=&quot;https://x9453.github.io/2021/02/27/Balsn-CTF-2020-Election/&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://x9453.github.io/2021/02/27/Balsn-CTF-2020-Election/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;源码 &lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2020/Election&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2020/Election&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;复现地址为：&lt;code&gt;ropsten@0xef31471E3004a78Ae403858BbcB27D6d1f37791C&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;关于 &lt;code&gt;ABI&lt;/code&gt; 及 &lt;code&gt;ABI Encoding&lt;/code&gt; 相关知识可以查看我的另一片博客 👉 &lt;a href=&quot;https://hitcxy.com/2021/argument-encoding/&quot;&gt;Function Selector and Argument Encoding&lt;/a&gt; 👈&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
+    
+    
+      <category term="balsn2020" scheme="https://hitcxy.com/tags/balsn2020/"/>
+    
+      <category term="election" scheme="https://hitcxy.com/tags/election/"/>
+    
+  </entry>
   
   <entry>
     <title>Function Selector and Argument Encoding</title>

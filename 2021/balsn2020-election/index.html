@@ -1,0 +1,1303 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="content-language" content="zh-cn">
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #ff009e;
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #e6006b, 0 0 5px #ff009e;
+    }
+    .pace .pace-activity {
+        border-top-color: #ff009e;
+        border-left-color: #ff009e;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="balsn2020,election,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="pikachu's Blog" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="前言  复现 balsn2020 ctf 中的 Election 区块链题目，当时没做出来😭 wtcl ，都 2021 了，还在看 2020 的题目 这篇会写的很详细，大佬勿喷🙈 具体分析及官方 WP 如下：https://x9453.github.io/2021/02/27/Balsn-CTF-2020-Election/ 源码 https://github.com/hitcxy/chal">
+<meta name="keywords" content="balsn2020,election">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Balsn CTF 2020 - Election">
+<meta property="og:url" content="https://hitcxy.com/2021/balsn2020-election/index.html">
+<meta property="og:site_name" content="pikachu&#39;s Blog">
+<meta property="og:description" content="前言  复现 balsn2020 ctf 中的 Election 区块链题目，当时没做出来😭 wtcl ，都 2021 了，还在看 2020 的题目 这篇会写的很详细，大佬勿喷🙈 具体分析及官方 WP 如下：https://x9453.github.io/2021/02/27/Balsn-CTF-2020-Election/ 源码 https://github.com/hitcxy/chal">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/1.jpeg">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/2.jpg">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/9.jpg">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/3.jpg">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/4.jpg">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/5.jpg">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/6.jpg">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/7.jpg">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/8.jpg">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/10.jpg">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/11.jpg">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/12.jpg">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/2.jpg">
+<meta property="og:updated_time" content="2021-03-07T07:51:50.793Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Balsn CTF 2020 - Election">
+<meta name="twitter:description" content="前言  复现 balsn2020 ctf 中的 Election 区块链题目，当时没做出来😭 wtcl ，都 2021 了，还在看 2020 的题目 这篇会写的很详细，大佬勿喷🙈 具体分析及官方 WP 如下：https://x9453.github.io/2021/02/27/Balsn-CTF-2020-Election/ 源码 https://github.com/hitcxy/chal">
+<meta name="twitter:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/1.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'RI3NF6GUI0',
+      apiKey: '3d33fa60ba30d3b17f37220bb1a36749',
+      indexName: 'blogIndex',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hitcxy.com/2021/balsn2020-election/">
+
+
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  <title> Balsn CTF 2020 - Election | pikachu's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+	<a href="https://github.com/hitcxy/blog" rel="external nofollow noopener noreferrer" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">pikachu's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <h1 class="site-subtitle" itemprop="description">Easy coding,easy life.</h1>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-commenting"></i> <br>
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-link"></i> <br>
+            
+            友链
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://hitcxy.com/2021/balsn2020-election/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="pikachu">
+    <meta itemprop="description" content>
+    <meta itemprop="image" content="/images/avatar/1.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="pikachu's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="pikachu's Blog" src>
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Balsn CTF 2020 - Election
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-07T15:45:33+08:00">
+                2021-03-07
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-03-07T15:51:50+08:00">
+                2021-03-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Solidity/" itemprop="url" rel="index">
+                    <span itemprop="name">Solidity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+
+          
+
+          
+
+          
+
+          
+          
+             <span id="/2021/balsn2020-election/" class="leancloud_visitors" data-flag-title="Balsn CTF 2020 - Election">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          <br><span class="post-time">
+           <span class="post-meta-item-icon">
+             <i class="fa fa-edit"></i>
+           </span>
+           <span class="post-meta-item-text">WordCount:</span>
+           <span class="post-count">1,965字</span>
+			<span class="post-meta-divider">|</span>
+			<span class="post-meta-item-text">min2read:</span>
+           <span class="post-count">10分钟</span>
+
+         </span>
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/1.jpeg" alt><br><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/2.jpg" alt></p>
+<p><strong>前言</strong></p>
+<ul>
+<li>复现 <code>balsn2020 ctf</code> 中的 <code>Election</code> 区块链题目，当时没做出来😭</li>
+<li><code>wtcl</code> ，都 <code>2021</code> 了，还在看 <code>2020</code> 的题目</li>
+<li>这篇会写的很详细，大佬勿喷🙈</li>
+<li>具体分析及官方 <code>WP</code> 如下：<a href="https://x9453.github.io/2021/02/27/Balsn-CTF-2020-Election/" rel="external nofollow noopener noreferrer" target="_blank">https://x9453.github.io/2021/02/27/Balsn-CTF-2020-Election/</a></li>
+<li>源码 <a href="https://github.com/hitcxy/challenges/tree/master/2020/Election" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/hitcxy/challenges/tree/master/2020/Election</a></li>
+<li>复现地址为：<code>ropsten@0xef31471E3004a78Ae403858BbcB27D6d1f37791C</code></li>
+<li>关于 <code>ABI</code> 及 <code>ABI Encoding</code> 相关知识可以查看我的另一片博客 👉 <a href="https://hitcxy.com/2021/argument-encoding/">Function Selector and Argument Encoding</a> 👈</li>
+</ul>
+<a id="more"></a>
+<h1 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity =0.6.12;</span><br><span class="line">pragma experimental ABIEncoderV2;</span><br><span class="line"></span><br><span class="line">interface IERC223 &#123;</span><br><span class="line">    function name() external view returns (string memory);</span><br><span class="line">    function symbol() external view returns (string memory);</span><br><span class="line">    function decimals() external view returns (uint8);</span><br><span class="line">    function totalSupply() external view returns (uint);</span><br><span class="line">    function balanceOf(address account) external view returns (uint);</span><br><span class="line">    function transfer(address to, uint value) external returns (bool);</span><br><span class="line">    function transfer(address to, uint value, bytes memory data) external returns (bool);</span><br><span class="line">    function transfer(address to, uint value, bytes memory data, string memory customFallback) external returns (bool);</span><br><span class="line">    event Transfer(address indexed from, address indexed to, uint value, bytes data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract ERC223 is IERC223 &#123;</span><br><span class="line">    string public override name;</span><br><span class="line">    string public override symbol;</span><br><span class="line">    uint8 public override decimals;</span><br><span class="line">    uint public override totalSupply;</span><br><span class="line">    mapping (address =&gt; uint) private _balances;</span><br><span class="line">    string private constant _tokenFallback = &quot;tokenFallback(address,uint256,bytes)&quot;;</span><br><span class="line"></span><br><span class="line">    constructor (string memory _name, string memory _symbol) public &#123;</span><br><span class="line">        name = _name;</span><br><span class="line">        symbol = _symbol;</span><br><span class="line">        decimals = 18;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function balanceOf(address account) public view override returns (uint) &#123;</span><br><span class="line">        return _balances[account];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function transfer(address to, uint value) public override returns (bool) &#123;</span><br><span class="line">        return _transfer(msg.sender, to, value, &quot;&quot;, _tokenFallback);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function transfer(address to, uint value, bytes memory data) public override returns (bool) &#123;</span><br><span class="line">        return _transfer(msg.sender, to, value, data, _tokenFallback);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function transfer(address to, uint value, bytes memory data, string memory customFallback) public override returns (bool) &#123;</span><br><span class="line">        return _transfer(msg.sender, to, value, data, customFallback);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /* Helper functions */</span><br><span class="line">    function _transfer(address from, address to, uint value, bytes memory data, string memory customFallback) internal returns (bool) &#123;</span><br><span class="line">        require(from != address(0), &quot;ERC223: transfer from the zero address&quot;);</span><br><span class="line">        require(to != address(0), &quot;ERC223: transfer to the zero address&quot;);</span><br><span class="line">        require(_balances[from] &gt;= value, &quot;ERC223: transfer amount exceeds balance&quot;);</span><br><span class="line">        _balances[from] -= value;</span><br><span class="line">        _balances[to] += value;</span><br><span class="line"></span><br><span class="line">        if (_isContract(to)) &#123;</span><br><span class="line">            (bool success,) = to.call&#123;value: 0&#125;(</span><br><span class="line">                abi.encodeWithSignature(customFallback, msg.sender, value, data)</span><br><span class="line">            );</span><br><span class="line">            assert(success);</span><br><span class="line">        &#125;</span><br><span class="line">        emit Transfer(msg.sender, to, value, data);</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function _mint(address to, uint value) internal &#123;</span><br><span class="line">        require(to != address(0), &quot;ERC223: mint to the zero address&quot;);</span><br><span class="line">        totalSupply += value;</span><br><span class="line">        _balances[to] += value;</span><br><span class="line">        emit Transfer(address(0), to, value, &quot;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function _isContract(address addr) internal view returns (bool) &#123;</span><br><span class="line">        uint length;</span><br><span class="line">        assembly &#123;</span><br><span class="line">            length := extcodesize(addr)</span><br><span class="line">        &#125;</span><br><span class="line">        return (length &gt; 0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract Election is ERC223 &#123;</span><br><span class="line">    struct Proposal &#123;</span><br><span class="line">        string name;</span><br><span class="line">        string policies;</span><br><span class="line">        bool valid;</span><br><span class="line">    &#125;</span><br><span class="line">    struct Ballot &#123;</span><br><span class="line">        address candidate;</span><br><span class="line">        uint votes;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    uint randomNumber = 0;</span><br><span class="line">    bool public sendFlag = false;   //6</span><br><span class="line">    address public owner;           //6</span><br><span class="line">    uint public stage;              //7 </span><br><span class="line">    address[] public candidates;    //8</span><br><span class="line">    bytes32[] public voteHashes;    //9</span><br><span class="line">    mapping(address =&gt; Proposal) public proposals;    //10</span><br><span class="line">    mapping(address =&gt; uint) public voteCount;       //11</span><br><span class="line">    mapping(address =&gt; bool) public voted;</span><br><span class="line">    mapping(address =&gt; bool) public revealed;</span><br><span class="line"></span><br><span class="line">    event Propose(address, Proposal);</span><br><span class="line">    event Vote(bytes32);</span><br><span class="line">    event Reveal(uint, Ballot[]);</span><br><span class="line">    event SendFlag(address);</span><br><span class="line"></span><br><span class="line">    constructor() public ERC223(&quot;Election&quot;, &quot;ELC&quot;) &#123;</span><br><span class="line">        owner = msg.sender;</span><br><span class="line">        _setup();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    modifier auth &#123;</span><br><span class="line">        require(msg.sender == address(this) || msg.sender == owner, &quot;Election: not authorized&quot;);</span><br><span class="line">        _;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function propose(address candidate, Proposal memory proposal) public auth returns (uint) &#123;</span><br><span class="line">        require(stage == 0, &quot;Election: stage incorrect&quot;);</span><br><span class="line">        require(!proposals[candidate].valid, &quot;Election: candidate already proposed&quot;);</span><br><span class="line">        candidates.push(candidate);</span><br><span class="line">        proposals[candidate] = proposal;</span><br><span class="line">        emit Propose(candidate, proposal);</span><br><span class="line">        return candidates.length - 1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function vote(bytes32 voteHash) public returns (uint) &#123;</span><br><span class="line">        require(stage == 1, &quot;Election: stage incorrect&quot;);</span><br><span class="line">        require(!voted[msg.sender], &quot;Election: already voted&quot;);</span><br><span class="line">        voted[msg.sender] = true;</span><br><span class="line">        voteHashes.push(voteHash);</span><br><span class="line">        emit Vote(voteHash);</span><br><span class="line">        return voteHashes.length - 1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function reveal(uint voteHashID, Ballot[] memory ballots) public &#123;</span><br><span class="line">        require(stage == 2, &quot;Election: stage incorrect&quot;);</span><br><span class="line">        require(!revealed[msg.sender], &quot;Election: already revealed&quot;);</span><br><span class="line">        require(voteHashes[voteHashID] == keccak256(abi.encode(ballots)), &quot;Election: hash incorrect&quot;);</span><br><span class="line">        revealed[msg.sender] = true;</span><br><span class="line"></span><br><span class="line">        uint totalVotes = 0;</span><br><span class="line">        for (uint i = 0; i &lt; ballots.length; i++) &#123;</span><br><span class="line">            address candidate = ballots[i].candidate;</span><br><span class="line">            uint votes = ballots[i].votes;</span><br><span class="line">            totalVotes += votes;</span><br><span class="line">            voteCount[candidate] += votes;</span><br><span class="line">        &#125;</span><br><span class="line">        require(totalVotes &lt;= balanceOf(msg.sender), &quot;Election: insufficient tokens&quot;);</span><br><span class="line">        emit Reveal(voteHashID, ballots);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function getWinner() public view returns (address) &#123;</span><br><span class="line">        require(stage == 3, &quot;Election: stage incorrect&quot;);</span><br><span class="line">        uint maxVotes = 0;</span><br><span class="line">        address winner = address(0);</span><br><span class="line">        for (uint i = 0; i &lt; candidates.length; i++) &#123;</span><br><span class="line">            if (voteCount[candidates[i]] &gt; maxVotes) &#123;</span><br><span class="line">                maxVotes = voteCount[candidates[i]];</span><br><span class="line">                winner = candidates[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return winner;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function giveMeMoney() public &#123;</span><br><span class="line">        require(balanceOf(msg.sender) == 0, &quot;Election: you&apos;re too greedy&quot;);</span><br><span class="line">        _mint(msg.sender, 1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function giveMeFlag() public &#123;</span><br><span class="line">        require(msg.sender == getWinner(), &quot;Election: you&apos;re not the winner&quot;);</span><br><span class="line">        require(proposals[msg.sender].valid, &quot;Election: no proposal from candidate&quot;);</span><br><span class="line">        if (_stringCompare(proposals[msg.sender].policies, &quot;Give me the flag, please&quot;)) &#123;</span><br><span class="line">            sendFlag = true;</span><br><span class="line">            emit SendFlag(msg.sender);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /* Helper functions */</span><br><span class="line">    function _setup() public auth &#123;</span><br><span class="line">        address Alice = address(0x9453);</span><br><span class="line">        address Bob = address(0x9487);</span><br><span class="line">        _setStage(0);</span><br><span class="line">        propose(Alice, Proposal(&quot;Alice&quot;, &quot;This is Alice&quot;, true));</span><br><span class="line">        propose(Bob, Proposal(&quot;Bob&quot;, &quot;This is Bob&quot;, true));</span><br><span class="line">        voteCount[Alice] = uint(-0x9453);</span><br><span class="line">        voteCount[Bob] = uint(-0x9487);</span><br><span class="line">        _setStage(1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function _setStage(uint _stage) public auth &#123;</span><br><span class="line">        stage = _stage &amp; 0xff;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function _stringCompare(string memory a, string memory b) internal pure returns (bool) &#123;</span><br><span class="line">        return keccak256(abi.encodePacked(a)) == keccak256(abi.encodePacked(b));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /* custom added functions */</span><br><span class="line">    function testdeet(address to, uint value, bytes memory data, string memory customFallback) pure public returns (bytes memory)&#123;</span><br><span class="line">        return abi.encodeWithSignature(customFallback, to, value, data);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function properEncode(address candidate, Proposal memory proposal, address t1, address t2) pure public &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function ballotEncode(Ballot[] memory ballots) pure public returns (bytes32)&#123;</span><br><span class="line">    return keccak256(abi.encode(ballots));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h1><ul>
+<li>考点是 <code>ERC223</code> 的 <code>customFallback</code> 错误引入、<code>ABI encoding</code> 、<code>Integer overflow</code> ，关于 <code>ERC223</code> 的官方实现可点击这里 👉 <a href="https://github.com/Dexaran/ERC223-token-standard/blob/Custom-Fallback/token/ERC223/ERC223BasicToken.sol" rel="external nofollow noopener noreferrer" target="_blank">officially recommended implementation</a> 👈</li>
+<li>目标成功调用 <code>giveMeFlag()</code> 即可</li>
+<li><p>题目大概是实现了一个投票系统，我们只需要让我们的票数最多即可，包括三个阶段：<code>propose</code>、<code>vote</code>、<code>reveal</code></p>
+<ul>
+<li><code>propose</code> : 通过 <code>auth</code> 验证便可添加新的 <code>candidates</code></li>
+<li><code>vote</code> : 投票人提交 <code>ballot</code> 投票的 <code>hash</code> 值，投票的数量是任意的，这里没有限制</li>
+<li><code>reveal</code> : 计算所有 <code>candidates</code> 的票数情况</li>
+</ul>
+</li>
+<li><p>第 <code>56</code> 行的这种调用可以通过 <code>auth</code> 验证，如果控制合理，可以调用自身的其他函数，因为 <code>customFallback</code> 可控，并且参数也都可控，只要我们控制的参数符合 <code>ABI encoding format</code> ，便可调用任何函数，关于 <code>ABI encoding</code> 可参考 <a href="https://docs.soliditylang.org/en/v0.8.1/abi-spec.html" rel="external nofollow noopener noreferrer" target="_blank">官方文档</a>，关于带有 <code>auth</code> 限制的主要有 <code>propose</code> 和 <code>_setStage</code> 函数：</p>
+<ul>
+<li>当调用 <code>customFallback</code> 时，三个参数编码如下图左边所示</li>
+<li>当调用 <code>propose</code> 时，编码如下图中间所示</li>
+<li>当调用 <code>_setStage</code> 时，编码如下图右边所示</li>
+<li>下图取自官方 <a href="https://x9453.github.io/2021/02/27/Balsn-CTF-2020-Election/" rel="external nofollow noopener noreferrer" target="_blank">WP</a> ，如果有疑惑，可查看我的另一片博客 👉 <a href="https://hitcxy.com/2021/argument-encoding/">Function Selector and Argument Encoding</a> 👈</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/9.jpg" alt></p>
+<ul>
+<li><p>知道了不同函数调用参数编码，便可根据参数编码后的相应位置进行分析</p>
+<ul>
+<li>通过 <code>customFallback</code> 调用 <code>propose</code>，需要满足下面条件： <code>value = 0x40</code>（需要构造，要求 <code>attacker</code> 拥有 <code>0x40</code> 的 <code>token</code> ） ，<code>offset_to_data = 0x60</code>(已满足)，<code>length_of_data = 0xa0</code>（需要构造，要求 <code>data</code> 长度是 <code>0xa0</code>，同时为了通过 <code>172</code> 行和 <code>173</code> 行的检查，我们需要对 <code>data</code> 内容进行合理的构造）</li>
+<li>通过 <code>customFallback</code> 调用 <code>_setStage</code>，需要满足下面条件：<code>stage</code> 可以是 <code>0</code>、<code>1</code>、<code>2</code>、<code>3</code>，所以相应只需 <code>msg.sender</code> 以 <code>00</code>、<code>01</code>、<code>02</code>、<code>03</code>结尾即可，多余的 <code>value</code> 参数和 <code>data</code> 参数不影响</li>
+</ul>
+</li>
+<li><p>第 <code>145</code> 行存在一个 <code>integer overflow</code> ，所以我们可以两个 <code>ballot</code> 投票，票数分别为 <code>2^256-1</code>（投给 <code>attacker</code> ） 和 <code>1</code> (投给 <code>Alice</code> 或 <code>Bob</code> 任意一个)，这样利用 <code>145</code> 行的 <code>integer overflow</code> 便可通过 <code>148</code> 行的限制，同时使 <code>attacker</code> 票数为 <code>2^256-1</code> ，可通过 <code>getWinner()</code> 赢得选票</p>
+</li>
+</ul>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><ul>
+<li>本题中的一些账户，下面为了简洁，就使用简称，下面是对应关系<ul>
+<li>0xef31471E3004a78Ae403858BbcB27D6d1f37791C  <code>Election</code></li>
+<li>0x52cC2403764380CCa583633d2523999FE5077113  <span id="inline-blue">attacker账户</span></li>
+<li>0xe7F2D75e69a989fb834e302f7caf8e1A9CC34000  <span id="inline-purple">00账户</span></li>
+<li>0xEfEdC137586E72164ff031d18230D02104288001  <code>01账户</code></li>
+<li>0x40F6dBA38C634C86Ae11D1a775FA2215b7669702  <span id="inline-green">02账户</span></li>
+<li>0x6CDFf92000246705EFc00B625E2e3d6b0C9e7603  <span id="inline-yellow">03账户</span></li>
+<li>0x0000000000000000000000000000000000009453  <code>Alice</code></li>
+<li>0x0000000000000000000000000000000000009487  <code>Bob</code></li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>通过下列脚本，另 <code>times = 64</code>，使 <code>_balances[attacker] = 0x40</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">contract son &#123;</span><br><span class="line">    Election target = Election(0xef31471E3004a78Ae403858BbcB27D6d1f37791C);</span><br><span class="line">    </span><br><span class="line">    function getmoney(uint times) public &#123;</span><br><span class="line">        for (uint i=0; i&lt;times; i++) &#123;</span><br><span class="line">            target.giveMeMoney();</span><br><span class="line">            target.transfer(0x52cC2403764380CCa583633d2523999FE5077113, 1, &quot;&quot;, &quot;&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/3.jpg" alt></p>
+<ol start="2">
+<li>准备两个 <code>ballot</code>，一个投给 <code>attacker</code>，票数为 <code>2^256-1</code> ；一个投给 <code>Alice</code>，票数为 <code>1</code></li>
+</ol>
+<ul>
+<li>先进行 <code>ballotEncode</code> 计算<ul>
+<li>调用形式如下</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ballotEncode([[&quot;0x52cC2403764380CCa583633d2523999FE5077113&quot;,&quot;0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff&quot;], [&quot;0x0000000000000000000000000000000000009453&quot;,&quot;0x1&quot;]])</span><br></pre></td></tr></table></figure>
+<pre><code>- 结果如下图所示
+</code></pre><p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/4.jpg" alt></p>
+<ul>
+<li>调用 <code>vote(0x741d83d533784642740e64dbea7fa658c082a96b14623cdb1866e58c252f7f23)</code> ，然后查看 <code>voteHashes[0]</code> 成功显示 （使用 <span id="inline-blue">attacker账户</span> ）</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/5.jpg" alt></p>
+<ol start="3">
+<li>切换到 <code>stage 0</code> （使用 <span id="inline-purple">00账户</span> ），<code>data</code> 字段随意</li>
+</ol>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/6.jpg" alt></p>
+<ol start="4">
+<li>将 <code>attacker</code> 增加到 <code>candidate</code> (使用 <span id="inline-blue">attacker账户</span> )</li>
+</ol>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/7.jpg" alt></p>
+<ul>
+<li>其中 <code>data</code> 字段拆分如下</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/8.jpg" alt></p>
+<ul>
+<li>查看 <code>proposals</code> 可以看到添加 <code>attacker</code> 为 <code>candidate</code> 成功</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/10.jpg" alt></p>
+<ol start="5">
+<li>切换到 <code>stage 2</code> （使用 <span id="inline-green">02账户</span> ），<code>data</code> 字段随意</li>
+</ol>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/11.jpg" alt></p>
+<ol start="6">
+<li><p>进行 <code>reveal</code> 调用，其中 <code>ballots</code> 是 <code>step 2</code> 中的 <code>ballots</code> (使用 <span id="inline-blue">attacker账户</span> )，调用完后查看 <code>voteCount[attacker]</code> 已经是 <code>2^256-1</code></p>
+</li>
+<li><p>切换到 <code>stage 3</code> （使用 <span id="inline-yellow">03账户</span> ），<code>data</code> 字段随意</p>
+</li>
+</ol>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/12.jpg" alt></p>
+<ol start="8">
+<li>调用 <code>giveMeFlag()</code> 即可 (使用 <span id="inline-blue">attacker账户</span> )，撒花完结 🎉🎉🎉🎉🎉🎉</li>
+</ol>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/2.jpg" alt></p>
+
+      <script>
+        window.disqusProxy={
+          shortname: 'undefined',
+          username: 'pikachu',
+          server: 'undefined',
+          port: 5509,
+          adminAvatar: '/avatars/admin-avatar.jpg',
+          identifier: '2021/balsn2020-election/',
+        };
+        window.disqus_config = function () {
+          this.page.url = window.location.href;
+          this.page.identifier = window.disqusProxy.identifier;
+        };
+      </script>
+      
+    </div>
+
+<div style="text-align:center;color: #ccc;font-size:14px;">---------------- The End ----------------</div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>谢谢大爷～</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/donate/wechat.png" alt="pikachu WeChat Pay">
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/donate/alipay.jpg" alt="pikachu Alipay">
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+<div>
+	  
+	    <p id="div-border-left-red">
+		Author：<b>pikachu</b><br>
+		Link：<a href="/2021/balsn2020-election/" title="Balsn CTF 2020 - Election">https://hitcxy.com/2021/balsn2020-election/</a><br>
+		Contact：<a>hitcxy@hotmail.com</a><br>
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow noopener noreferrer"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br>
+	    <b>转载请注明出处，谢谢！</b>
+	    </p>
+	  
+	</div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/balsn2020/" rel="tag"><i class="fa fa-tag"></i> balsn2020</a>
+          
+            <a href="/tags/election/" rel="tag"><i class="fa fa-tag"></i> election</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/argument-encoding/" rel="next" title="Function Selector and Argument Encoding">
+                <i class="fa fa-chevron-left"></i> Function Selector and Argument Encoding
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar/1.jpg" alt="pikachu">
+          <p class="site-author-name" itemprop="name">pikachu</p>
+          <p class="site-description motion-element" itemprop="description">帅 | 码渣 | 宅 | 金木粉</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hitcxy" target="_blank" rel="external nofollow noopener noreferrer" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow noopener noreferrer">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              参考的博客
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://yangbingdong.com/" title="ookamiAntD" target="_blank" rel="external nofollow noopener noreferrer">ookamiAntD</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        <div id="days"></div>
+    <script>
+    function show_date_time(){
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date("09/16/2019 21:51:10");
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=setzero(Math.floor(e_hrsold));
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+        seconds=setzero(Math.floor((e_minsold-minsold)*60));
+        document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+    }
+function setzero(i){
+    if (i<10)
+    {i="0" + i};
+    return i;
+}
+show_date_time();
+</script>
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Source"><span class="nav-number">1.</span> <span class="nav-text">Source</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Analyse"><span class="nav-number">2.</span> <span class="nav-text">Analyse</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">3.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+	<!-- <img style="position: absolute;top: 0;left: 15%;border: 0;width: 200px;height: 200px;" src="http://ojoba1c98.bkt.clouddn.com/img/coding-flag.png" alt="Coding Flag"> -->
+      <div class="footer-inner">
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user">本站访客数</i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye">本站总访问量</i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        <div class="copyright">
+  
+  &copy;  2019 - 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-flash"></i>
+  </span> | <span class="post-count">共55.3k字</span>
+</div>
+
+
+<!-- <div class="theme-info">
+  由  强力驱动
+</div> --!>
+
+<div style="width:300px;margin:0 auto;">
+  <a target="_blank" href="http://www.beian.miit.gov.cn/" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#555;">皖ICP备20013338号</p>
+  </a>
+</div>
+
+<div style="width:300px;margin:0 auto;">
+  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=34122102000129" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/beian.png" style="float:left;"/>
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#555;">皖公网安备 34122102000129号</p>
+  </a>
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    new Valine({
+        lang: 'zh-cn',
+        admin_email: '757610839@qq.com',
+        el: '#comments' ,
+        appId: '8Irorb3IRbCGqRd9obk9KD98-gzGzoHsz',
+        appKey: 'DCF1KCbdAOySKCu1Ooc0J5ku',
+        emoticon_url: 'https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/gif/',
+        emoticon_list: ["弹肚皮.gif","动次打次.gif","抖脚脚.gif","慌张.gif","夹住.gif","开车.gif","抖眼镜.gif","吃东西.gif","动耳朵.gif","哭唧唧.gif","小花花.gif","眨眼.gif","跳舞.gif","风吹秀发.gif","摇头.gif","眼睛转.gif","跳着走.gif","抖眼.gif","绿色的.gif","我走了.gif","浪起来.gif","打篮球.gif","都是小心心.gif","比心心.gif","吹风.gif","吐.png","喷血.png","狂汗.png","不说话.png","汗.png","坐等.png","献花.png","不高兴.png","中刀.png","害羞.png","皱眉.png","小眼睛.png","中指.png","尴尬.png","瞅你.png","想一想.png","中枪.png","得意.png","肿包.png","扇耳光.png","亲亲.png","惊喜.png","脸红.png","无所谓.png","便便.png","愤怒.png","蜡烛.png","献黄瓜.png","内伤.png","投降.png","观察.png","看不见.png","击掌.png","抠鼻.png","邪恶.png","看热闹.png","口水.png","抽烟.png","锁眉.png","装大款.png","吐舌.png","无奈.png","长草.png","赞一个.png","呲牙.png","无语.png","阴暗.png","不出所料.png","咽气.png","期待.png","高兴.png","吐血倒地.png","哭泣.png","欢呼.png","黑线.png","喜极而泣.png","喷水.png","深思.png","鼓掌.png","暗地观察.png"],
+        placeholder: '点击此处填写昵称和邮箱才能留言噢~',
+  });
+  </script>
+
+
+
+
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("8Irorb3IRbCGqRd9obk9KD98-gzGzoHsz", "DCF1KCbdAOySKCu1Ooc0J5ku");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+
+  <script type="text/javascript" color="255,0,204" opacity='0.5' zIndex="-2" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+
+
+
+
+<!--卖萌-->
+<script type="text/javascript" src="/js/src/dytitle.js"></script>
+</div></footer></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"superSample":2,"width":200,"height":300,"position":"left"},"mobile":{"show":true},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body>
+</html>
