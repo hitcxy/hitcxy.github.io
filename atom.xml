@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2021-03-07T07:57:16.141Z</updated>
+  <updated>2021-03-10T12:03:30.187Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://hitcxy.com/2021/balsn2020-election/"/>
     <id>https://hitcxy.com/2021/balsn2020-election/</id>
     <published>2021-03-07T07:45:33.000Z</published>
-    <updated>2021-03-07T07:57:16.141Z</updated>
+    <updated>2021-03-10T12:03:30.187Z</updated>
     
     <summary type="html">
     
@@ -32,7 +32,7 @@
 &lt;li&gt;&lt;code&gt;wtcl&lt;/code&gt; ，都 &lt;code&gt;2021&lt;/code&gt; 了，还在看 &lt;code&gt;2020&lt;/code&gt; 的题目&lt;/li&gt;
 &lt;li&gt;这篇会写的很详细，大佬勿喷🙈&lt;/li&gt;
 &lt;li&gt;具体分析及官方 &lt;code&gt;WP&lt;/code&gt; 如下：&lt;a href=&quot;https://x9453.github.io/2021/02/27/Balsn-CTF-2020-Election/&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://x9453.github.io/2021/02/27/Balsn-CTF-2020-Election/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;源码 &lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2020/Election&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2020/Election&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;源码 &lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2020/balsn/Election&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2020/balsn/Election&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;复现地址为：&lt;code&gt;ropsten@0xef31471E3004a78Ae403858BbcB27D6d1f37791C&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;关于 &lt;code&gt;ABI&lt;/code&gt; 及 &lt;code&gt;ABI Encoding&lt;/code&gt; 相关知识可以查看我的另一片博客 👉 &lt;a href=&quot;https://hitcxy.com/2021/argument-encoding/&quot;&gt;Function Selector and Argument Encoding&lt;/a&gt; 👈&lt;/li&gt;
 &lt;/ul&gt;
@@ -97,9 +97,9 @@
       <category term="🌟ctf2021" scheme="https://hitcxy.com/categories/%F0%9F%8C%9Fctf2021/"/>
     
     
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
-    
       <category term="🌟ctf2021" scheme="https://hitcxy.com/tags/%F0%9F%8C%9Fctf2021/"/>
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
   </entry>
   
@@ -108,7 +108,7 @@
     <link href="https://hitcxy.com/2021/rw2021/"/>
     <id>https://hitcxy.com/2021/rw2021/</id>
     <published>2021-01-12T15:50:08.000Z</published>
-    <updated>2021-03-05T01:18:17.201Z</updated>
+    <updated>2021-03-10T12:04:27.442Z</updated>
     
     <summary type="html">
     
@@ -231,9 +231,9 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
-      <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
-    
       <category term="BJDCTF 4th" scheme="https://hitcxy.com/tags/BJDCTF-4th/"/>
+    
+      <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
     
   </entry>
   
@@ -1054,7 +1054,7 @@
     <link href="https://hitcxy.com/2020/OwnerMoney/"/>
     <id>https://hitcxy.com/2020/OwnerMoney/</id>
     <published>2020-03-10T05:48:17.000Z</published>
-    <updated>2020-09-25T15:00:32.000Z</updated>
+    <updated>2021-03-10T12:08:46.379Z</updated>
     
     <summary type="html">
     
@@ -1063,7 +1063,7 @@
 &lt;li&gt;高校战“疫”网络安全分享赛区块链 &lt;code&gt;OwnerMoney&lt;/code&gt; 题目&lt;/li&gt;
 &lt;li&gt;以太坊 &lt;code&gt;Ropsten&lt;/code&gt; 测试链&lt;/li&gt;
 &lt;li&gt;合约地址：&lt;a href=&quot;https://ropsten.etherscan.io/address/0x40a590b70790930ceed4d148bf365eea9e8b35f4&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://ropsten.etherscan.io/address/0x40a590b70790930ceed4d148bf365eea9e8b35f4&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;题目：&lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2020/OwnerMoney&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2020/OwnerMoney&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;题目：&lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2020/%E9%AB%98%E6%A0%A1%E6%88%98%E7%96%AB%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%88%86%E4%BA%AB%E8%B5%9B/OwnerMoney&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2020/%E9%AB%98%E6%A0%A1%E6%88%98%E7%96%AB%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%88%86%E4%BA%AB%E8%B5%9B/OwnerMoney&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
@@ -1159,7 +1159,7 @@
     <link href="https://hitcxy.com/2019/bet2loss-v2/"/>
     <id>https://hitcxy.com/2019/bet2loss-v2/</id>
     <published>2019-11-25T12:49:32.000Z</published>
-    <updated>2020-09-25T15:00:32.000Z</updated>
+    <updated>2021-03-10T12:10:11.650Z</updated>
     
     <summary type="html">
     
@@ -1170,7 +1170,7 @@
 &lt;li&gt;&lt;code&gt;hash-reveal-commit&lt;/code&gt; 随机数&lt;/li&gt;
 &lt;li&gt;出题人采用的是前后台交互的方法，所以题目没有复现，记录下解题的思想&lt;/li&gt;
 &lt;li&gt;题目要求在上面图里，&lt;a href=&quot;https://www.anquanke.com/post/id/193939&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;官方exp入口&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;题目 &lt;code&gt;exp&lt;/code&gt; ：&lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2019/bet2loss_v2&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2019/bet2loss_v2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;题目 &lt;code&gt;exp&lt;/code&gt; ：&lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2019/D3CTF/bet2loss_v2&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2019/D3CTF/bet2loss_v2&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
@@ -1191,7 +1191,7 @@
     <link href="https://hitcxy.com/2019/Happy-DOuble-Eleven/"/>
     <id>https://hitcxy.com/2019/Happy-DOuble-Eleven/</id>
     <published>2019-10-28T02:11:57.000Z</published>
-    <updated>2021-01-22T08:59:24.726Z</updated>
+    <updated>2021-03-10T12:11:14.545Z</updated>
     
     <summary type="html">
     
@@ -1207,7 +1207,7 @@
 &lt;/li&gt;
 &lt;li&gt;以太坊 &lt;code&gt;Ropsten&lt;/code&gt; 测试链&lt;/li&gt;
 &lt;li&gt;合约地址：&lt;a href=&quot;https://ropsten.etherscan.io/address/0x168892cb672a747f193eb4aca7b964bfb0aa6476&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://ropsten.etherscan.io/address/0x168892cb672a747f193eb4aca7b964bfb0aa6476&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;题目：&lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2019/Happy_DOuble_Eleven&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2019/Happy_DOuble_Eleven&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;题目：&lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2019/xctf_final/Happy_DOuble_Eleven&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2019/xctf_final/Happy_DOuble_Eleven&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
@@ -1228,7 +1228,7 @@
     <link href="https://hitcxy.com/2019/JCBank/"/>
     <id>https://hitcxy.com/2019/JCBank/</id>
     <published>2019-10-17T00:41:47.000Z</published>
-    <updated>2020-09-25T15:00:32.000Z</updated>
+    <updated>2021-03-10T12:11:54.314Z</updated>
     
     <summary type="html">
     
@@ -1236,7 +1236,7 @@
 &lt;ul&gt;
 &lt;li&gt;以太坊 &lt;code&gt;Kovan&lt;/code&gt; 测试链&lt;/li&gt;
 &lt;li&gt;合约地址：&lt;a href=&quot;https://kovan.etherscan.io/address/0xE575c9abD35Fa94F1949f7d559056bB66FddEB51&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://kovan.etherscan.io/address/0xE575c9abD35Fa94F1949f7d559056bB66FddEB51&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;题目：&lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2019/Hackergame2019_JCBank&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2019/Hackergame2019_JCBank&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;题目：&lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2019/Hackergame/JCBank&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2019/Hackergame/JCBank&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
@@ -1256,14 +1256,14 @@
     <link href="https://hitcxy.com/2019/CoinFlip/"/>
     <id>https://hitcxy.com/2019/CoinFlip/</id>
     <published>2019-10-16T11:53:57.000Z</published>
-    <updated>2020-09-25T15:00:32.000Z</updated>
+    <updated>2021-03-10T12:12:23.933Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;RoarCTF2019&lt;/code&gt; 的 &lt;code&gt;CoinFlip&lt;/code&gt; 题目&lt;/li&gt;
-&lt;li&gt;题目：&lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2019/RoarCTF2019_CoinFlip&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2019/RoarCTF2019_CoinFlip&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;题目：&lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2019/RoarCTF/CoinFlip&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2019/RoarCTF/CoinFlip&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
@@ -1271,11 +1271,11 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
       <category term="RoarCTF2019" scheme="https://hitcxy.com/tags/RoarCTF2019/"/>
     
       <category term="CoinFlip" scheme="https://hitcxy.com/tags/CoinFlip/"/>
-    
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
   </entry>
   
@@ -1284,14 +1284,14 @@
     <link href="https://hitcxy.com/2019/jojo/"/>
     <id>https://hitcxy.com/2019/jojo/</id>
     <published>2019-10-15T01:03:48.000Z</published>
-    <updated>2020-09-25T15:00:32.000Z</updated>
+    <updated>2021-03-10T12:12:56.274Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;数字经济云安全众测大赛 &lt;code&gt;2019&lt;/code&gt; ，一道区块链题目&lt;/li&gt;
-&lt;li&gt;题目：&lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2019/szjj_jojo&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2019/szjj_jojo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;题目：&lt;a href=&quot;https://github.com/hitcxy/challenges/tree/master/2019/%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E/jojo&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/hitcxy/challenges/tree/master/2019/%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E/jojo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
