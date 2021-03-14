@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2021-03-14T05:51:09.875Z</updated>
+  <updated>2021-03-14T08:08:47.184Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://hitcxy.com/2021/ctf-wiki/"/>
     <id>https://hitcxy.com/2021/ctf-wiki/</id>
     <published>2021-03-14T05:12:34.000Z</published>
-    <updated>2021-03-14T05:51:09.875Z</updated>
+    <updated>2021-03-14T08:08:47.184Z</updated>
     
     <summary type="html">
     
@@ -259,9 +259,9 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
-      <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
-    
       <category term="BJDCTF 4th" scheme="https://hitcxy.com/tags/BJDCTF-4th/"/>
+    
+      <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
     
   </entry>
   
