@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2021-03-14T05:20:23.825Z</updated>
+  <updated>2021-03-14T05:32:29.322Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://hitcxy.com/2021/ctf-wiki/"/>
     <id>https://hitcxy.com/2021/ctf-wiki/</id>
     <published>2021-03-14T05:12:34.000Z</published>
-    <updated>2021-03-14T05:20:23.825Z</updated>
+    <updated>2021-03-14T05:32:29.322Z</updated>
     
     <summary type="html">
     
@@ -30,6 +30,7 @@
 &lt;li&gt;最近和几位师傅花了一周的时间，在 &lt;span id=&quot;inline-blue&quot;&gt;CTF Wiki&lt;/span&gt; 上写了关于 &lt;span id=&quot;inline-green&quot;&gt;Blockchain&lt;/span&gt; 的 &lt;code&gt;Topic&lt;/code&gt;，这里是 👉 &lt;a href=&quot;https://ctf-wiki.org/&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;CTF Wiki&lt;/a&gt; 入口 👈&lt;/li&gt;
 &lt;li&gt;初心是想着留下点什么东西，如果有小伙伴发现问题可以提 &lt;code&gt;issue&lt;/code&gt;，我们看到会及时回复并进行更改&lt;/li&gt;
 &lt;li&gt;如果有想要补充关于 &lt;span id=&quot;inline-green&quot;&gt;Blockchain&lt;/span&gt; 内容的小伙伴，也可以联系我&lt;/li&gt;
+&lt;li&gt;同时我们建立了一个 &lt;span id=&quot;inline-yellow&quot;&gt;Chain Flag Organization&lt;/span&gt;，这里是 👉 &lt;a href=&quot;https://github.com/chainflag&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Chain Flag&lt;/a&gt; 入口 👈 ，欢迎关注 👀 ，有兴趣的小伙伴也可以加入我们&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
