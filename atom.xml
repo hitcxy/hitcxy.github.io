@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2021-03-14T01:32:31.155Z</updated>
+  <updated>2021-03-14T05:20:23.825Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CTF Wiki 上加入 Blockchain 专栏</title>
+    <link href="https://hitcxy.com/2021/ctf-wiki/"/>
+    <id>https://hitcxy.com/2021/ctf-wiki/</id>
+    <published>2021-03-14T05:12:34.000Z</published>
+    <updated>2021-03-14T05:20:23.825Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最近和几位师傅花了一周的时间，在 &lt;span id=&quot;inline-blue&quot;&gt;CTF Wiki&lt;/span&gt; 上写了关于 &lt;span id=&quot;inline-green&quot;&gt;Blockchain&lt;/span&gt; 的 &lt;code&gt;Topic&lt;/code&gt;，这里是 👉 &lt;a href=&quot;https://ctf-wiki.org/&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;CTF Wiki&lt;/a&gt; 入口 👈&lt;/li&gt;
+&lt;li&gt;初心是想着留下点什么东西，如果有小伙伴发现问题可以提 &lt;code&gt;issue&lt;/code&gt;，我们看到会及时回复并进行更改&lt;/li&gt;
+&lt;li&gt;如果有想要补充关于 &lt;span id=&quot;inline-green&quot;&gt;Blockchain&lt;/span&gt; 内容的小伙伴，也可以联系我&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
+    
+    
+      <category term="CTF Wiki" scheme="https://hitcxy.com/tags/CTF-Wiki/"/>
+    
+      <category term="challenges" scheme="https://hitcxy.com/tags/challenges/"/>
+    
+  </entry>
   
   <entry>
     <title>Balsn CTF 2020 - Election</title>
@@ -97,9 +124,9 @@
       <category term="🌟ctf2021" scheme="https://hitcxy.com/categories/%F0%9F%8C%9Fctf2021/"/>
     
     
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
-    
       <category term="🌟ctf2021" scheme="https://hitcxy.com/tags/%F0%9F%8C%9Fctf2021/"/>
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
   </entry>
   
@@ -1271,11 +1298,11 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
       <category term="RoarCTF2019" scheme="https://hitcxy.com/tags/RoarCTF2019/"/>
     
       <category term="CoinFlip" scheme="https://hitcxy.com/tags/CoinFlip/"/>
-    
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
   </entry>
   
