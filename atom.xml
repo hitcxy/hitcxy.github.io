@@ -51,7 +51,7 @@
     <link href="https://hitcxy.com/2021/balsn2020-election/"/>
     <id>https://hitcxy.com/2021/balsn2020-election/</id>
     <published>2021-03-07T07:45:33.000Z</published>
-    <updated>2021-03-14T01:32:31.155Z</updated>
+    <updated>2021-05-13T07:55:16.089Z</updated>
     
     <summary type="html">
     
@@ -127,9 +127,9 @@
       <category term="🌟ctf2021" scheme="https://hitcxy.com/categories/%F0%9F%8C%9Fctf2021/"/>
     
     
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
-    
       <category term="🌟ctf2021" scheme="https://hitcxy.com/tags/%F0%9F%8C%9Fctf2021/"/>
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
   </entry>
   
@@ -1301,11 +1301,11 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
       <category term="RoarCTF2019" scheme="https://hitcxy.com/tags/RoarCTF2019/"/>
     
       <category term="CoinFlip" scheme="https://hitcxy.com/tags/CoinFlip/"/>
-    
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
   </entry>
   
