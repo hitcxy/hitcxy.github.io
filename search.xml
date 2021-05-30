@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[CTF 区块链题目防抄作业]]></title>
     <url>%2F2021%2Fctf-eth-env%2F</url>
-    <content type="text"><![CDATA[ctf 区块链防抄作业的环境 geth 私链 + POA 我只是个无情的搬运工，在第六届 xctf final 中初次使用，不知道做题的师傅什么感觉 👉 https://github.com/chainflag/ctf-eth-env 👈 欢迎 star 有想法的师傅也可以加入我们 chainflag 🙈 没有实质性内容，水文，勿喷 👀]]></content>
+    <content type="text"><![CDATA[ctf 区块链防抄作业的环境 geth 私链 + POA 我只是个无情的搬运工，在第六届 xctf final 中初次使用，不知道做题的师傅什么感觉 👉 https://github.com/chainflag/ctf-eth-env 👈 欢迎 star 有想法的师傅也可以加入我们 chainflag 🙈 没有实质性内容，水文，勿喷 👀 具体的想法介绍参考 https://www.iczc.me/post/solution-for-a-fair-ctf-blockchain-env/]]></content>
       <categories>
         <category>tools</category>
       </categories>
