@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2021-03-14T10:55:09.333Z</updated>
+  <updated>2021-05-30T18:00:37.391Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CTF 区块链题目防抄作业</title>
+    <link href="https://hitcxy.com/2021/ctf-eth-env/"/>
+    <id>https://hitcxy.com/2021/ctf-eth-env/</id>
+    <published>2021-05-30T17:52:17.000Z</published>
+    <updated>2021-05-30T18:00:37.391Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ctf&lt;/code&gt; 区块链防抄作业的环境&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;geth&lt;/code&gt; 私链 + &lt;code&gt;POA&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;我只是个无情的搬运工，在第六届 &lt;code&gt;xctf final&lt;/code&gt; 中初次使用，不知道做题的师傅什么感觉&lt;/li&gt;
+&lt;li&gt;👉 &lt;a href=&quot;https://github.com/chainflag/ctf-eth-env&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://github.com/chainflag/ctf-eth-env&lt;/a&gt; 👈 欢迎 &lt;code&gt;star&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;有想法的师傅也可以加入我们 &lt;a href=&quot;https://github.com/chainflag&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;chainflag&lt;/a&gt; 🙈&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="tools" scheme="https://hitcxy.com/categories/tools/"/>
+    
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
+      <category term="tools" scheme="https://hitcxy.com/tags/tools/"/>
+    
+  </entry>
   
   <entry>
     <title>CTF Wiki 上加入 Blockchain 专栏</title>
