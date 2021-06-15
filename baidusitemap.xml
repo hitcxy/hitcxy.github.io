@@ -133,27 +133,7 @@
     <lastmod>2020-09-27</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2020/Typecho-V2ray/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://hitcxy.com/2020/sha256/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://hitcxy.com/2020/keyboard/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
     <loc>https://hitcxy.com/2019/h4ck/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://hitcxy.com/2020/generate-address/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://hitcxy.com/2020/dl-runtime-resolve/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
@@ -161,35 +141,27 @@
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2020/auto-pending-miner/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://hitcxy.com/2020/stepbystep-dl-runtime-resolve/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
     <loc>https://hitcxy.com/2020/ret2libc3/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2020/NPUCTF2020-rainbow/</loc>
+    <loc>https://hitcxy.com/2020/sha256/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2020/NeatDownloadManagerMac/</loc>
+    <loc>https://hitcxy.com/2020/auto-pending-miner/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2020/Honeypot-Contract/</loc>
+    <loc>https://hitcxy.com/2020/Typecho-V2ray/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2019/Hello-World/</loc>
+    <loc>https://hitcxy.com/2020/gitalk/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2020/Harley-Quinn/</loc>
+    <loc>https://hitcxy.com/2020/generate-address/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
@@ -197,11 +169,15 @@
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2020/Create2/</loc>
+    <loc>https://hitcxy.com/2020/Honeypot-Contract/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2020/ret2csu/</loc>
+    <loc>https://hitcxy.com/2020/stepbystep-dl-runtime-resolve/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hitcxy.com/2019/Hello-World/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
@@ -213,7 +189,31 @@
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2020/gitalk/</loc>
+    <loc>https://hitcxy.com/2020/NPUCTF2020-rainbow/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hitcxy.com/2020/ret2csu/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hitcxy.com/2020/Harley-Quinn/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hitcxy.com/2020/Create2/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hitcxy.com/2020/NeatDownloadManagerMac/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hitcxy.com/2020/dl-runtime-resolve/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hitcxy.com/2020/keyboard/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
 </urlset> 
