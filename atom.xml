@@ -106,7 +106,7 @@
     <link href="https://hitcxy.com/2021/ctf-wiki/"/>
     <id>https://hitcxy.com/2021/ctf-wiki/</id>
     <published>2021-03-14T05:12:34.000Z</published>
-    <updated>2021-03-14T10:55:09.333Z</updated>
+    <updated>2021-06-18T11:46:34.249Z</updated>
     
     <summary type="html">
     
@@ -212,9 +212,9 @@
       <category term="🌟ctf2021" scheme="https://hitcxy.com/categories/%F0%9F%8C%9Fctf2021/"/>
     
     
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
-    
       <category term="🌟ctf2021" scheme="https://hitcxy.com/tags/%F0%9F%8C%9Fctf2021/"/>
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
   </entry>
   
@@ -1386,11 +1386,11 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
       <category term="RoarCTF2019" scheme="https://hitcxy.com/tags/RoarCTF2019/"/>
     
       <category term="CoinFlip" scheme="https://hitcxy.com/tags/CoinFlip/"/>
-    
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
   </entry>
   
