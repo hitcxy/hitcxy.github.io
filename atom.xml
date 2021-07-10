@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2021-06-26T14:42:04.313Z</updated>
+  <updated>2021-07-10T14:38:02.248Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>随便写写</title>
+    <link href="https://hitcxy.com/2021/something/"/>
+    <id>https://hitcxy.com/2021/something/</id>
+    <published>2021-07-10T14:35:23.000Z</published>
+    <updated>2021-07-10T14:38:02.248Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;之后博客就不更新区块链相关内容了，感谢小伙伴的一直关注&lt;/li&gt;
+&lt;li&gt;主要也意识到了自己的水平，要学点其他东西了&lt;/li&gt;
+&lt;li&gt;see you later～&lt;/li&gt;
+&lt;li&gt;有问题还是可以留言或者直接联系我询问，谢谢啦👀
+    
+    </summary>
+    
+      <category term="tools" scheme="https://hitcxy.com/categories/tools/"/>
+    
+    
+      <category term="blog" scheme="https://hitcxy.com/tags/blog/"/>
+    
+  </entry>
   
   <entry>
     <title>chainflag</title>
@@ -46,7 +71,7 @@
     <link href="https://hitcxy.com/2021/qwb2021/"/>
     <id>https://hitcxy.com/2021/qwb2021/</id>
     <published>2021-06-15T00:40:22.000Z</published>
-    <updated>2021-07-06T03:50:26.982Z</updated>
+    <updated>2021-07-06T03:52:44.653Z</updated>
     
     <summary type="html">
     
@@ -525,7 +550,7 @@
     <link href="https://hitcxy.com/2020/qwb2020/"/>
     <id>https://hitcxy.com/2020/qwb2020/</id>
     <published>2020-08-24T02:28:03.000Z</published>
-    <updated>2021-07-06T03:50:20.239Z</updated>
+    <updated>2021-07-06T03:52:48.083Z</updated>
     
     <summary type="html">
     
@@ -1439,9 +1464,9 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
-      <category term="Solidity" scheme="https://hitcxy.com/tags/Solidity/"/>
-    
       <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/tags/Solidity/"/>
     
       <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
     
@@ -1495,9 +1520,9 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
-      <category term="Solidity" scheme="https://hitcxy.com/tags/Solidity/"/>
-    
       <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
+      <category term="Solidity" scheme="https://hitcxy.com/tags/Solidity/"/>
     
       <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
     
