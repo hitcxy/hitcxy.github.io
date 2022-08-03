@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2022-08-03T14:22:18.023Z</updated>
+  <updated>2022-08-03T14:27:18.783Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://hitcxy.com/2022/bytebyte/"/>
     <id>https://hitcxy.com/2022/bytebyte/</id>
     <published>2022-08-03T13:53:21.000Z</published>
-    <updated>2022-08-03T14:22:18.023Z</updated>
+    <updated>2022-08-03T14:27:18.783Z</updated>
     
     <summary type="html">
     
@@ -30,8 +30,7 @@
 &lt;li&gt;第六届 &lt;code&gt;qwb&lt;/code&gt; 线下赛 &lt;code&gt;bytebyte&lt;/code&gt; 赛题 &lt;code&gt;WP&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;恭喜中国科学技术大学师傅一血&lt;/li&gt;
 &lt;li&gt;考点是 &lt;a href=&quot;https://en.wikipedia.org/wiki/Return-oriented_programming&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Return Oriented Programming&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;revenge of EGM&lt;/li&gt;
-&lt;li&gt;堆栈细节可参考 &lt;a href=&quot;https://hitcxy.com/2020/egm/&quot;&gt;https://hitcxy.com/2020/egm/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;revenge of EGM&lt;/code&gt;，堆栈细节可参考 &lt;a href=&quot;https://hitcxy.com/2020/egm/&quot;&gt;https://hitcxy.com/2020/egm/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;相比于 &lt;code&gt;EGM&lt;/code&gt; ，&lt;code&gt;bytebyte&lt;/code&gt; 调整了循环变量的位置，循环变量是个范围，按照个人的构思，如果 &lt;code&gt;calldata&lt;/code&gt; 长度是 &lt;code&gt;4+32*11&lt;/code&gt; 字节，则这个值是固定的，变相让循环变量起到固定 &lt;code&gt;canary&lt;/code&gt; 的作用，不过也不能排除更短的 &lt;code&gt;calldata&lt;/code&gt;，所以题目设计是比较 &lt;code&gt;calldata&lt;/code&gt; 的数值大小。&lt;/li&gt;
 &lt;/ul&gt;
     
@@ -267,9 +266,9 @@
       <category term="🌟ctf2021" scheme="https://hitcxy.com/categories/%F0%9F%8C%9Fctf2021/"/>
     
     
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
-    
       <category term="🌟ctf2021" scheme="https://hitcxy.com/tags/%F0%9F%8C%9Fctf2021/"/>
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
   </entry>
   
@@ -401,9 +400,9 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
-      <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
-    
       <category term="BJDCTF 4th" scheme="https://hitcxy.com/tags/BJDCTF-4th/"/>
+    
+      <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
     
   </entry>
   
@@ -1441,11 +1440,11 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
       <category term="RoarCTF2019" scheme="https://hitcxy.com/tags/RoarCTF2019/"/>
     
       <category term="CoinFlip" scheme="https://hitcxy.com/tags/CoinFlip/"/>
-    
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
   </entry>
   
