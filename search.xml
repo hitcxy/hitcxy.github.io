@@ -13,17 +13,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[随便写写]]></title>
-    <url>%2F2021%2Fsomething%2F</url>
-    <content type="text"><![CDATA[前言 之后博客就不更新区块链相关内容了，感谢小伙伴的一直关注 主要也意识到了自己的水平，要学点其他东西了 see you later～ 有问题还是可以留言或者直接联系我询问，谢谢啦👀]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-      <tags>
-        <tag>blog</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[chainflag]]></title>
     <url>%2F2021%2Fchainflag%2F</url>
     <content type="text"><![CDATA[欢迎关注 chainflag 平台 Hello 👀 之前和各位师傅（iczc tkmk syang ver PandaTea Soreat_u 排名不分先后）想到的建立一个关于区块链 CTF OJ 的想法，现在我们的区块链 CTF 题目训练平台已经正式上线了 平台已经能初步使用，后续还会进一步完善，小伙伴可进群交流，如果二维码过期失效，可联系我进群哦，嘻嘻嘻嘻 发起想法：CTF 中的具体细分方向有 pwnable.kr、reversing.kr、cryptohack 等训练学习平台，但区块链作为一个新兴方向还没有一个相应的学习社区，于是设想我们建立一个 github 开源组织，定位是关于区块链 CTF 与区块链安全 平台上的题目会在 https://github.com/chainflag/ctf-blockchain-challenges 以开源的形式进行协作。除了训练平台还有一些与区块链CTF/区块链安全相关的项目在 https://github.com/chainflag 下开源]]></content>
@@ -177,8 +166,8 @@
         <category>Solidity</category>
       </categories>
       <tags>
-        <tag>BJDCTF 4th</tag>
         <tag>Smart Contract</tag>
+        <tag>BJDCTF 4th</tag>
       </tags>
   </entry>
   <entry>

@@ -47,31 +47,6 @@
   </entry>
   
   <entry>
-    <title>随便写写</title>
-    <link href="https://hitcxy.com/2021/something/"/>
-    <id>https://hitcxy.com/2021/something/</id>
-    <published>2021-07-10T14:35:23.000Z</published>
-    <updated>2021-07-10T14:38:02.248Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;之后博客就不更新区块链相关内容了，感谢小伙伴的一直关注&lt;/li&gt;
-&lt;li&gt;主要也意识到了自己的水平，要学点其他东西了&lt;/li&gt;
-&lt;li&gt;see you later～&lt;/li&gt;
-&lt;li&gt;有问题还是可以留言或者直接联系我询问，谢谢啦👀
-    
-    </summary>
-    
-      <category term="tools" scheme="https://hitcxy.com/categories/tools/"/>
-    
-    
-      <category term="blog" scheme="https://hitcxy.com/tags/blog/"/>
-    
-  </entry>
-  
-  <entry>
     <title>chainflag</title>
     <link href="https://hitcxy.com/2021/chainflag/"/>
     <id>https://hitcxy.com/2021/chainflag/</id>
@@ -426,9 +401,9 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
-      <category term="BJDCTF 4th" scheme="https://hitcxy.com/tags/BJDCTF-4th/"/>
-    
       <category term="Smart Contract" scheme="https://hitcxy.com/tags/Smart-Contract/"/>
+    
+      <category term="BJDCTF 4th" scheme="https://hitcxy.com/tags/BJDCTF-4th/"/>
     
   </entry>
   
