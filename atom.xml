@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2022-09-19T13:01:51.763Z</updated>
+  <updated>2022-09-19T13:06:56.078Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -21,13 +21,14 @@
     <link href="https://hitcxy.com/2022/0ctf2022/"/>
     <id>https://hitcxy.com/2022/0ctf2022/</id>
     <published>2022-09-19T12:36:49.000Z</published>
-    <updated>2022-09-19T13:01:51.763Z</updated>
+    <updated>2022-09-19T13:06:56.078Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;0ctf 2022 nft 题目，失败的复盘，赛中调试出来了进入 verifyCoupon 后 orderid 会变成 0，但没有继续调试后面的 orderid，233333，赛后才知道了是 solidity 8.16 版本之前的 bug&lt;/li&gt;
+&lt;li&gt;主要漏洞原理参考 &lt;a href=&quot;https://blog.soliditylang.org/2022/08/08/calldata-tuple-reencoding-head-overflow-bug/&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://blog.soliditylang.org/2022/08/08/calldata-tuple-reencoding-head-overflow-bug/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;具体就不分析了，别的师傅已经写的很好了，这里就只放出自己的 exp&lt;/li&gt;
 &lt;li&gt;参考 &lt;a href=&quot;https://s3cunda.github.io/2022/09/19/0ctf-2022-NFT-Market.html&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://s3cunda.github.io/2022/09/19/0ctf-2022-NFT-Market.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
