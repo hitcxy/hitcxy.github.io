@@ -88,7 +88,7 @@
 <meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2019_bank/2.png">
 <meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2019_bank/1.png">
 <meta property="og:image" content="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2019_bank/2.png">
-<meta property="og:updated_time" content="2021-03-14T01:40:24.624Z">
+<meta property="og:updated_time" content="2022-10-10T15:21:43.833Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Balsn CTF 2019 - Bank">
 <meta name="twitter:description" content="前言  复现 balsn2019 ctf 中的 bank 区块链题目 wtcl ,复现了一个下午 具体分析及官方 WP 如下: https://x9453.github.io/2020/01/16/Balsn-CTF-2019-Bank/ 复现地址为: ropsten@0x85B0446Dc5B5f32cbB674Dc8e49Fc27Ebaff2Ee2 外部账户地址为: 0x785a8D0d84">
@@ -380,8 +380,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-03-14T09:40:24+08:00">
-                2021-03-14
+              <time title="更新于" itemprop="dateModified" datetime="2022-10-10T23:21:43+08:00">
+                2022-10-10
               </time>
             
           </span>
@@ -463,7 +463,7 @@
 <ul>
 <li>复现 <code>balsn2019 ctf</code> 中的 <code>bank</code> 区块链题目</li>
 <li><code>wtcl</code> ,复现了一个下午</li>
-<li>具体分析及官方 <code>WP</code> 如下: <a href="hhttps://x9453.github.io/2020/01/16/Balsn-CTF-2019-Bank/" rel="external nofollow noopener noreferrer" target="_blank">https://x9453.github.io/2020/01/16/Balsn-CTF-2019-Bank/</a></li>
+<li>具体分析及官方 <code>WP</code> 如下: <a href="https://x9453.github.io/2020/01/16/Balsn-CTF-2019-Bank/" rel="external nofollow noopener noreferrer" target="_blank">https://x9453.github.io/2020/01/16/Balsn-CTF-2019-Bank/</a></li>
 <li>复现地址为: <code>ropsten@0x85B0446Dc5B5f32cbB674Dc8e49Fc27Ebaff2Ee2</code></li>
 <li>外部账户地址为: <code>0x785a8D0d84ad29c96f8e1F26BfDb3E6CB72cAe9b</code></li>
 </ul>
@@ -480,7 +480,7 @@
 <ul>
 <li>同样, <code>SafeBox</code> 也是类似分析,会在 <code>deposit()</code> 中覆盖 <code>slot0</code> 和 <code>slot1</code></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-----------------------------------------------------</span><br><span class="line">| unused (11) | hash (12) | callback (8) | done (1) |</span><br><span class="line">-----------------------------------------------------</span><br><span class="line">|                     value (32)                    |</span><br><span class="line">-----------------------------------------------------</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-----------------------------------------------------</span><br><span class="line">| unused (15) | hash (12) | callback (4) | done (1) |</span><br><span class="line">-----------------------------------------------------</span><br><span class="line">|                     value (32)                    |</span><br><span class="line">-----------------------------------------------------</span><br></pre></td></tr></table></figure>
 <ul>
 <li>可以看到,如果通过 <code>deposit</code> 修改 <code>slot0</code> 和 <code>slot1</code> 是没用的,即使修改了 <code>owner</code> 也没用,因为还有第 <code>74</code> 行的限制</li>
 <li>其实题目考查的是结构体未初始化漏洞+数组存储方式+mapping存储方式+控制程序执行流   </li>
@@ -496,7 +496,7 @@
 <li>计算 <code>(target - base) % 2</code> ,如果等于 <code>0</code> ,说明 <code>origin(20) | triedPass(12)</code> 刚好可以覆盖 <code>unused (11) | hash (12) | callback (8) | done (1)</code></li>
 <li>计算 <code>(msg.sender &lt;&lt; (12*8))</code> ,如果 <code>&lt; idx</code> ,说明 <code>safeboxes</code> 数组长度合适,可以包含 <code>failedLogs</code> ; 否则的话从步骤1重新开始</li>
 <li>调用 <code>deposit(0x000000000000000000000000)</code> 并设置 <code>msg.value = 1 ether</code> : 这里是让 <code>callback</code> 指向 <code>sendEther</code> , 目的是下一步调用控制 <code>safeboxes</code> 数组长度</li>
-<li>调用 <code>withdraw(0, 0x111111111111110000070f00)</code> : 这里相当于调用 <code>sendEther(0, 0x111111111111110000070f00)</code> ,将 <code>failedLogs[msg.sender]</code> 中的 <code>triedPass</code> 控制,相当于控制了 <code>unused (11) | hash (12) | callback (8) | done (1)</code> 所在 <code>slot</code> 的低 <code>12</code> 字节,修改了 <code>callback</code> ,其实相当于把 <code>failedLogs[msg.sender]</code> 对应的内容看成是 <code>safeboxes</code> 数组的内容,同时修改了数组长度</li>
+<li>调用 <code>withdraw(0, 0x111111111111110000070f00)</code> : 这里相当于调用 <code>sendEther(0, 0x111111111111110000070f00)</code> ,将 <code>failedLogs[msg.sender]</code> 中的 <code>triedPass</code> 控制,相当于控制了 <code>unused (15) | hash (12) | callback (4) | done (1)</code> 所在 <code>slot</code> 的低 <code>12</code> 字节,修改了 <code>callback</code> ,其实相当于把 <code>failedLogs[msg.sender]</code> 对应的内容看成是 <code>safeboxes</code> 数组的内容,同时修改了数组长度</li>
 <li>调用 <code>withdraw(idx, 0x000000000000000000000000)</code> : 这里就可以执行到 <code>emit SendFlag(msg.sender);</code> 撒花🎉🎉🎉🎉🎉🎉🎉🎉</li>
 </ol>
 <p><img src="https://blog-1252762426.cos.ap-beijing.myqcloud.com/blog/balsn2019_bank/2.png" alt></p>

@@ -897,7 +897,7 @@
     <link href="https://hitcxy.com/2020/balsn2019-bank/"/>
     <id>https://hitcxy.com/2020/balsn2019-bank/</id>
     <published>2020-05-29T10:51:14.000Z</published>
-    <updated>2021-03-14T01:40:24.624Z</updated>
+    <updated>2022-10-10T15:21:43.833Z</updated>
     
     <summary type="html">
     
@@ -906,7 +906,7 @@
 &lt;ul&gt;
 &lt;li&gt;复现 &lt;code&gt;balsn2019 ctf&lt;/code&gt; 中的 &lt;code&gt;bank&lt;/code&gt; 区块链题目&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;wtcl&lt;/code&gt; ,复现了一个下午&lt;/li&gt;
-&lt;li&gt;具体分析及官方 &lt;code&gt;WP&lt;/code&gt; 如下: &lt;a href=&quot;hhttps://x9453.github.io/2020/01/16/Balsn-CTF-2019-Bank/&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://x9453.github.io/2020/01/16/Balsn-CTF-2019-Bank/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;具体分析及官方 &lt;code&gt;WP&lt;/code&gt; 如下: &lt;a href=&quot;https://x9453.github.io/2020/01/16/Balsn-CTF-2019-Bank/&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://x9453.github.io/2020/01/16/Balsn-CTF-2019-Bank/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;复现地址为: &lt;code&gt;ropsten@0x85B0446Dc5B5f32cbB674Dc8e49Fc27Ebaff2Ee2&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;外部账户地址为: &lt;code&gt;0x785a8D0d84ad29c96f8e1F26BfDb3E6CB72cAe9b&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
