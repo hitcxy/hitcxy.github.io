@@ -145,11 +145,7 @@
     <lastmod>2020-09-27</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2020/sha256/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://hitcxy.com/2020/NeatDownloadManagerMac/</loc>
+    <loc>https://hitcxy.com/2020/keyboard/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
@@ -162,6 +158,10 @@
   </url>
   <url>
     <loc>https://hitcxy.com/2020/auto-pending-miner/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hitcxy.com/2019/Hello-World/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
@@ -189,7 +189,7 @@
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2019/Hello-World/</loc>
+    <loc>https://hitcxy.com/2020/Honeypot-Contract/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
@@ -197,15 +197,7 @@
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2020/Honeypot-Contract/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
     <loc>https://hitcxy.com/2020/32-64/</loc>
-    <lastmod>2020-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://hitcxy.com/2020/plt-got/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
@@ -217,6 +209,14 @@
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
+    <loc>https://hitcxy.com/2020/plt-got/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://hitcxy.com/2020/NeatDownloadManagerMac/</loc>
+    <lastmod>2020-09-25</lastmod>
+  </url>
+  <url>
     <loc>https://hitcxy.com/2020/ret2csu/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
@@ -225,7 +225,7 @@
     <lastmod>2020-09-25</lastmod>
   </url>
   <url>
-    <loc>https://hitcxy.com/2020/keyboard/</loc>
+    <loc>https://hitcxy.com/2020/sha256/</loc>
     <lastmod>2020-09-25</lastmod>
   </url>
 </urlset> 
