@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2022-09-19T13:06:56.078Z</updated>
+  <updated>2022-09-19T13:06:56.000Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://hitcxy.com/2022/0ctf2022/"/>
     <id>https://hitcxy.com/2022/0ctf2022/</id>
     <published>2022-09-19T12:36:49.000Z</published>
-    <updated>2022-09-19T13:06:56.078Z</updated>
+    <updated>2022-09-19T13:06:56.000Z</updated>
     
     <summary type="html">
     
@@ -50,7 +50,7 @@
     <link href="https://hitcxy.com/2022/bytebyte/"/>
     <id>https://hitcxy.com/2022/bytebyte/</id>
     <published>2022-08-03T13:53:21.000Z</published>
-    <updated>2022-08-03T14:32:30.412Z</updated>
+    <updated>2022-08-03T14:32:30.000Z</updated>
     
     <summary type="html">
     
@@ -79,7 +79,7 @@
     <link href="https://hitcxy.com/2021/chainflag/"/>
     <id>https://hitcxy.com/2021/chainflag/</id>
     <published>2021-06-26T07:41:29.000Z</published>
-    <updated>2021-06-26T14:42:04.313Z</updated>
+    <updated>2021-06-26T14:42:04.000Z</updated>
     
     <summary type="html">
     
@@ -104,7 +104,7 @@
     <link href="https://hitcxy.com/2021/qwb2021/"/>
     <id>https://hitcxy.com/2021/qwb2021/</id>
     <published>2021-06-15T00:40:22.000Z</published>
-    <updated>2021-07-06T03:52:44.653Z</updated>
+    <updated>2021-07-06T03:52:44.000Z</updated>
     
     <summary type="html">
     
@@ -133,7 +133,7 @@
     <link href="https://hitcxy.com/2021/xctf-final-2021/"/>
     <id>https://hitcxy.com/2021/xctf-final-2021/</id>
     <published>2021-06-08T08:00:51.000Z</published>
-    <updated>2021-06-08T08:27:41.130Z</updated>
+    <updated>2021-06-08T08:27:40.000Z</updated>
     
     <summary type="html">
     
@@ -162,7 +162,7 @@
     <link href="https://hitcxy.com/2021/ctf-eth-env/"/>
     <id>https://hitcxy.com/2021/ctf-eth-env/</id>
     <published>2021-05-30T17:52:17.000Z</published>
-    <updated>2021-05-30T18:32:25.888Z</updated>
+    <updated>2021-05-30T18:32:24.000Z</updated>
     
     <summary type="html">
     
@@ -189,7 +189,7 @@
     <link href="https://hitcxy.com/2021/ctf-wiki/"/>
     <id>https://hitcxy.com/2021/ctf-wiki/</id>
     <published>2021-03-14T05:12:34.000Z</published>
-    <updated>2021-06-18T11:46:34.249Z</updated>
+    <updated>2021-06-18T11:46:34.000Z</updated>
     
     <summary type="html">
     
@@ -219,7 +219,7 @@
     <link href="https://hitcxy.com/2021/balsn2020-election/"/>
     <id>https://hitcxy.com/2021/balsn2020-election/</id>
     <published>2021-03-07T07:45:33.000Z</published>
-    <updated>2022-10-23T01:48:08.762Z</updated>
+    <updated>2022-10-23T01:48:08.000Z</updated>
     
     <summary type="html">
     
@@ -251,7 +251,7 @@
     <link href="https://hitcxy.com/2021/argument-encoding/"/>
     <id>https://hitcxy.com/2021/argument-encoding/</id>
     <published>2021-03-06T14:43:05.000Z</published>
-    <updated>2021-03-13T11:25:36.049Z</updated>
+    <updated>2021-03-13T11:25:36.000Z</updated>
     
     <summary type="html">
     
@@ -280,7 +280,7 @@
     <link href="https://hitcxy.com/2021/6-ctf2021/"/>
     <id>https://hitcxy.com/2021/6-ctf2021/</id>
     <published>2021-01-19T16:24:28.000Z</published>
-    <updated>2021-01-20T15:42:14.415Z</updated>
+    <updated>2021-01-20T15:42:14.000Z</updated>
     
     <summary type="html">
     
@@ -295,9 +295,9 @@
       <category term="🌟ctf2021" scheme="https://hitcxy.com/categories/%F0%9F%8C%9Fctf2021/"/>
     
     
-      <category term="🌟ctf2021" scheme="https://hitcxy.com/tags/%F0%9F%8C%9Fctf2021/"/>
-    
       <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
+      <category term="🌟ctf2021" scheme="https://hitcxy.com/tags/%F0%9F%8C%9Fctf2021/"/>
     
   </entry>
   
@@ -306,7 +306,7 @@
     <link href="https://hitcxy.com/2021/rw2021/"/>
     <id>https://hitcxy.com/2021/rw2021/</id>
     <published>2021-01-12T15:50:08.000Z</published>
-    <updated>2021-03-14T01:34:35.185Z</updated>
+    <updated>2021-03-14T01:34:34.000Z</updated>
     
     <summary type="html">
     
@@ -335,7 +335,7 @@
     <link href="https://hitcxy.com/2020/contractgame/"/>
     <id>https://hitcxy.com/2020/contractgame/</id>
     <published>2020-12-28T07:54:32.000Z</published>
-    <updated>2020-12-28T08:45:31.000Z</updated>
+    <updated>2020-12-28T08:45:30.000Z</updated>
     
     <summary type="html">
     
@@ -361,7 +361,7 @@
     <link href="https://hitcxy.com/2020/boxgame/"/>
     <id>https://hitcxy.com/2020/boxgame/</id>
     <published>2020-12-26T12:26:36.000Z</published>
-    <updated>2022-12-24T13:11:10.160Z</updated>
+    <updated>2022-12-24T13:11:10.000Z</updated>
     
     <summary type="html">
     
@@ -387,7 +387,7 @@
     <link href="https://hitcxy.com/2020/ethenc/"/>
     <id>https://hitcxy.com/2020/ethenc/</id>
     <published>2020-12-26T12:20:07.000Z</published>
-    <updated>2020-12-26T12:26:19.000Z</updated>
+    <updated>2020-12-26T12:26:18.000Z</updated>
     
     <summary type="html">
     
@@ -413,7 +413,7 @@
     <link href="https://hitcxy.com/2020/bjdctf-4th/"/>
     <id>https://hitcxy.com/2020/bjdctf-4th/</id>
     <published>2020-12-26T05:24:43.000Z</published>
-    <updated>2020-12-26T05:39:55.000Z</updated>
+    <updated>2020-12-26T05:39:54.000Z</updated>
     
     <summary type="html">
     
@@ -473,7 +473,7 @@
     <link href="https://hitcxy.com/2020/blockchain-template/"/>
     <id>https://hitcxy.com/2020/blockchain-template/</id>
     <published>2020-11-05T12:50:14.000Z</published>
-    <updated>2020-11-05T13:05:01.000Z</updated>
+    <updated>2020-11-05T13:05:00.000Z</updated>
     
     <summary type="html">
     
@@ -530,7 +530,7 @@
     <link href="https://hitcxy.com/2020/egm/"/>
     <id>https://hitcxy.com/2020/egm/</id>
     <published>2020-09-22T08:28:07.000Z</published>
-    <updated>2022-07-11T09:46:09.073Z</updated>
+    <updated>2022-07-11T09:46:08.000Z</updated>
     
     <summary type="html">
     
@@ -583,7 +583,7 @@
     <link href="https://hitcxy.com/2020/qwb2020/"/>
     <id>https://hitcxy.com/2020/qwb2020/</id>
     <published>2020-08-24T02:28:03.000Z</published>
-    <updated>2023-03-20T15:28:43.733Z</updated>
+    <updated>2023-03-20T15:28:42.000Z</updated>
     
     <summary type="html">
     
@@ -761,7 +761,7 @@
     <link href="https://hitcxy.com/2020/creativityplus/"/>
     <id>https://hitcxy.com/2020/creativityplus/</id>
     <published>2020-06-29T02:13:09.000Z</published>
-    <updated>2021-03-10T11:47:15.087Z</updated>
+    <updated>2021-03-10T11:47:14.000Z</updated>
     
     <summary type="html">
     
@@ -789,7 +789,7 @@
     <link href="https://hitcxy.com/2020/honeypot-list/"/>
     <id>https://hitcxy.com/2020/honeypot-list/</id>
     <published>2020-06-11T15:18:24.000Z</published>
-    <updated>2021-01-23T00:30:22.520Z</updated>
+    <updated>2021-01-23T00:30:22.000Z</updated>
     
     <summary type="html">
     
@@ -844,7 +844,7 @@
     <link href="https://hitcxy.com/2020/rctf2020-roiscoin/"/>
     <id>https://hitcxy.com/2020/rctf2020-roiscoin/</id>
     <published>2020-06-02T01:14:56.000Z</published>
-    <updated>2021-10-26T10:48:46.556Z</updated>
+    <updated>2021-10-26T10:48:46.000Z</updated>
     
     <summary type="html">
     
@@ -872,7 +872,7 @@
     <link href="https://hitcxy.com/2020/easy-blockchains/"/>
     <id>https://hitcxy.com/2020/easy-blockchains/</id>
     <published>2020-06-01T11:53:31.000Z</published>
-    <updated>2020-10-13T13:14:37.000Z</updated>
+    <updated>2020-10-13T13:14:36.000Z</updated>
     
     <summary type="html">
     
@@ -897,7 +897,7 @@
     <link href="https://hitcxy.com/2020/balsn2019-bank/"/>
     <id>https://hitcxy.com/2020/balsn2019-bank/</id>
     <published>2020-05-29T10:51:14.000Z</published>
-    <updated>2022-10-10T15:21:43.833Z</updated>
+    <updated>2023-06-23T09:21:46.738Z</updated>
     
     <summary type="html">
     
@@ -956,7 +956,7 @@
     <link href="https://hitcxy.com/2020/balsn2019-create2/"/>
     <id>https://hitcxy.com/2020/balsn2019-create2/</id>
     <published>2020-05-28T14:36:15.000Z</published>
-    <updated>2021-03-14T01:41:25.743Z</updated>
+    <updated>2021-03-14T01:41:24.000Z</updated>
     
     <summary type="html">
     
@@ -1252,7 +1252,7 @@
     <link href="https://hitcxy.com/2020/OwnerMoney/"/>
     <id>https://hitcxy.com/2020/OwnerMoney/</id>
     <published>2020-03-10T05:48:17.000Z</published>
-    <updated>2021-03-14T01:43:19.590Z</updated>
+    <updated>2021-03-14T01:43:18.000Z</updated>
     
     <summary type="html">
     
@@ -1357,7 +1357,7 @@
     <link href="https://hitcxy.com/2019/bet2loss-v2/"/>
     <id>https://hitcxy.com/2019/bet2loss-v2/</id>
     <published>2019-11-25T12:49:32.000Z</published>
-    <updated>2021-03-14T01:44:51.020Z</updated>
+    <updated>2021-03-14T01:44:50.000Z</updated>
     
     <summary type="html">
     
@@ -1389,7 +1389,7 @@
     <link href="https://hitcxy.com/2019/Happy-DOuble-Eleven/"/>
     <id>https://hitcxy.com/2019/Happy-DOuble-Eleven/</id>
     <published>2019-10-28T02:11:57.000Z</published>
-    <updated>2021-03-14T01:45:31.691Z</updated>
+    <updated>2021-03-14T01:45:30.000Z</updated>
     
     <summary type="html">
     
@@ -1426,7 +1426,7 @@
     <link href="https://hitcxy.com/2019/JCBank/"/>
     <id>https://hitcxy.com/2019/JCBank/</id>
     <published>2019-10-17T00:41:47.000Z</published>
-    <updated>2021-03-14T01:46:13.939Z</updated>
+    <updated>2021-03-14T01:46:12.000Z</updated>
     
     <summary type="html">
     
@@ -1454,7 +1454,7 @@
     <link href="https://hitcxy.com/2019/CoinFlip/"/>
     <id>https://hitcxy.com/2019/CoinFlip/</id>
     <published>2019-10-16T11:53:57.000Z</published>
-    <updated>2021-03-14T01:47:25.291Z</updated>
+    <updated>2021-03-14T01:47:24.000Z</updated>
     
     <summary type="html">
     
@@ -1469,11 +1469,11 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
-    
       <category term="RoarCTF2019" scheme="https://hitcxy.com/tags/RoarCTF2019/"/>
     
       <category term="CoinFlip" scheme="https://hitcxy.com/tags/CoinFlip/"/>
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
   </entry>
   
@@ -1482,7 +1482,7 @@
     <link href="https://hitcxy.com/2019/jojo/"/>
     <id>https://hitcxy.com/2019/jojo/</id>
     <published>2019-10-15T01:03:48.000Z</published>
-    <updated>2021-03-14T01:48:07.558Z</updated>
+    <updated>2021-03-14T01:48:06.000Z</updated>
     
     <summary type="html">
     
@@ -1512,7 +1512,7 @@
     <link href="https://hitcxy.com/2019/ethernaut/"/>
     <id>https://hitcxy.com/2019/ethernaut/</id>
     <published>2019-09-20T14:00:29.000Z</published>
-    <updated>2021-01-02T15:25:23.000Z</updated>
+    <updated>2021-01-02T15:25:22.000Z</updated>
     
     <summary type="html">
     
