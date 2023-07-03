@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2022-09-19T13:06:56.000Z</updated>
+  <updated>2023-07-03T16:14:27.366Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>stackoverflow</title>
+    <link href="https://hitcxy.com/2023/stackoverflow/"/>
+    <id>https://hitcxy.com/2023/stackoverflow/</id>
+    <published>2023-07-03T13:13:08.000Z</published>
+    <updated>2023-07-03T16:14:27.366Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;wiki 学习记录&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="pwn stackoverflow" scheme="https://hitcxy.com/categories/pwn-stackoverflow/"/>
+    
+    
+      <category term="pwn" scheme="https://hitcxy.com/tags/pwn/"/>
+    
+      <category term="stackoverflow" scheme="https://hitcxy.com/tags/stackoverflow/"/>
+    
+  </entry>
   
   <entry>
     <title>0ctf 2022 nft market</title>
@@ -712,7 +737,7 @@
     <link href="https://hitcxy.com/2020/ret2libc3/"/>
     <id>https://hitcxy.com/2020/ret2libc3/</id>
     <published>2020-07-25T16:52:04.000Z</published>
-    <updated>2023-07-02T15:25:09.676Z</updated>
+    <updated>2023-07-02T15:49:06.747Z</updated>
     
     <summary type="html">
     
