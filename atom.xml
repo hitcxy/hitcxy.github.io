@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2023-07-04T16:47:44.138Z</updated>
+  <updated>2023-07-04T16:51:32.564Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>study</title>
-    <link href="https://hitcxy.com/2023/study/"/>
-    <id>https://hitcxy.com/2023/study/</id>
-    <published>2023-07-04T16:45:27.000Z</published>
-    <updated>2023-07-04T16:47:44.138Z</updated>
+    <link href="https://hitcxy.com/2023/sstudy/"/>
+    <id>https://hitcxy.com/2023/sstudy/</id>
+    <published>2023-07-04T16:50:58.000Z</published>
+    <updated>2023-07-04T16:51:32.564Z</updated>
     
     <summary type="html">
     
@@ -318,9 +318,9 @@
       <category term="🌟ctf2021" scheme="https://hitcxy.com/categories/%F0%9F%8C%9Fctf2021/"/>
     
     
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
-    
       <category term="🌟ctf2021" scheme="https://hitcxy.com/tags/%F0%9F%8C%9Fctf2021/"/>
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
   </entry>
   
@@ -1492,11 +1492,11 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
       <category term="RoarCTF2019" scheme="https://hitcxy.com/tags/RoarCTF2019/"/>
     
       <category term="CoinFlip" scheme="https://hitcxy.com/tags/CoinFlip/"/>
-    
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
   </entry>
   
