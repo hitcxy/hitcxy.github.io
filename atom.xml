@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hitcxy.com/"/>
-  <updated>2023-07-04T16:43:28.365Z</updated>
+  <updated>2023-07-04T16:46:11.767Z</updated>
   <id>https://hitcxy.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Unknown1</title>
-    <link href="https://hitcxy.com/2023/stackoverflow/"/>
-    <id>https://hitcxy.com/2023/stackoverflow/</id>
-    <published>2023-07-03T13:13:08.000Z</published>
-    <updated>2023-07-04T16:43:28.365Z</updated>
+    <title>study</title>
+    <link href="https://hitcxy.com/2023/study/"/>
+    <id>https://hitcxy.com/2023/study/</id>
+    <published>2023-07-04T16:45:27.000Z</published>
+    <updated>2023-07-04T16:46:11.767Z</updated>
     
     <summary type="html">
     
@@ -32,12 +32,10 @@
     
     </summary>
     
-      <category term="pwn stackoverflow" scheme="https://hitcxy.com/categories/pwn-stackoverflow/"/>
+      <category term="pwn" scheme="https://hitcxy.com/categories/pwn/"/>
     
     
       <category term="pwn" scheme="https://hitcxy.com/tags/pwn/"/>
-    
-      <category term="stackoverflow" scheme="https://hitcxy.com/tags/stackoverflow/"/>
     
   </entry>
   
