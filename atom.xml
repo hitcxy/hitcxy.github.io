@@ -318,9 +318,9 @@
       <category term="🌟ctf2021" scheme="https://hitcxy.com/categories/%F0%9F%8C%9Fctf2021/"/>
     
     
-      <category term="🌟ctf2021" scheme="https://hitcxy.com/tags/%F0%9F%8C%9Fctf2021/"/>
-    
       <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
+    
+      <category term="🌟ctf2021" scheme="https://hitcxy.com/tags/%F0%9F%8C%9Fctf2021/"/>
     
   </entry>
   
@@ -660,7 +660,7 @@
     <link href="https://hitcxy.com/2020/dl-runtime-resolve/"/>
     <id>https://hitcxy.com/2020/dl-runtime-resolve/</id>
     <published>2020-08-16T11:50:54.000Z</published>
-    <updated>2020-09-25T15:00:32.000Z</updated>
+    <updated>2023-07-27T15:34:28.900Z</updated>
     
     <summary type="html">
     
@@ -1492,11 +1492,11 @@
       <category term="Solidity" scheme="https://hitcxy.com/categories/Solidity/"/>
     
     
-      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
-    
       <category term="RoarCTF2019" scheme="https://hitcxy.com/tags/RoarCTF2019/"/>
     
       <category term="CoinFlip" scheme="https://hitcxy.com/tags/CoinFlip/"/>
+    
+      <category term="Blockchain" scheme="https://hitcxy.com/tags/Blockchain/"/>
     
   </entry>
   
